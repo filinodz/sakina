@@ -27,6 +27,9 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
+      # The presentation page is published next to the app: /sakina/ (app) and /sakina/site/ (landing)
+      - run: cp -r landing dist/site
+      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

@@ -43,3 +43,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: sakina-*.apk
+          name: Sakina ${{ github.ref_name }}
+          body_path: .github/release-notes.md

@@ -101,7 +101,6 @@ describe('national conventions', () => {
     // MWL already carries +1 min on Dhuhr in adhan-js
     expect(Math.round((b.dhuhr.getTime() - a.dhuhr.getTime()) / 60000)).toBe(4);
     expect(Math.round((b.maghrib.getTime() - a.maghrib.getTime()) / 60000)).toBe(5);
-    expect(tzOffsetMinutes('Africa/Casablanca', b.dhuhr)).toBe(60);
   });
 });
 

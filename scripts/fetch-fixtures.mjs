@@ -7,8 +7,8 @@ const CASES = [
   ['algiers', 'Alger', 36.7538, 3.0588, 'Africa/Algiers', 'algeria', 19],
   ['constantine', 'Constantine', 36.365, 6.6147, 'Africa/Algiers', 'algeria', 19],
   ['tamanrasset', 'Tamanrasset', 22.785, 5.5228, 'Africa/Algiers', 'algeria', 19],
-  // Casablanca is left out: Aladhan returns UTC+0 wall times for part of the year whereas Morocco
-  // is legally UTC+1 outside Ramadan (IANA Africa/Casablanca) — the comparison would be meaningless.
+  // Casablanca is left out: Morocco's UTC offset differs between time-zone database versions
+  // (UTC+0 vs UTC+1), so wall-clock comparisons depend on the machine, not on the calculation.
   ['tunis', 'Tunis', 36.8065, 10.1815, 'Africa/Tunis', 'tunisia', 18],
   ['cairo', 'Le Caire', 30.0444, 31.2357, 'Africa/Cairo', 'egypt', 5],
   ['makkah', 'La Mecque', 21.4225, 39.8262, 'Asia/Riyadh', 'makkah', 4],

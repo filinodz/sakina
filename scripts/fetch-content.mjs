@@ -129,3 +129,44 @@ console.log(`\n✓ ${ayat.length} ayat`);
 const adhkar = await fetchAdhkar();
 fs.writeFileSync(path.join(OUT, 'adhkar.json'), JSON.stringify(adhkar, null, 1));
 console.log(`\n✓ ${adhkar.length} adhkar`);
+
+/* ------------------------------------------------------------------ */
+/*  After-prayer adhkar (Hisn al-Muslim, chapter 25), in order         */
+/* ------------------------------------------------------------------ */
+/**
+ * Each entry says after which prayers it is recited and how many times.
+ * Qur'anic parts (Ayat al-Kursi, al-Ikhlas, al-Falaq, an-Nas) use the Madina Mushaf text.
+ */
+async function fetchAfterSalah() {
+  const ar = await getJson('http://www.hisnmuslim.com/api/ar/25.json');
+  const en = await getJson('http://www.hisnmuslim.com/api/en/25.json');
+  const itemsAr = Object.values(ar)[0], itemsEn = Object.values(en)[0];
+  const hisn = (id) => {
+    const a = itemsAr.find((x) => x.ID === id), e = itemsEn.find((x) => x.ID === id) || {};
+    return { ar: clean(a.ARABIC_TEXT), en: clean(e.TRANSLATED_TEXT).split(/(?<=[.’'”)])\s*(?=[A-Za-z][A-Za-z\-' ]{1,30}:\s)/)[0].trim(), translit: clean(e.LANGUAGE_ARABIC_TRANSLATED_TEXT) };
+  };
+  const mushaf = async (key) => (await getJson(`https://api.quran.com/api/v4/verses/by_key/${key}?fields=qpc_uthmani_hafs`)).verse.qpc_uthmani_hafs.trim();
+  const surah = async (n, ayat) => { const out = []; for (let i = 1; i <= ayat; i++) out.push(await mushaf(`${n}:${i}`)); return out.join(' '); };
+  const basmala = (await mushaf('1:1')).replace(/[\s ]*[٠-٩]+$/, '');
+  const ALL = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
+  // Hisn al-Muslim strips: "عَشْرَ مَرّاتٍ بَعْدَ صَلاةِ الْمَغْرِبِ وَالصُّبْحِ" etc. are shown as a note, not in the text.
+  const strip = (s) => s.replace(/\s*(عَشْرَ مَرّاتٍ|بَعْدَ السّلامِ)[^]*$/, '').replace(/^يَقُولُ:\s*/, '').trim();
+  const items = [
+    { id: 'istighfar', ...hisn(66), prayers: ALL, repeat: 1 },
+    { id: 'tahlil-mani', ...hisn(67), prayers: ALL, repeat: 1 },
+    { id: 'tahlil-hawl', ...hisn(68), prayers: ALL, repeat: 1 },
+    { id: 'tasbih', ...hisn(69), prayers: ALL, repeat: 33 },
+    { id: 'ikhlas', ar: `${basmala} ${await surah(112, 4)}`, quran: true, title: 'سورة الإخلاص', prayers: ALL, repeat: 1, repeatFajrMaghrib: 3 },
+    { id: 'falaq', ar: `${basmala} ${await surah(113, 5)}`, quran: true, title: 'سورة الفلق', prayers: ALL, repeat: 1, repeatFajrMaghrib: 3 },
+    { id: 'nas', ar: `${basmala} ${await surah(114, 6)}`, quran: true, title: 'سورة الناس', prayers: ALL, repeat: 1, repeatFajrMaghrib: 3 },
+    { id: 'kursi', ar: await mushaf('2:255'), quran: true, title: 'آية الكرسي', prayers: ALL, repeat: 1 },
+    { id: 'tahlil-10', ...hisn(72), prayers: ['fajr', 'maghrib'], repeat: 10, note: 'بعد صلاة الفجر والمغرب' },
+    { id: 'ilm-nafi', ...hisn(73), prayers: ['fajr'], repeat: 1, note: 'بعد صلاة الفجر' },
+  ];
+  for (const it of items) if (!it.quran) it.ar = strip(it.ar);
+  return items;
+}
+
+const afterSalah = await fetchAfterSalah();
+fs.writeFileSync(path.join(OUT, 'after-salah.json'), JSON.stringify(afterSalah, null, 1));
+console.log(`✓ ${afterSalah.length} after-prayer adhkar`);

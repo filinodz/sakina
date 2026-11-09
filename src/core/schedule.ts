@@ -1,4 +1,5 @@
 import { getDay, iqamaTime, type DayTimes } from './prayer';
+import { sequenceSeconds } from './after-salah';
 import { SALAWAT, type PrayerKey, type SalahKey, type Settings } from './settings';
 import { toHijri, type Hijri } from './hijri';
 import { addDays, fromZoned, parseHM, todayIn, ymdKey, zoned, type YMD } from './time';
@@ -77,7 +78,8 @@ function events(s: Settings, d: YMD, dt: DayTimes): SalahEvent[] {
       }
     }
     const prayerEnd = new Date(iqama.getTime() + (jumuah ? s.phases.jumuahMinutes : s.phases.prayerMinutes) * 60000);
-    const adhkarEnd = new Date(prayerEnd.getTime() + s.phases.adhkarMinutes * 60000);
+    const adhkarMs = !s.phases.adhkar ? 0 : s.phases.adhkarAuto ? sequenceSeconds(key) * 1000 : s.phases.adhkarMinutes * 60000;
+    const adhkarEnd = new Date(prayerEnd.getTime() + adhkarMs);
     return { key, jumuah, adhan, iqama, prayerEnd, adhkarEnd, date: d };
   });
 }
@@ -113,14 +115,16 @@ export function computeState(s: Settings, now = new Date()): State {
     const a = e.adhan.getTime();
     if (t < a || t >= e.adhkarEnd.getTime()) continue;
     if (s.mode === 'home') {
+      // At home: the adhan, then the adhkar once the prayer has (most likely) been prayed.
       if (t < a + adhanMs) { phase = 'adhan'; event = e; }
+      else if (s.phases.adhkarHome && t >= e.prayerEnd.getTime()) { phase = 'adhkar'; event = e; }
       continue;
     }
     event = e;
     if (t < a + adhanMs && t < e.iqama.getTime()) phase = 'adhan';
     else if (t < e.iqama.getTime()) phase = s.phases.iqamaCountdown ? 'iqama' : 'idle';
     else if (t < e.prayerEnd.getTime()) phase = s.phases.prayerMinutes > 0 || e.jumuah ? 'prayer' : 'idle';
-    else phase = s.phases.adhkarMinutes > 0 ? 'adhkar' : 'idle';
+    else phase = e.adhkarEnd.getTime() > e.prayerEnd.getTime() ? 'adhkar' : 'idle';
     if (phase === 'idle') event = null;
   }
 

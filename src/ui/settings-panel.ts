@@ -15,7 +15,7 @@ import { handleArrow, isBackKey } from './spatial-nav';
 
 const BACKGROUNDS = backgroundsData as { id: string; label: string; labelAr?: string; labelEn?: string; author: string; license: string }[];
 const bgLabel = (b: (typeof BACKGROUNDS)[number]) => (lang === 'ar' ? b.labelAr || b.label : lang === 'en' ? b.labelEn || b.label : b.label);
-const VERSION = '1.0.0';
+const VERSION = '1.1.0';
 const REPO = 'https://github.com/filinodz/sakina';
 
 type Section = 'mosque' | 'location' | 'calc' | 'iqama' | 'athan' | 'display' | 'backup';
@@ -447,7 +447,10 @@ export class SettingsPanel {
         this.field(L('Écran d’adhan (min)', 'Adhan screen (min)', 'شاشة الأذان (دقائق)'), this.num('phases.adhanScreenMinutes', 0, 15)),
         this.toggle('phases.iqamaCountdown', L('Compte à rebours plein écran avant l’iqama', 'Full-screen iqamah countdown', 'عدّ تنازلي للإقامة')),
         this.field(L('Écran « prière en cours » (min)', '“Prayer in progress” (min)', 'شاشة الصلاة (دقائق)'), this.num('phases.prayerMinutes', 0, 40), L('Écran sombre pendant la prière.', 'Dark screen during prayer.', 'شاشة داكنة أثناء الصلاة.')),
-        this.field(L('Adhkar après la prière (min)', 'After-prayer adhkar (min)', 'أذكار بعد الصلاة (دقائق)'), this.num('phases.adhkarMinutes', 0, 20))),
+        this.toggle('phases.adhkar', L('Adhkar après la prière', 'After-prayer adhkar', 'أذكار بعد الصلاة'), L('Dans l’ordre de Hisn al-Muslim, avec le nombre de répétitions ; adhkar propres au Fajr et au Maghrib inclus.', 'In Hisn al-Muslim order, with repetition counts; Fajr- and Maghrib-specific adhkar included.', 'بترتيب حصن المسلم مع عدد التكرار، وأذكار الفجر والمغرب الخاصة.'), true),
+        s.phases.adhkar ? this.toggle('phases.adhkarAuto', L('Durée automatique', 'Automatic duration', 'مدة تلقائية'), L('Le temps de réciter chaque dhikr (≈ 4 min, un peu plus après Fajr et Maghrib).', 'Time to recite each dhikr (≈ 4 min, a little longer after Fajr and Maghrib).', 'وقت قراءة كل ذكر (حوالي ٤ دقائق).'), true) : '',
+        s.phases.adhkar && !s.phases.adhkarAuto ? this.field(L('Durée (min)', 'Duration (min)', 'المدة (دقائق)'), this.num('phases.adhkarMinutes', 1, 20)) : '',
+        s.phases.adhkar ? this.toggle('phases.adhkarHome', L('Aussi en mode maison', 'Also in home mode', 'في وضع المنزل أيضاً'), L('Après le temps estimé de la prière.', 'After the estimated prayer time.', 'بعد الوقت المقدّر للصلاة.')) : ''),
     ];
   }
 
@@ -560,6 +563,7 @@ export class SettingsPanel {
         this.toggle('display.showAnnouncements', L('Annonces de la mosquée', 'Mosque notices', 'إعلانات المسجد')),
         this.toggle('display.ticker', L('Bandeau défilant', 'Scrolling ticker', 'شريط متحرك')),
         this.toggle('display.tickerHadith', L('Ahadith dans le bandeau', 'Ahadith in the ticker', 'أحاديث في الشريط'), L('Hadiths authentiques de Sahih al-Bukhari, avec référence.', 'Authentic hadiths from Sahih al-Bukhari, with reference.', 'أحاديث صحيحة من صحيح البخاري مع رقمها.')),
+        lang === 'ar' ? '' : this.field(L('Langue du bandeau', 'Ticker language', 'لغة الشريط'), this.seg('display.tickerLang', [['ar', L('Arabe (défile de gauche à droite)', 'Arabic (scrolls left → right)', 'العربية')], ['translation', L('Traduction française', 'English translation', 'الترجمة')]]), undefined, true),
         this.field(L('Vitesse du bandeau', 'Ticker speed', 'سرعة الشريط'), this.seg('display.tickerSpeed', [['slow', L('Lente', 'Slow', 'بطيئة')], ['normal', L('Normale', 'Normal', 'عادية')], ['fast', L('Rapide', 'Fast', 'سريعة')]])),
         this.toggle('display.phoneNotice', L('« Éteignez vos téléphones » à l’heure de la prière', '“Switch off phones” at prayer time', 'تنبيه إغلاق الهواتف وقت الصلاة'), L('Remplace le bandeau de l’adhan jusqu’à la fin de la prière.', 'Replaces the ticker from the adhan until the end of the prayer.', 'يظهر من الأذان حتى نهاية الصلاة.')),
         this.toggle('display.weather', L('Météo', 'Weather', 'الطقس')),

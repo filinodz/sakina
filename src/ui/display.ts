@@ -5,7 +5,8 @@ import backgroundsData from '../data/backgrounds.json';
 import { computeState, type State } from '../core/schedule';
 import { iqamaTime } from '../core/prayer';
 import { clock } from '../core/clock';
-import { PRAYERS, SALAWAT, settings, type PrayerKey, type Settings } from '../core/settings';
+import { sequence, stepAt } from '../core/after-salah';
+import { PRAYERS, SALAWAT, settings, type PrayerKey, type SalahKey, type Settings } from '../core/settings';
 import { formatCountdown, formatHM, meridiem, tzOffsetMinutes, zoned } from '../core/time';
 import { HIJRI_MONTHS_AR, toArabicDigits } from '../core/hijri';
 import { locale, prayerName, PRAYER_AR, t } from '../core/i18n';
@@ -23,7 +24,6 @@ const AYAT = ayatData as Ayah[];
 const ADHKAR = adhkarData as Dhikr[];
 interface Hadith { ref: { collection: string; number: number; ar: string; fr: string; en: string }; ar: string; fr: string; en: string }
 const AHADITH = ahadithData as Hadith[];
-const AFTER_SALAH = ADHKAR.filter((d) => d.chapter === 25);
 const DUA_AFTER_ADHAN = ADHKAR.find((d) => d.id === 25);
 const BACKGROUNDS = backgroundsData as { id: string; label: string }[];
 
@@ -58,8 +58,7 @@ export class Display {
   private slides: Slide[] = [];
   private slideIdx = -1;
   private slideTimer = 0;
-  private adhkarIdx = 0;
-  private adhkarStamp = 0;
+  private adhkarIndex = -1;
   private weather: Weather | null = null;
   private weatherAt = 0;
   private soundPrompt: HTMLElement | null = null;
@@ -412,6 +411,10 @@ export class Display {
     const s = this.s, L = s.lang;
     const el = this.r.tickerText;
     el.innerHTML = '';
+    // Arabic reads right-to-left, so an Arabic ticker moves left → right (its first word leads).
+    const rtl = L === 'ar' || s.display.tickerLang === 'ar';
+    toggleClass(this.stage, 'ticker-rtl', rtl);
+    el.setAttribute('dir', rtl ? 'rtl' : 'ltr');
     const items: Node[] = [];
     const ann = s.mosque.announcements.filter((a) => a.trim());
     const hadiths = s.display.tickerHadith ? shuffle(AHADITH) : [];
@@ -420,13 +423,17 @@ export class Display {
     for (let i = 0; i < n; i++) {
       if (i < hadiths.length) {
         const hd = hadiths[i];
-        const tr = L === 'fr' ? hd.fr : L === 'en' ? hd.en : '';
-        const src = L === 'ar' ? hd.ref.ar : L === 'fr' ? hd.ref.fr : hd.ref.en;
-        items.push(h('span', { class: 'hadith' },
-          h('span', { class: 'ar' }, 'قال رسول الله ﷺ: «', hd.ar, '»'),
-          tr ? h('span', { class: 'tr' }, ` — ${tr}`) : '',
-          h('small', null, ` ${src} ${this.digits(String(hd.ref.number))}`)));
-        chars += hd.ar.length + tr.length;
+        if (rtl) {
+          items.push(h('span', { class: 'hadith ar' }, 'قال رسول الله ﷺ: «', hd.ar, '»',
+            h('small', null, ` ${hd.ref.ar} ${toArabicDigits(hd.ref.number)}`)));
+          chars += hd.ar.length;
+        } else {
+          const tr = L === 'en' ? hd.en : hd.fr;
+          const said = L === 'en' ? 'The Prophet ﷺ said: “' : 'Le Prophète ﷺ a dit : « ';
+          items.push(h('span', { class: 'hadith' }, h('span', { class: 'tr' }, said, tr.replace(/\.$/, ''), L === 'en' ? '”' : ' »'),
+            h('small', null, ` ${L === 'en' ? hd.ref.en : hd.ref.fr} ${hd.ref.number}`)));
+          chars += tr.length;
+        }
       }
       if (i < ann.length) {
         items.push(h('span', { class: `ann ${isArabic(ann[i]) ? 'ar' : ''}` }, svg(icons.megaphone), ann[i]));
@@ -542,7 +549,7 @@ export class Display {
       }
     }
     if (st.phase === 'prayer') setText($('.ov-clock', ov), this.digits(formatHM(now, s.location.timezone, s.display.clock24, this.offsetMin)));
-    if (st.phase === 'adhkar' && now.getTime() - this.adhkarStamp > 22000) { this.adhkarStamp = now.getTime(); this.renderAdhkar(); }
+    if (st.phase === 'adhkar' && ev) this.updateAdhkar(ev.key, (now.getTime() - ev.prayerEnd.getTime()) / 1000);
   }
 
   private renderOverlay(st: State) {
@@ -585,26 +592,48 @@ export class Display {
         L === 'ar' ? '' : h('div', { class: 'ov-sub' }, `${t('prayerNow', L)} — ${lat}`),
         h('div', { class: 'ov-clock num' }));
     } else if (st.phase === 'adhkar') {
-      this.adhkarIdx = 0;
-      this.adhkarStamp = clock.now().getTime();
+      this.adhkarIndex = -1;
+      const steps = sequence(ev.key);
       ov.append(
-        h('div', { class: 'ov-kicker' }, L === 'ar' ? 'أذكار بعد الصلاة' : `${t('afterPrayer', L)} · أذكار بعد الصلاة`),
-        h('div', { class: 'ov-divider', html: divider() }),
-        h('div', { class: 'ov-text adhkar-text' }),
-        h('div', { class: 'ov-tr adhkar-tr' }));
-      this.renderAdhkar();
+        h('div', { class: 'ov-kicker' }, L === 'ar' ? `أذكار بعد صلاة ${PRAYER_AR[key]}` : `${t('afterPrayer', L)} · ${lat}`),
+        h('div', { class: 'adk' },
+          h('div', { class: 'adk-head' }, h('span', { class: 'adk-title ar' }), h('span', { class: 'adk-count' }, h('b', { class: 'num' }), h('small', { class: 'ar' }, 'مرة'))),
+          h('div', { class: 'adk-text' }),
+          h('div', { class: 'adk-tr' })),
+        h('div', { class: 'adk-progress' }, ...steps.map(() => h('i', null, h('b')))),
+        h('div', { class: 'adk-src ar' }, 'حصن المسلم'));
+      this.updateAdhkar(ev.key, (clock.now().getTime() - ev.prayerEnd.getTime()) / 1000);
     }
   }
 
-  private renderAdhkar() {
-    if (!AFTER_SALAH.length) return;
-    const d = AFTER_SALAH[this.adhkarIdx++ % AFTER_SALAH.length];
+  /** After-prayer adhkar: the current one is derived from the time elapsed since the end of the prayer. */
+  private updateAdhkar(key: SalahKey, elapsed: number) {
     const ov = this.r.overlay;
-    const text = $('.adhkar-text', ov), tr = $('.adhkar-tr', ov);
-    if (!text || !tr) return;
-    text.style.fontSize = d.ar.length > 300 ? '38px' : d.ar.length > 160 ? '46px' : '58px';
-    setText(text, d.ar);
-    setText(tr, this.s.lang === 'en' ? d.en : this.s.lang === 'fr' ? d.translit : '');
+    const { index, step, progress } = stepAt(key, Math.max(0, elapsed));
+    const bars = ov.querySelectorAll('.adk-progress i');
+    Array.prototype.forEach.call(bars, (bar: HTMLElement, i: number) => {
+      toggleClass(bar, 'done', i < index);
+      const fill = bar.firstChild as HTMLElement;
+      fill.style.transform = `scaleX(${i === index ? progress.toFixed(3) : i < index ? 1 : 0})`;
+    });
+    if (index === this.adhkarIndex) return;
+    this.adhkarIndex = index;
+    const { item, repeat } = step;
+    const box = $('.adk', ov);
+    if (!box) return;
+    box.classList.add('out');
+    window.setTimeout(() => {
+      const L = this.s.lang;
+      setText($('.adk-title', box), item.title || item.note || '');
+      const count = $('.adk-count', box)!;
+      toggleClass(count, 'hidden', repeat <= 1);
+      setText($('.adk-count b', box), this.digits(String(repeat)));
+      const text = $('.adk-text', box)!;
+      text.className = `adk-text ${item.quran ? 'quran' : ''} ${item.ar.length > 380 ? 'xl' : item.ar.length > 220 ? 'l' : item.ar.length > 120 ? 'm' : 's'}`;
+      setText(text, item.ar);
+      setText($('.adk-tr', box), item.quran ? '' : L === 'en' ? item.en || '' : L === 'fr' ? item.translit || '' : '');
+      box.classList.remove('out');
+    }, this.lite ? 150 : 500);
   }
 
   /** Called by main for remote-control left/right. */

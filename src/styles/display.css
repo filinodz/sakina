@@ -336,3 +336,40 @@
 .no-iqama .card-iqama { display: none; }
 .no-hijri .date-h { display: none; }
 .feature-body > *, .ticker-text, .ticker-alert { zoom: var(--ts, 1); }
+
+/* ---------- After-prayer adhkar ---------- */
+.overlay.adhkar { justify-content: center; }
+.adk {
+  position: relative; width: min(1560px, 100%); margin-top: 40px; padding: 48px 64px 44px; border-radius: 40px;
+  background: linear-gradient(170deg, rgba(232, 199, 125, 0.1), rgba(255, 255, 255, 0.02) 60%);
+  border: 1px solid var(--line); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.adk.out { opacity: 0; transform: translateY(14px); }
+.adk-head { display: flex; align-items: center; justify-content: space-between; min-height: 64px; direction: rtl; }
+.adk-title { font-size: 34px; color: var(--gold); }
+.adk-count {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; width: 112px; height: 112px; margin-top: -78px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #f6e3ad, var(--gold) 45%, var(--gold-2)); color: #1a1205; box-shadow: 0 16px 40px -12px rgba(232, 199, 125, 0.6);
+}
+.adk-count b { font-size: 46px; font-weight: 700; line-height: 1; }
+.adk-count small { font-size: 20px; line-height: 1.2; }
+.adk-count.hidden { visibility: hidden; }
+.adk-text { font-family: var(--f-naskh); direction: rtl; text-align: center; color: var(--ink); line-height: 1.9; }
+.adk-text.quran { font-family: var(--f-quran); line-height: 2; }
+.adk-text.s { font-size: 68px; } .adk-text.m { font-size: 56px; } .adk-text.l { font-size: 46px; } .adk-text.xl { font-size: 38px; }
+.adk-tr { margin-top: 22px; font-family: var(--f-serif); font-style: italic; font-size: 28px; color: var(--ink-3); text-align: center; line-height: 1.45; }
+.adk-tr:empty { display: none; }
+.adk-progress { display: flex; gap: 10px; width: min(900px, 80%); margin-top: 44px; direction: rtl; }
+.adk-progress i { position: relative; flex: 1; height: 5px; border-radius: 4px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
+.adk-progress i b { position: absolute; inset: 0; background: var(--gold); transform-origin: right center; transform: scaleX(0); transition: transform 1s linear; }
+.adk-progress i.done b { transform: scaleX(1); }
+.adk-src { margin-top: 18px; font-size: 24px; color: var(--ink-3); }
+.portrait .adk { padding: 40px 40px 36px; }
+.portrait .adk-text.l { font-size: 42px; } .portrait .adk-text.xl { font-size: 34px; }
+.feature-body > *, .adk-text, .adk-tr { zoom: var(--ts, 1); }
+
+/* Arabic ticker: laid out right-to-left and scrolling left → right */
+.ticker-rtl .ticker-text { left: auto; right: 0; padding-left: 0; padding-right: 100%; animation-name: marquee-rtl; }
+@keyframes marquee-rtl { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(100%, 0, 0); } }
+.ticker-text .hadith.ar { font-family: var(--f-naskh); font-size: 31px; color: var(--ink); }
+.ticker-rtl .ticker-label { order: 2; }

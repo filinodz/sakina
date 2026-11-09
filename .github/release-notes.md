@@ -1,5 +1,12 @@
 ## Sakina · سكينة
 
+### What's new in 1.1 · الجديد في الإصدار 1.1
+- After-prayer adhkar (Hisn al-Muslim) in order, with repetition counts and the Fajr/Maghrib-specific ones — shown automatically, also at home
+  أذكار ما بعد الصلاة بالترتيب مع عدد التكرار وأذكار الفجر والمغرب الخاصة، تظهر تلقائياً حتى في وضع المنزل
+- The Arabic ticker now scrolls left → right, so each hadith starts with its first word
+  الشريط العربي يتحرك الآن من اليسار إلى اليمين ليبدأ كل حديث بأول كلمة
+
+
 Open-source prayer display for mosques, homes and Android TV — free, no ads, works offline.
 شاشة مواقيت الصلاة مفتوحة المصدر للمساجد والبيوت وأجهزة Android TV — مجانية، بلا إعلانات، وتعمل دون إنترنت.
 

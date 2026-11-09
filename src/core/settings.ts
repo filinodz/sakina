@@ -33,7 +33,11 @@ export interface Settings {
     hijriAtMaghrib: boolean;
   };
   iqama: Record<SalahKey, IqamaRule> & { jumuahOffset: number };
-  phases: { iqamaCountdown: boolean; prayerMinutes: number; jumuahMinutes: number; adhkarMinutes: number; adhanScreenMinutes: number };
+  phases: {
+    iqamaCountdown: boolean; prayerMinutes: number; jumuahMinutes: number; adhanScreenMinutes: number;
+    /** after-prayer adhkar: shown automatically for as long as it takes to recite them */
+    adhkar: boolean; adhkarAuto: boolean; adhkarMinutes: number; adhkarHome: boolean;
+  };
   athan: {
     enabled: boolean; volume: number; sound: string; fajrSound: string;
     perPrayer: Record<SalahKey, 'athan' | 'beep' | 'off'>;
@@ -59,6 +63,8 @@ export interface Settings {
     nightDimFrom: string; nightDimTo: string;
     tickerHadith: boolean;
     tickerSpeed: 'slow' | 'normal' | 'fast';
+    /** 'ar': Arabic texts, scrolling left → right; 'translation': French/English, scrolling right → left */
+    tickerLang: 'ar' | 'translation';
     phoneNotice: boolean;
     textScale: number;
     arabicDigits: boolean;
@@ -104,7 +110,7 @@ export function defaults(): Settings {
       isha: { mode: 'offset', offset: 15, time: '21:00' },
       jumuahOffset: 0,
     },
-    phases: { iqamaCountdown: true, prayerMinutes: 10, jumuahMinutes: 45, adhkarMinutes: 6, adhanScreenMinutes: 4 },
+    phases: { iqamaCountdown: true, prayerMinutes: 10, jumuahMinutes: 45, adhanScreenMinutes: 4, adhkar: true, adhkarAuto: true, adhkarMinutes: 5, adhkarHome: true },
     athan: {
       enabled: true, volume: 0.9, sound: 'mishary-afasy', fajrSound: 'mishary-fajr',
       perPrayer: { fajr: 'athan', dhuhr: 'athan', asr: 'athan', maghrib: 'athan', isha: 'athan' },
@@ -115,7 +121,7 @@ export function defaults(): Settings {
       lite: 'auto', clock24: true, showSeconds: true, contentSeconds: 20,
       showAyat: true, showAdhkar: true, showAnnouncements: true, ticker: true, weather: true,
       orientation: 'auto', nightDim: false, nightDimFrom: '', nightDimTo: '',
-      tickerHadith: true, tickerSpeed: 'normal', phoneNotice: true, textScale: 1, arabicDigits: false,
+      tickerHadith: true, tickerSpeed: 'normal', tickerLang: 'ar', phoneNotice: true, textScale: 1, arabicDigits: false,
       showSunrise: true, showIqamaOnCards: true, showDuha: false, showQiyam: false, showHijri: true, tempUnit: 'c',
     },
     eid: { date: '', time: '' },

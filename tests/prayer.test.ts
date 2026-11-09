@@ -5,6 +5,7 @@ import { calcDay, parseTimetable, iqamaTime } from '../src/core/prayer';
 import { computeState } from '../src/core/schedule';
 import { fromZoned, formatHM, tzOffsetMinutes, todayIn } from '../src/core/time';
 import { toHijri } from '../src/core/hijri';
+import { sequence, sequenceSeconds, stepAt } from '../src/core/after-salah';
 
 interface Fixture { id: string; city: string; lat: number; lng: number; tz: string; method: MethodId; date: string; times: string[] }
 
@@ -121,5 +122,42 @@ describe('hijri', () => {
   });
   it('manual correction', () => {
     expect(toHijri({ y: 2026, m: 2, d: 18 }, -1).m).toBe(8);
+  });
+});
+
+describe('after-prayer adhkar', () => {
+  it('follows Hisn al-Muslim order and per-prayer rules', () => {
+    const fajr = sequence('fajr').map((x) => x.item.id);
+    const dhuhr = sequence('dhuhr').map((x) => x.item.id);
+    expect(dhuhr[0]).toBe('istighfar');
+    expect(dhuhr).toContain('kursi');
+    expect(dhuhr).not.toContain('tahlil-10');
+    expect(dhuhr).not.toContain('ilm-nafi');
+    expect(fajr).toContain('tahlil-10');
+    expect(fajr[fajr.length - 1]).toBe('ilm-nafi');
+    expect(sequence('maghrib').map((x) => x.item.id)).not.toContain('ilm-nafi');
+  });
+  it('repeats the Mu‘awwidhat three times after Fajr and Maghrib only', () => {
+    const rep = (k: 'fajr' | 'dhuhr' | 'maghrib') => sequence(k).find((x) => x.item.id === 'ikhlas')!.repeat;
+    expect(rep('fajr')).toBe(3);
+    expect(rep('maghrib')).toBe(3);
+    expect(rep('dhuhr')).toBe(1);
+    expect(sequence('asr').find((x) => x.item.id === 'tasbih')!.repeat).toBe(33);
+  });
+  it('lasts long enough to recite, and walks through the sequence over time', () => {
+    const total = sequenceSeconds('dhuhr');
+    expect(total).toBeGreaterThan(150);
+    expect(total).toBeLessThan(420);
+    expect(sequenceSeconds('fajr')).toBeGreaterThan(total);
+    expect(stepAt('dhuhr', 0).index).toBe(0);
+    expect(stepAt('dhuhr', total - 1).index).toBe(sequence('dhuhr').length - 1);
+  });
+  it('is shown after the prayer in mosque and home mode', () => {
+    const s = cfg({ lat: 36.7538, lng: 3.0588, tz: 'Africa/Algiers', method: 'algeria' });
+    const dhuhr = calcDay(s, { y: 2026, m: 11, d: 10 }).times.dhuhr;
+    const after = new Date(dhuhr.getTime() + 27 * 60000); // iqama +15, prayer 10 min
+    expect(computeState(s, after).phase).toBe('adhkar');
+    expect(computeState({ ...s, mode: 'home' }, after).phase).toBe('adhkar');
+    expect(computeState({ ...s, phases: { ...s.phases, adhkar: false } }, after).phase).toBe('idle');
   });
 });

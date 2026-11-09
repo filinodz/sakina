@@ -35,6 +35,9 @@ const dict = {
   pin: { fr: 'Code PIN', en: 'PIN code', ar: 'الرمز السري' },
   wrongPin: { fr: 'Code incorrect', en: 'Wrong code', ar: 'رمز خاطئ' },
   tomorrow: { fr: 'demain', en: 'tomorrow', ar: 'غداً' },
+  eid: { fr: 'Prière de l’Aïd', en: 'Eid prayer', ar: 'صلاة العيد' },
+  duha: { fr: 'Duha', en: 'Duha', ar: 'الضحى' },
+  qiyam: { fr: 'Dernier tiers de la nuit', en: 'Last third of the night', ar: 'الثلث الأخير' },
 } as const;
 
 export type I18nKey = keyof typeof dict;

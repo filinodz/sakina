@@ -31,6 +31,7 @@ const SHOTS = [
   ['royal', 1920, 1080, 'demo&theme=royal&at=06:58:40&bg=lotfollah-ceiling'],
   ['settings-calc', 1600, 1000, 'demo&settings=calc'],
   ['settings-athan', 1600, 1000, 'demo&settings=athan'],
+  ['settings-ar', 1600, 1000, 'demo&lang=ar&settings=display'],
 ];
 
 fs.mkdirSync(OUT, { recursive: true });

@@ -26,15 +26,17 @@
 .sp-brand { display: flex; align-items: center; gap: 0.8em; padding: 0 0.6em 1.4em; color: var(--gold); }
 .sp-brand b { display: block; font-family: var(--f-serif); font-size: 1.7em; font-weight: 600; color: var(--ink); line-height: 1; }
 .sp-brand small { font-size: 1.1em; color: var(--gold); }
-.sp-logo { width: 2.6em; height: 2.6em; display: inline-flex; }
-.sp-logo svg { width: 100%; height: 100%; }
+.sp-logo { width: 2.2em; height: 2.2em; display: inline-flex; align-items: center; justify-content: center; }
+.sp-logo .brand-mark { width: 2em; height: 2em; }
 .sp-tab {
-  display: flex; flex-direction: column; align-items: flex-start; gap: 0.15em; padding: 0.75em 1em; border-radius: 0.9em;
+  display: flex; align-items: center; gap: 0.85em; padding: 0.75em 1em; border-radius: 0.9em;
   border: 1px solid transparent; background: transparent; text-align: start; color: var(--ink-2);
   transition: background 0.25s, color 0.25s;
 }
-.sp-tab span { font-weight: 600; font-size: 1.02em; }
-.sp-tab small { font-size: 0.78em; color: var(--ink-3); }
+.tab-ico { width: 1.25em; height: 1.25em; flex: none; opacity: 0.85; }
+.tab-text { display: flex; flex-direction: column; gap: 0.1em; min-width: 0; }
+.tab-text span { font-weight: 600; font-size: 1.02em; }
+.tab-text small { font-size: 0.78em; color: var(--ink-3); }
 .sp-tab:hover { background: rgba(255, 255, 255, 0.04); }
 .sp-tab.on { background: var(--gold-soft); border-color: var(--line); color: var(--gold); }
 .sp-spacer { flex: 1; min-height: 1em; }
@@ -52,7 +54,8 @@
   display: flex; align-items: center; gap: 0.8em; padding: 1em 1.2em; margin-bottom: 1.4em; border-radius: 1em;
   background: var(--gold-soft); border: 1px solid var(--line); color: var(--ink);
 }
-.sp-banner .ico { width: 1.6em; height: 1.6em; color: var(--gold); flex: none; }
+.sp-banner .ico { width: auto; height: auto; color: var(--gold); flex: none; }
+.sp-banner .orn { font-size: 1.7em; line-height: 1; }
 .sp-body { display: flex; flex-direction: column; gap: 1.2em; max-width: 1100px; }
 
 .grp { border: 1px solid var(--line-soft); border-radius: 1.2em; background: rgba(255, 255, 255, 0.025); padding: 1.2em 1.4em 1.4em; }
@@ -195,16 +198,16 @@ input[type='time'].in { color-scheme: dark; }
 .bg-thumb.on { opacity: 1; filter: none; border-color: var(--gold); }
 
 .about { display: flex; gap: 1.2em; align-items: flex-start; }
-.about-logo { width: 4em; height: 4em; color: var(--gold); flex: none; }
-.about-logo svg { width: 100%; height: 100%; }
+.about-logo { color: var(--gold); flex: none; }
+.about-logo .brand-mark { width: 4em; height: 4em; }
 .about p { color: var(--ink-2); line-height: 1.55; margin: 0.5em 0; }
 .about a { color: var(--gold); }
 
 /* PIN */
 .pin { position: fixed; inset: 0; z-index: 80; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.75); font-size: clamp(14px, 1vw + 4px, 20px); }
 .pin-box { width: min(22em, 90vw); padding: 2em; border-radius: 1.6em; text-align: center; background: var(--glass-strong); border: 1px solid var(--line); }
-.pin-star { width: 3em; height: 3em; margin: 0 auto; color: var(--gold); }
-.pin-star svg { width: 100%; height: 100%; }
+.pin-star { margin: 0 auto; color: var(--gold); }
+.pin-star .brand-mark { width: 3em; height: 3em; display: block; margin: 0 auto; }
 .pin h3 { margin: 0.6em 0 1em; font-family: var(--f-serif); font-size: 1.6em; }
 .pin-in { text-align: center; font-size: 1.6em; letter-spacing: 0.5em; }
 .pin-msg { min-height: 1.4em; margin: 0.6em 0; color: #f0a0a0; }
@@ -217,7 +220,7 @@ input[type='time'].in { color-scheme: dark; }
   .sp { flex-direction: column; }
   .sp-nav { width: auto; flex: none; flex-direction: row; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; padding: 0.6em; gap: 0.4em; border-inline-end: 0; border-bottom: 1px solid var(--line-soft); }
   .sp-nav::-webkit-scrollbar { display: none; }
-  .sp-brand, .sp-spacer, .sp-tab small { display: none; }
+  .sp-brand, .sp-spacer, .tab-text small { display: none; }
   .sp-tab { flex: none; padding: 0.6em 0.9em; }
   .sp-close { flex: none; padding: 0.6em 1em; }
   .preview-grid { grid-template-columns: repeat(3, 1fr); }
@@ -227,3 +230,20 @@ input[type='time'].in { color-scheme: dark; }
 
 /* Lite mode keeps the panel cheap too */
 .lite .sp { transition: none; transform: none; }
+
+/* Language switch, always visible */
+.sp-lang { display: flex; gap: 4px; padding: 4px; margin: -0.4em 0.4em 1.2em; border-radius: 0.8em; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.08); }
+.sp-lang button { flex: 1; min-height: 2.3em; border: 0; border-radius: 0.6em; background: transparent; color: var(--ink-2); font-weight: 700; }
+.sp-lang button:first-child { font-family: var(--f-ar); font-size: 1.05em; }
+.sp-lang button.on { background: var(--gold); color: #1a1205; }
+
+/* Offline checklist */
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6em; }
+.checklist li { display: flex; gap: 0.8em; align-items: flex-start; padding: 0.7em 0.9em; border-radius: 0.8em; background: rgba(0, 0, 0, 0.2); }
+.checklist li .ico { width: 1.3em; height: 1.3em; flex: none; margin-top: 0.15em; }
+.checklist li.ok .ico { color: var(--accent); }
+.checklist li.todo .ico { color: #f0a35b; }
+.checklist li.na .ico { color: var(--ink-3); }
+.checklist li span { display: flex; flex-direction: column; }
+.checklist li small { color: var(--ink-3); font-size: 0.82em; }
+@media (max-width: 720px) { .sp-lang { margin: 0; flex: none; } }

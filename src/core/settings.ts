@@ -38,6 +38,7 @@ export interface Settings {
     enabled: boolean; volume: number; sound: string; fajrSound: string;
     perPrayer: Record<SalahKey, 'athan' | 'beep' | 'off'>;
     iqamaBeep: boolean; preAlertMinutes: number;
+    fajrVolume: number;
     custom: { id: string; name: string }[];
   };
   display: {
@@ -54,7 +55,21 @@ export interface Settings {
     ticker: boolean; weather: boolean;
     orientation: 'auto' | 'landscape' | 'portrait';
     nightDim: boolean;
+    /** '' = automatic (Isha + 1 h → 45 min before Fajr) */
+    nightDimFrom: string; nightDimTo: string;
+    tickerHadith: boolean;
+    tickerSpeed: 'slow' | 'normal' | 'fast';
+    phoneNotice: boolean;
+    textScale: number;
+    arabicDigits: boolean;
+    showSunrise: boolean;
+    showIqamaOnCards: boolean;
+    showDuha: boolean;
+    showQiyam: boolean;
+    showHijri: boolean;
+    tempUnit: 'c' | 'f';
   };
+  eid: { date: string; time: string };
   ramadan: { auto: boolean; force: boolean; imsakOffset: number };
   timetable: Record<string, string[]>; // "MM-DD" or "YYYY-MM-DD" → [fajr, sunrise, dhuhr, asr, maghrib, isha]
   pin: string;
@@ -70,10 +85,7 @@ export function defaults(): Settings {
     lang: (navigator.language || 'fr').slice(0, 2) === 'ar' ? 'ar' : (navigator.language || '').startsWith('en') ? 'en' : 'fr',
     mosque: {
       name: 'Mosquée', nameAr: 'المسجد', address: '', phone: '', website: '',
-      announcements: [
-        'Merci de mettre vos téléphones en mode silencieux',
-        'يرجى إغلاق الهواتف النقالة',
-      ],
+      announcements: [],
       jumuah: ['13:00'], hasImage: false, hasLogo: false,
     },
     // Default: Algiers. A first-run wizard asks for the real location.
@@ -96,14 +108,17 @@ export function defaults(): Settings {
     athan: {
       enabled: true, volume: 0.9, sound: 'mishary-afasy', fajrSound: 'mishary-fajr',
       perPrayer: { fajr: 'athan', dhuhr: 'athan', asr: 'athan', maghrib: 'athan', isha: 'athan' },
-      iqamaBeep: true, preAlertMinutes: 0, custom: [],
+      iqamaBeep: true, preAlertMinutes: 0, fajrVolume: 0.9, custom: [],
     },
     display: {
       theme: 'emerald', background: 'slideshow', backgrounds: [], slideSeconds: 45, kenBurns: true,
       lite: 'auto', clock24: true, showSeconds: true, contentSeconds: 20,
       showAyat: true, showAdhkar: true, showAnnouncements: true, ticker: true, weather: true,
-      orientation: 'auto', nightDim: false,
+      orientation: 'auto', nightDim: false, nightDimFrom: '', nightDimTo: '',
+      tickerHadith: true, tickerSpeed: 'normal', phoneNotice: true, textScale: 1, arabicDigits: false,
+      showSunrise: true, showIqamaOnCards: true, showDuha: false, showQiyam: false, showHijri: true, tempUnit: 'c',
     },
+    eid: { date: '', time: '' },
     ramadan: { auto: true, force: false, imsakOffset: 10 },
     timetable: {},
     pin: '',
@@ -134,7 +149,13 @@ let current: Settings = load();
 function load(): Settings {
   try {
     const raw = localStorage.getItem(KEY);
-    if (raw) return merge(defaults(), JSON.parse(raw));
+    if (raw) {
+      const s = merge(defaults(), JSON.parse(raw));
+      // v1.0 shipped the phone reminder as a default notice; it is now shown automatically at prayer time.
+      const legacy = ['Merci de mettre vos téléphones en mode silencieux', 'يرجى إغلاق الهواتف النقالة'];
+      s.mosque.announcements = s.mosque.announcements.filter((a) => legacy.indexOf(a) < 0);
+      return s;
+    }
   } catch { /* private mode / corrupted — fall back to defaults */ }
   return defaults();
 }

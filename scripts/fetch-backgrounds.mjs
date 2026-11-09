@@ -49,6 +49,8 @@ const find = (t) => byTitle[t] || Object.entries(byTitle).find(([k]) => norm(k) 
 
 const outDir = path.join(ROOT, 'public/backgrounds');
 fs.mkdirSync(path.join(outDir, 'lite'), { recursive: true });
+// Arabic / English labels are maintained by hand in backgrounds.json and preserved here.
+const previous = fs.existsSync(path.join(ROOT, 'src/data/backgrounds.json')) ? JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/backgrounds.json'), 'utf8')) : [];
 const list = [];
 const credits = [];
 
@@ -68,7 +70,8 @@ for (const [slug, title, label, position] of BACKGROUNDS) {
   const ext = info.extmetadata || {};
   const author = stripHtml(ext.Artist?.value) || 'Unknown';
   const license = ext.LicenseShortName?.value || '';
-  list.push({ id: slug, label, author, license });
+  const prev = previous.find((x) => x.id === slug) || {};
+  list.push({ id: slug, label, labelAr: prev.labelAr, labelEn: prev.labelEn, author, license });
   credits.push(`| ${label} | ${author} | [${license}](${ext.LicenseUrl?.value || info.descriptionurl}) | [source](${info.descriptionurl}) |`);
   console.log('✓', slug);
 }

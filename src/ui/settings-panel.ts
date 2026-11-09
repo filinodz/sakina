@@ -7,17 +7,22 @@ import { invalidate } from '../core/schedule';
 import { deviceTimeZone, formatHM, isValidTimeZone, todayIn } from '../core/time';
 import { prayerName, PRAYER_AR } from '../core/i18n';
 import { blobs, blobUrl, resizeImage } from '../core/idb';
-import { chime, downloadAthan, offlineAthans, playAthan, stopAudio, unlockAudio } from '../core/audio';
+import { chime, downloadAthan, isNative, offlineAthans, playAthan, stopAudio, unlockAudio } from '../core/audio';
 import { locate, reverseGeocode, searchCity, timezoneAt, type Place } from '../core/geo';
 import { h, svg } from './dom';
-import { icons, star8 } from './icons';
+import { brandMark, icons, ornament } from './icons';
 import { handleArrow, isBackKey } from './spatial-nav';
 
-const BACKGROUNDS = backgroundsData as { id: string; label: string; author: string; license: string }[];
+const BACKGROUNDS = backgroundsData as { id: string; label: string; labelAr?: string; labelEn?: string; author: string; license: string }[];
+const bgLabel = (b: (typeof BACKGROUNDS)[number]) => (lang === 'ar' ? b.labelAr || b.label : lang === 'en' ? b.labelEn || b.label : b.label);
 const VERSION = '1.0.0';
 const REPO = 'https://github.com/filinodz/sakina';
 
 type Section = 'mosque' | 'location' | 'calc' | 'iqama' | 'athan' | 'display' | 'backup';
+const TAB_ICONS: Record<Section, string> = {
+  mosque: icons.mosque, location: icons.mapPin, calc: icons.clock, iqama: icons.hourglass,
+  athan: icons.adhan, display: icons.palette, backup: icons.backup,
+};
 
 /** Tiny trilingual label helper. */
 let lang: Lang = 'fr';
@@ -115,18 +120,22 @@ export class SettingsPanel {
 
     this.nav.innerHTML = '';
     this.nav.append(
-      h('div', { class: 'sp-brand' }, h('span', { class: 'sp-logo', html: star8() }), h('div', null, h('b', null, 'Sakina'), h('small', { class: 'ar' }, 'سكينة'))),
+      h('div', { class: 'sp-brand' }, h('span', { class: 'sp-logo', html: brandMark() }), h('div', null, h('b', null, 'Sakina'), h('small', { class: 'ar' }, 'سكينة'))),
+      h('div', { class: 'sp-lang', role: 'radiogroup', 'aria-label': 'Language' }, ...([['ar', 'العربية'], ['fr', 'FR'], ['en', 'EN']] as [Lang, string][]).map(([v, l]) => h('button', {
+        type: 'button', class: s.lang === v ? 'on' : '', 'data-key': `lang-${v}`, role: 'radio', 'aria-checked': String(s.lang === v),
+        onclick: () => { setPath('lang', v); this.render(); },
+      }, l))),
       ...sections.map(([id, title, sub]) => h('button', {
         class: `sp-tab ${id === this.section ? 'on' : ''}`, 'data-key': `tab-${id}`,
         onclick: () => { this.section = id; this.render(); (this.nav.querySelector('.on') as HTMLElement)?.focus(); },
-      }, h('span', null, title), h('small', null, sub))),
+      }, svg(TAB_ICONS[id], 'ico tab-ico'), h('span', { class: 'tab-text' }, h('span', null, title), h('small', null, sub)))),
       h('div', { class: 'sp-spacer' }),
       h('button', { class: 'sp-close', 'data-key': 'close', onclick: () => this.close() }, svg(icons.check), L('Terminer', 'Done', 'تم')));
 
     const [, title, sub] = sections.find((x) => x[0] === this.section)!;
     this.main.innerHTML = '';
     this.main.append(
-      this.banner ? h('div', { class: 'sp-banner' }, svg(star8(), 'ico'), this.banner) : '',
+      this.banner ? h('div', { class: 'sp-banner' }, h('span', { class: 'ico', html: ornament() }), this.banner) : '',
       h('header', { class: 'sp-head' }, h('h2', null, title), h('p', null, sub)),
       h('div', { class: 'sp-body' }, ...this.renderSection(s)));
 
@@ -184,7 +193,7 @@ export class SettingsPanel {
     const cur = String(getPath(settings.get(), path));
     return h('div', { class: 'seg', role: 'radiogroup' }, ...options.map(([v, l]) => h('button', {
       class: v === cur ? 'on' : '', role: 'radio', 'aria-checked': String(v === cur), 'data-key': `${path}=${v}`, type: 'button',
-      onclick: (e: Event) => { e.preventDefault(); setPath(path, v); invalidate(); after?.(); this.render(); },
+      onclick: (e: Event) => { e.preventDefault(); setPath(path, typeof getPath(settings.get(), path) === 'number' ? +v : v); invalidate(); after?.(); this.render(); },
     }, l)));
   }
   private toggle(path: string, label: string, hint?: string, rerender = false) {
@@ -389,7 +398,7 @@ export class SettingsPanel {
           Object.keys(s.timetable).length ? this.btn(L('Effacer', 'Clear', 'مسح'), () => { settings.set((x) => { x.timetable = {}; }); invalidate(); this.render(); }, icons.close, 'ghost') : ''),
         csvStatus) : '',
       this.group(L('Convention de calcul', 'Calculation convention', 'طريقة الحساب'),
-        this.field(L('Méthode', 'Method', 'الطريقة'), this.select('calc.method', METHODS.map((x) => [x.id, x.label]), true),
+        this.field(L('Méthode', 'Method', 'الطريقة'), this.select('calc.method', METHODS.map((x) => [x.id, lang === 'ar' ? x.ar : lang === 'en' ? x.en : x.label]), true),
           m.id === 'custom' ? '' : `Fajr ${m.fajr}° · ${m.ishaInterval ? `Isha ${m.ishaInterval} min` : `Isha ${m.isha}°`}${m.dhuhrAdj ? ` · Dhohr +${m.dhuhrAdj} min` : ''}${m.maghribAdj ? ` · Maghrib +${m.maghribAdj} min` : ''}`, true),
         m.id === 'custom' ? this.field(L('Angle Fajr (°)', 'Fajr angle (°)', 'زاوية الفجر'), this.num('calc.fajrAngle', 5, 25, 0.1)) : '',
         m.id === 'custom' ? this.field(L('Angle Icha (°)', 'Isha angle (°)', 'زاوية العشاء'), this.num('calc.ishaAngle', 5, 25, 0.1)) : '',
@@ -423,8 +432,16 @@ export class SettingsPanel {
       this.group(L('Joumou‘a', 'Jumu‘ah', 'الجمعة'),
         this.field(L('Heure de la prière du vendredi', 'Friday prayer time', 'وقت صلاة الجمعة'), h('input', {
           class: 'in', type: 'time', value: s.mosque.jumuah[0] || '', 'data-key': 'jumuah',
-          onchange: (e: Event) => settings.set((x) => { x.mosque.jumuah = [(e.target as HTMLInputElement).value]; }),
-        }), L('Heure de début du prêche / iqama. Laisser vide pour suivre Dhohr.', 'Khutbah / iqamah start. Empty = follow Dhuhr.', 'وقت بداية الخطبة.')),
+          onchange: (e: Event) => settings.set((x) => { x.mosque.jumuah = [(e.target as HTMLInputElement).value, x.mosque.jumuah[1] || ''].filter(Boolean); }),
+        }), L('Heure de début du prêche / iqama. Laisser vide pour suivre Dhohr.', 'Khutbah / iqamah start. Empty = follow Dhuhr.', 'وقت بداية الخطبة. اتركه فارغاً لاتباع الظهر.')),
+        this.field(L('Deuxième Joumou‘a (optionnel)', 'Second Jumu‘ah (optional)', 'جمعة ثانية (اختياري)'), h('input', {
+          class: 'in', type: 'time', value: s.mosque.jumuah[1] || '', 'data-key': 'jumuah2',
+          onchange: (e: Event) => settings.set((x) => { x.mosque.jumuah = [x.mosque.jumuah[0] || '', (e.target as HTMLInputElement).value].filter(Boolean); }),
+        }), L('Affichée dans le bandeau des horaires.', 'Shown with the prayer times.', 'تظهر مع المواقيت.'))),
+      this.group(L('Prière de l’Aïd', 'Eid prayer', 'صلاة العيد'),
+        this.field(L('Date', 'Date', 'التاريخ'), this.text('eid.date', { type: 'date' })),
+        this.field(L('Heure', 'Time', 'الوقت'), this.text('eid.time', { type: 'time' }), L('Annoncée sur l’écran trois jours avant.', 'Announced on screen three days before.', 'يُعلن عنها قبل ثلاثة أيام.')),
+        Object.keys(s.eid).some((k) => (s.eid as Record<string, string>)[k]) ? this.btn(L('Effacer', 'Clear', 'مسح'), () => { settings.set((x) => { x.eid = { date: '', time: '' }; }); this.render(); }, icons.close, 'ghost') : '',
         this.field(L('Durée de l’écran Joumou‘a (min)', 'Jumu‘ah screen (min)', 'مدة شاشة الجمعة'), this.num('phases.jumuahMinutes', 0, 120))),
       this.group(L('Écrans automatiques', 'Automatic screens', 'الشاشات التلقائية'),
         this.field(L('Écran d’adhan (min)', 'Adhan screen (min)', 'شاشة الأذان (دقائق)'), this.num('phases.adhanScreenMinutes', 0, 15)),
@@ -474,6 +491,10 @@ export class SettingsPanel {
           class: 'range', type: 'range', min: 0, max: 1, step: 0.05, value: String(s.athan.volume), 'data-key': 'athan.volume',
           onchange: (e: Event) => setPath('athan.volume', +(e.target as HTMLInputElement).value),
         })]),
+        this.field(L('Volume du Fajr', 'Fajr volume', 'مستوى صوت الفجر'), [h('input', {
+          class: 'range', type: 'range', min: 0, max: 1, step: 0.05, value: String(s.athan.fajrVolume), 'data-key': 'athan.fajrVolume',
+          onchange: (e: Event) => setPath('athan.fajrVolume', +(e.target as HTMLInputElement).value),
+        })], L('Souvent plus bas, pour les voisins.', 'Often lower, for the neighbours.', 'غالباً أخفض مراعاةً للجيران.')),
         this.btn(L('Tester le carillon', 'Test chime', 'تجربة التنبيه'), () => { unlockAudio(); chime(settings.get().athan.volume); }, icons.sound),
         this.toggle('athan.iqamaBeep', L('Carillon à l’iqama', 'Chime at iqamah', 'تنبيه عند الإقامة')),
         this.field(L('Rappel avant l’adhan (min)', 'Reminder before adhan (min)', 'تنبيه قبل الأذان'), this.num('athan.preAlertMinutes', 0, 30), L('0 = désactivé', '0 = off', '0 = معطل'))),
@@ -487,7 +508,7 @@ export class SettingsPanel {
           const off = a.custom || this.offline.has(a.id);
           return h('div', { class: `athan ${isMain || isFajr ? 'sel' : ''}` },
             h('button', { class: `ath-play ${this.previewing === a.id ? 'on' : ''}`, type: 'button', 'aria-label': 'preview', 'data-key': `pv-${a.id}`, onclick: () => void togglePreview(a.id) }, svg(this.previewing === a.id ? icons.stop : icons.play)),
-            h('div', { class: 'ath-info' }, h('b', null, a.name), h('span', { class: 'ar' }, a.nameAr), h('small', null, [a.origin, fmt(a.seconds), off ? L('✓ hors-ligne', '✓ offline', '✓ محفوظ') : ''].filter(Boolean).join(' · '))),
+            h('div', { class: 'ath-info' }, h('b', { class: lang === 'ar' ? 'ar' : '' }, lang === 'ar' ? a.nameAr : a.name), h('span', { class: lang === 'ar' ? '' : 'ar' }, lang === 'ar' ? a.name : a.nameAr), h('small', null, [lang === 'ar' ? '' : a.origin, fmt(a.seconds), off ? L('✓ hors-ligne', '✓ offline', '✓ محفوظ للعمل دون إنترنت') : ''].filter(Boolean).join(' · '))),
             h('div', { class: 'ath-actions' },
               h('button', { class: `chip-btn ${isMain ? 'on' : ''}`, type: 'button', 'data-key': `main-${a.id}`, onclick: () => { setPath('athan.sound', a.id); this.render(); } }, L('Adhan', 'Adhan', 'الأذان')),
               h('button', { class: `chip-btn ${isFajr ? 'on' : ''}`, type: 'button', 'data-key': `fajr-${a.id}`, onclick: () => { setPath('athan.fajrSound', a.id); this.render(); } }, L('Fajr', 'Fajr', 'الفجر')),
@@ -517,10 +538,10 @@ export class SettingsPanel {
           onclick: () => { setPath('display.theme', id); this.render(); },
         }, h('i', { style: `background:${bg}` }), h('span', null, label))))),
       this.group(L('Arrière-plan', 'Background', 'الخلفية'),
-        this.field('', this.seg('display.background', [['slideshow', L('Diaporama de mosquées', 'Mosque slideshow', 'عرض صور المساجد')], ['mosque', L('Photo de ma mosquée', 'My mosque photo', 'صورة مسجدي')], ['pattern', L('Motif géométrique', 'Geometric pattern', 'زخرفة هندسية')]]),
+        this.field('', this.seg('display.background', [['slideshow', L('Diaporama de mosquées', 'Mosque slideshow', 'عرض صور المساجد')], ['mosque', L('Photo de ma mosquée', 'My mosque photo', 'صورة مسجدي')], ['pattern', L('Dégradé sobre', 'Plain gradient', 'خلفية متدرجة')]]),
           s.display.background === 'mosque' && !s.mosque.hasImage ? L('Ajoutez d’abord une photo dans l’onglet Mosquée.', 'Add a photo in the Mosque tab first.', 'أضف صورة أولاً.') : undefined, true),
         s.display.background === 'slideshow' ? h('div', { class: 'bgs wide' }, ...BACKGROUNDS.map((b) => h('button', {
-          class: `bg-thumb ${selected.size === 0 || selected.has(b.id) ? 'on' : ''}`, type: 'button', 'data-key': `bg-${b.id}`, title: `${b.label} — © ${b.author}, ${b.license}`,
+          class: `bg-thumb ${selected.size === 0 || selected.has(b.id) ? 'on' : ''}`, type: 'button', 'data-key': `bg-${b.id}`, title: `${bgLabel(b)} — © ${b.author}, ${b.license}`,
           style: `background-image:url("backgrounds/lite/${b.id}.jpg")`,
           onclick: () => {
             settings.set((x) => {
@@ -530,7 +551,7 @@ export class SettingsPanel {
             });
             this.render();
           },
-        }, h('span', null, b.label)))) : '',
+        }, h('span', null, bgLabel(b))))) : '',
         this.field(L('Durée par photo (s)', 'Seconds per photo', 'مدة كل صورة'), this.num('display.slideSeconds', 10, 600)),
         this.toggle('display.kenBurns', L('Effet de mouvement lent (Ken Burns)', 'Slow pan & zoom (Ken Burns)', 'حركة بطيئة للصور'))),
       this.group(L('Contenus', 'Content', 'المحتوى'),
@@ -538,19 +559,54 @@ export class SettingsPanel {
         this.toggle('display.showAdhkar', L('Adhkar & invocations', 'Adhkar & supplications', 'أذكار وأدعية')),
         this.toggle('display.showAnnouncements', L('Annonces de la mosquée', 'Mosque notices', 'إعلانات المسجد')),
         this.toggle('display.ticker', L('Bandeau défilant', 'Scrolling ticker', 'شريط متحرك')),
+        this.toggle('display.tickerHadith', L('Ahadith dans le bandeau', 'Ahadith in the ticker', 'أحاديث في الشريط'), L('Hadiths authentiques de Sahih al-Bukhari, avec référence.', 'Authentic hadiths from Sahih al-Bukhari, with reference.', 'أحاديث صحيحة من صحيح البخاري مع رقمها.')),
+        this.field(L('Vitesse du bandeau', 'Ticker speed', 'سرعة الشريط'), this.seg('display.tickerSpeed', [['slow', L('Lente', 'Slow', 'بطيئة')], ['normal', L('Normale', 'Normal', 'عادية')], ['fast', L('Rapide', 'Fast', 'سريعة')]])),
+        this.toggle('display.phoneNotice', L('« Éteignez vos téléphones » à l’heure de la prière', '“Switch off phones” at prayer time', 'تنبيه إغلاق الهواتف وقت الصلاة'), L('Remplace le bandeau de l’adhan jusqu’à la fin de la prière.', 'Replaces the ticker from the adhan until the end of the prayer.', 'يظهر من الأذان حتى نهاية الصلاة.')),
         this.toggle('display.weather', L('Météo', 'Weather', 'الطقس')),
+        this.field(L('Unité de température', 'Temperature unit', 'وحدة الحرارة'), this.seg('display.tempUnit', [['c', '°C'], ['f', '°F']])),
         this.field(L('Durée d’affichage (s)', 'Display time (s)', 'مدة العرض'), this.num('display.contentSeconds', 8, 120), L('Allongée automatiquement pour les textes longs.', 'Extended automatically for long texts.', 'تُمدد تلقائياً للنصوص الطويلة.'))),
       this.group(L('Horloge & écran', 'Clock & screen', 'الساعة والشاشة'),
         this.toggle('display.clock24', L('Format 24 h', '24-hour clock', 'نظام 24 ساعة')),
         this.toggle('display.showSeconds', L('Afficher les secondes', 'Show seconds', 'إظهار الثواني')),
         this.field(L('Orientation', 'Orientation', 'الاتجاه'), this.seg('display.orientation', [['auto', L('Auto', 'Auto', 'تلقائي')], ['landscape', L('Paysage', 'Landscape', 'أفقي')], ['portrait', L('Portrait', 'Portrait', 'عمودي')]]), undefined, true),
         this.field(L('Mode léger (TV peu puissantes)', 'Lite mode (weak TVs)', 'الوضع الخفيف'), this.seg('display.lite', [['auto', L('Auto', 'Auto', 'تلقائي')], ['on', L('Activé', 'On', 'مفعّل')], ['off', L('Désactivé', 'Off', 'معطّل')]]), L('Supprime flous et animations coûteuses, images 720p.', 'Removes blur & heavy animations, 720p images.', 'يزيل المؤثرات الثقيلة.'), true),
-        this.toggle('display.nightDim', L('Assombrir la nuit', 'Dim at night', 'تعتيم ليلاً'), L('Entre Icha + 1 h et 45 min avant Fajr.', 'From Isha + 1 h to 45 min before Fajr.', 'من العشاء +1س إلى قبل الفجر.'))),
+        this.toggle('display.arabicDigits', L('Chiffres arabes (١٢:٣٠)', 'Arabic-Indic digits (١٢:٣٠)', 'أرقام هندية (١٢:٣٠)')),
+        this.field(L('Taille des textes', 'Text size', 'حجم النصوص'), this.seg('display.textScale', [['0.9', '90 %'], ['1', '100 %'], ['1.15', '115 %'], ['1.3', '130 %']])),
+        this.toggle('display.nightDim', L('Assombrir la nuit', 'Dim at night', 'تعتيم ليلاً'), L('Par défaut : de Icha + 1 h à 45 min avant Fajr.', 'Default: from Isha + 1 h to 45 min before Fajr.', 'افتراضياً: من العشاء +1س إلى قبل الفجر بـ45 د.'), true),
+        s.display.nightDim ? this.field(L('Assombrir de', 'Dim from', 'من الساعة'), this.text('display.nightDimFrom', { type: 'time' }), L('Laisser vide = automatique', 'Empty = automatic', 'فارغ = تلقائي')) : '',
+        s.display.nightDim ? this.field(L('jusqu’à', 'until', 'إلى الساعة'), this.text('display.nightDimTo', { type: 'time' })) : ''),
+      this.group(L('Informations affichées', 'Displayed information', 'المعلومات المعروضة'),
+        this.toggle('display.showSunrise', L('Carte du Chourouq', 'Sunrise card', 'بطاقة الشروق')),
+        this.toggle('display.showIqamaOnCards', L('Heures d’iqama sur les cartes', 'Iqamah times on cards', 'أوقات الإقامة على البطاقات')),
+        this.toggle('display.showHijri', L('Date hégirienne', 'Hijri date', 'التاريخ الهجري')),
+        this.toggle('display.showDuha', L('Heure du Duha', 'Duha time', 'وقت الضحى'), L('15 min après le lever du soleil.', '15 min after sunrise.', 'بعد الشروق بربع ساعة.')),
+        this.toggle('display.showQiyam', L('Dernier tiers de la nuit (Qiyam)', 'Last third of the night (Qiyam)', 'الثلث الأخير من الليل'))),
       this.group(L('Ramadan', 'Ramadan', 'رمضان'),
         this.toggle('ramadan.auto', L('Mode Ramadan automatique', 'Automatic Ramadan mode', 'وضع رمضان تلقائي'), L('Imsak et Iftar affichés pendant le mois de Ramadan.', 'Shows Imsak & Iftar during Ramadan.', 'إظهار الإمساك والإفطار.')),
         this.toggle('ramadan.force', L('Forcer le mode Ramadan', 'Force Ramadan mode', 'فرض وضع رمضان')),
         this.field(L('Imsak = Fajr − minutes', 'Imsak = Fajr − minutes', 'الإمساك قبل الفجر بـ'), this.num('ramadan.imsakOffset', 0, 30))),
     ];
+  }
+
+  /** What the screen needs to run without internet, and whether it is in place. */
+  private offlineStatus() {
+    const s = settings.get();
+    const list = h('ul', { class: 'checklist wide' });
+    const row = (ok: boolean | null, label: string, hint: string) => h('li', { class: ok === null ? 'na' : ok ? 'ok' : 'todo' },
+      svg(ok ? icons.check : icons.close), h('span', null, h('b', null, label), h('small', null, hint)));
+    const fill = async () => {
+      const off = await offlineAthans();
+      const sw = !!navigator.serviceWorker?.controller || isNative();
+      const athans = [s.athan.sound, s.athan.fajrSound].every((id) => id.indexOf('custom:') === 0 || off.has(id));
+      list.innerHTML = '';
+      list.append(
+        row(sw, L('Application installée sur l’appareil', 'App stored on the device', 'التطبيق محفوظ على الجهاز'), sw ? L('Photos, polices et versets disponibles sans internet.', 'Photos, fonts and verses available offline.', 'الصور والخطوط والآيات متاحة دون إنترنت.') : L('Rechargez la page une fois connecté (ou utilisez l’APK).', 'Reload once while online (or use the APK).', 'أعد تحميل الصفحة مع الاتصال مرة واحدة.')),
+        row(s.calc.source !== 'api' || null, L('Horaires de prière', 'Prayer times', 'مواقيت الصلاة'), s.calc.source === 'api' ? L('Source API : 2 mois en cache, puis calcul local automatique.', 'API source: 2 months cached, then local calculation.', 'مصدر API: شهران محفوظان ثم حساب محلي.') : L('Calculés sur l’appareil : aucun internet nécessaire.', 'Computed on the device: no internet needed.', 'تُحسب على الجهاز دون إنترنت.')),
+        row(!s.athan.enabled || athans, L('Voix d’adhan choisies', 'Selected adhan voices', 'أصوات الأذان المختارة'), athans ? L('Enregistrées sur l’appareil.', 'Stored on the device.', 'محفوظة على الجهاز.') : L('Téléchargement automatique dès que l’appareil est connecté.', 'Downloaded automatically as soon as the device is online.', 'تُحمَّل تلقائياً عند الاتصال.')),
+        row(null, L('Météo', 'Weather', 'الطقس'), L('Seule fonction qui a besoin d’internet ; masquée hors-ligne.', 'The only feature needing internet; hidden offline.', 'الميزة الوحيدة التي تحتاج إلى إنترنت.')));
+    };
+    void fill();
+    return this.group(L('Fonctionnement hors-ligne', 'Offline readiness', 'العمل دون إنترنت'), list);
   }
 
   private secBackup(s: Settings) {
@@ -573,6 +629,7 @@ export class SettingsPanel {
             document.body.appendChild(a); a.click(); a.remove();
           }, icons.download, 'primary'),
           this.btn(L('Importer', 'Import', 'استيراد'), () => importInput.click(), icons.upload), importInput)),
+      this.offlineStatus(),
       this.group(L('Sécurité', 'Security', 'الأمان'),
         this.field(L('Code PIN des réglages', 'Settings PIN', 'الرمز السري للإعدادات'), this.text('pin', { type: 'password', placeholder: '••••' }), L('Laisser vide pour désactiver. Empêche les modifications non autorisées.', 'Empty = disabled. Prevents unauthorised changes.', 'اتركه فارغاً للتعطيل.'))),
       this.group(L('Réinitialiser', 'Reset', 'إعادة التعيين'),
@@ -583,7 +640,7 @@ export class SettingsPanel {
         }, icons.close, 'ghost')),
       this.group(L('À propos', 'About', 'حول'),
         h('div', { class: 'about wide' },
-          h('div', { class: 'about-logo', html: star8() }),
+          h('div', { class: 'about-logo', html: brandMark() }),
           h('div', null,
             h('b', null, `Sakina ${VERSION}`), h('span', { class: 'ar' }, ' — سكينة'),
             h('p', null, L('Application libre et gratuite (licence MIT), réalisée fi sabilillah. Horaires : adhan-js (Jean Meeus), API Aladhan. Coran : Tanzil. Adhkar : Hisn al-Muslim. Photos : Wikimedia Commons.', 'Free & open-source (MIT), made fi sabilillah. Times: adhan-js (Jean Meeus), Aladhan API. Qur’an: Tanzil. Adhkar: Hisn al-Muslim. Photos: Wikimedia Commons.', 'تطبيق مجاني ومفتوح المصدر، في سبيل الله.')),
@@ -604,7 +661,7 @@ export function askPin(lng: Lang, expected: string): Promise<boolean> {
       type: 'button', class: k === '✓' ? 'ok' : '',
       onclick: () => { if (k === '⌫') input.value = input.value.slice(0, -1); else if (k === '✓') check(); else input.value += k; },
     }, k)));
-    const box = h('div', { class: 'pin-box' }, h('div', { class: 'pin-star', html: star8() }), h('h3', null, L('Code PIN', 'PIN code', 'الرمز السري')), input, msg, pad);
+    const box = h('div', { class: 'pin-box' }, h('div', { class: 'pin-star', html: brandMark() }), h('h3', null, L('Code PIN', 'PIN code', 'الرمز السري')), input, msg, pad);
     const wrap = h('div', { class: 'pin', dir: lng === 'ar' ? 'rtl' : 'ltr' }, box);
     wrap.addEventListener('keydown', (e) => {
       if (isBackKey(e)) { e.preventDefault(); done(false); return; }

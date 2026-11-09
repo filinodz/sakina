@@ -28,7 +28,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "fixtures": "node scripts/fetch-fixtures.mjs",
-    "android:assets": "node scripts/android-assets.mjs",
+    "brand": "node scripts/brand-assets.mjs",
     "screenshots": "node scripts/screenshots.mjs",
     "content": "node scripts/fetch-content.mjs",
     "backgrounds": "node scripts/fetch-backgrounds.mjs",
@@ -45,10 +45,12 @@
     "@fontsource/amiri-quran": "^5.3.0",
     "@fontsource/cormorant-garamond": "^5.3.0",
     "@fontsource/reem-kufi": "^5.3.0",
-    "adhan": "^4.4.6"
+    "adhan": "^4.4.6",
+    "lucide": "^1.70.0"
   },
   "devDependencies": {
     "@capacitor/cli": "^8.6.0",
+    "@phosphor-icons/core": "^2.1.1",
     "puppeteer-core": "^25.16.0",
     "sharp": "^0.33.5",
     "typescript": "^7.0.2",

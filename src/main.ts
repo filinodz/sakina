@@ -9,6 +9,7 @@ import '@fontsource-variable/manrope/wght.css';
 import '@fontsource/cormorant-garamond/latin-500.css';
 import '@fontsource/cormorant-garamond/latin-600.css';
 import '@fontsource/cormorant-garamond/latin-500-italic.css';
+import ornamentFont from './assets/ornament.woff2?url';
 import './styles/base.css';
 import './styles/display.css';
 import './styles/settings.css';
@@ -16,7 +17,7 @@ import './styles/settings.css';
 import { settings } from './core/settings';
 import { warmApi } from './core/prayer';
 import { invalidate } from './core/schedule';
-import { isNative, unlockAudio } from './core/audio';
+import { downloadAthan, isNative, offlineAthans, unlockAudio } from './core/audio';
 import { t } from './core/i18n';
 import { clock } from './core/clock';
 import { fromZoned, todayIn } from './core/time';
@@ -24,6 +25,13 @@ import { Display } from './ui/display';
 import { SettingsPanel, askPin } from './ui/settings-panel';
 import { h, svg } from './ui/dom';
 import { icons } from './ui/icons';
+
+// ۞ (U+06DE) glyph from Noto Kufi Arabic (SIL OFL), subset to that single character (~1 KB).
+try {
+  const orn = new FontFace('Sakina Ornament', `url(${ornamentFont})`, { unicodeRange: 'U+06DE' });
+  document.fonts.add(orn);
+  void orn.load();
+} catch { /* very old WebView: falls back to the system glyph */ }
 
 const params = new URLSearchParams(location.search);
 
@@ -142,7 +150,24 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator && location.protocol.in
 /* ---------------- Online data (Aladhan cache) ---------------- */
 async function refreshOnline() {
   try { await warmApi(settings.get()); invalidate(); display.tick(true); } catch { /* offline: local calculation keeps running */ }
+  void cacheSelectedAthans();
 }
+
+/** The adhans in use are stored on the device so they play without internet. */
+let caching = false;
+async function cacheSelectedAthans() {
+  if (caching || navigator.onLine === false) return;
+  caching = true;
+  try {
+    const s = settings.get();
+    const have = await offlineAthans();
+    for (const id of [s.athan.sound, s.athan.fajrSound]) {
+      if (id.indexOf('custom:') === 0 || have.has(id)) continue;
+      try { await downloadAthan(id); have.add(id); } catch { /* retried at the next connection */ }
+    }
+  } finally { caching = false; }
+}
+settings.subscribe((s) => { if (s.athan.enabled) void cacheSelectedAthans(); });
 void refreshOnline();
 window.addEventListener('online', () => void refreshOnline());
 setInterval(() => void refreshOnline(), 6 * 3600 * 1000);

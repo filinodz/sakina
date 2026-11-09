@@ -4,9 +4,16 @@
    with a single transform: identical rendering on any TV, cheap to composite.
    ========================================================================== */
 
+/* KFGQPC Uthmanic Script HAFS — the typeface of the Madina Mushaf (King Fahd Glorious Qur'an Printing Complex). */
+@font-face {
+  font-family: 'KFGQPC Hafs';
+  src: url('../assets/UthmanicHafs.woff2') format('woff2');
+  font-display: block;
+}
+
 :root {
   --f-ar: 'Reem Kufi', 'Amiri', 'Noto Kufi Arabic', 'Segoe UI', sans-serif;
-  --f-quran: 'Amiri Quran', 'Amiri', 'Traditional Arabic', serif;
+  --f-quran: 'KFGQPC Hafs', 'Amiri Quran', 'Amiri', 'Traditional Arabic', serif;
   --f-naskh: 'Amiri', 'Traditional Arabic', serif;
   --f-ui: 'Manrope Variable', 'Manrope', 'Segoe UI', Roboto, system-ui, sans-serif;
   --f-serif: 'Cormorant Garamond', 'Times New Roman', serif;
@@ -80,7 +87,8 @@ button { cursor: pointer; }
   background: radial-gradient(ellipse at center, var(--bg-2), var(--bg) 70%);
   color: var(--gold); transition: opacity 0.8s var(--ease);
 }
-#splash .star8 { width: 120px; height: 120px; animation: spin 18s linear infinite; }
+#splash img { width: 112px; height: 112px; border-radius: 26px; animation: breathe 2.4s ease-in-out infinite; }
+@keyframes breathe { 50% { opacity: 0.55; transform: scale(0.96); } }
 #splash.gone { opacity: 0; pointer-events: none; }
 @keyframes spin { to { transform: rotate(360deg); } }
 

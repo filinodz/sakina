@@ -32,6 +32,9 @@ export interface State {
   imsak: Date | null;
   iftar: Date | null;
   nightDim: boolean;
+  duha: Date;
+  qiyam: Date;
+  eid: Date | null;
 }
 
 const dayCache = new Map<string, DayTimes>();
@@ -156,9 +159,30 @@ export function computeState(s: Settings, now = new Date()): State {
     const fajrStart = (t < today.times.fajr.getTime() ? today.times.fajr : tomorrow.times.fajr).getTime() - 45 * 60000;
     const yIshaEnd = yesterday.times.isha.getTime() + 75 * 60000;
     nightDim = (t > ishaEnd && t < fajrStart) || (t > yIshaEnd && t < today.times.fajr.getTime() - 45 * 60000);
+    // Custom hours override the automatic window
+    const from = parseHM(s.display.nightDimFrom), to = parseHM(s.display.nightDimTo);
+    if (from !== null && to !== null) {
+      const z = zoned(now, tz); const m = z.h * 60 + z.min;
+      nightDim = from <= to ? m >= from && m < to : m >= from || m < to;
+    }
   }
 
-  return { now, today, tomorrow, todayIqama, friday: fri, hijri, ramadan, next, current, phase, event, imsak, iftar, nightDim };
+  // Duha starts ~15 min after sunrise; the last third of the night runs from Maghrib to the next Fajr.
+  const duha = new Date(today.times.sunrise.getTime() + 15 * 60000);
+  const nightStart = t < today.times.fajr.getTime() ? yesterday.times.maghrib : today.times.maghrib;
+  const nightEnd = t < today.times.fajr.getTime() ? today.times.fajr : tomorrow.times.fajr;
+  const qiyam = new Date(nightEnd.getTime() - (nightEnd.getTime() - nightStart.getTime()) / 3);
+
+  // Eid prayer: shown from three days before
+  let eid: Date | null = null;
+  const em = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s.eid.date);
+  const et = parseHM(s.eid.time);
+  if (em && et !== null) {
+    const at = fromZoned(+em[1], +em[2], +em[3], Math.floor(et / 60), et % 60, tz);
+    if (at.getTime() > t - 2 * 3600000 && at.getTime() - t < 3 * 86400000) eid = at;
+  }
+
+  return { now, today, tomorrow, todayIqama, friday: fri, hijri, ramadan, next, current, phase, event, imsak, iftar, nightDim, duha, qiyam, eid };
 }
 
 /** Minutes since local midnight in the mosque zone — handy for UI. */

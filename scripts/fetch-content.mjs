@@ -2,7 +2,9 @@
 /**
  * Regenerates src/data/ayat.json and src/data/adhkar.json from authoritative sources.
  *
- *  - Qur'an text (Uthmani) + translations: https://alquran.cloud (Tanzil text)
+ *  - Qur'an text: KFGQPC Uthmani Hafs (Madina Mushaf), from https://api.quran.com — it is the
+ *    text the KFGQPC "Uthmanic Hafs" font is made for; verse numbers end with the Mushaf ayah mark.
+ *  - Translations: https://alquran.cloud
  *      fr.hamidullah  — Muhammad Hamidullah
  *      en.sahih       — Saheeh International
  *  - Adhkar / du'a: Hisn al-Muslim (Sa'id ibn Wahf al-Qahtani) — https://www.hisnmuslim.com
@@ -41,7 +43,6 @@ async function getJson(url, tries = 4) {
   }
 }
 
-const toArabicDigits = (n) => String(n).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
 
 async function fetchAyat() {
   const out = [];
@@ -54,10 +55,9 @@ async function fetchAyat() {
       const j = await getJson(`https://api.alquran.cloud/v1/ayah/${s}:${n}/editions/quran-uthmani,fr.hamidullah,en.sahih`);
       const [ar, fr, en] = j.data;
       surah = ar.surah;
-      let text = ar.text;
-      // Tanzil prefixes the first ayah of each surah (except 1 & 9) with the basmala — strip it.
-      if (n === 1 && +s !== 1 && +s !== 9) text = text.replace(/^بِسْمِ\s+ٱللَّهِ\s+ٱلرَّحْمَٰنِ\s+ٱلرَّحِيمِ\s*/u, '');
-      parts.ar.push(`${text} ﴿${toArabicDigits(n)}﴾`);
+      const q = await getJson(`https://api.quran.com/api/v4/verses/by_key/${s}:${n}?fields=qpc_uthmani_hafs`);
+      // "…text ٢٥٥": the font draws the ornate end-of-ayah mark around the number.
+      parts.ar.push(q.verse.qpc_uthmani_hafs.trim());
       parts.fr.push(fr.text);
       parts.en.push(en.text);
       await sleep(120);

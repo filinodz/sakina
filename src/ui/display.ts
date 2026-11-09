@@ -1,5 +1,6 @@
 import ayatData from '../data/ayat.json';
 import adhkarData from '../data/adhkar.json';
+import ahadithData from '../data/ahadith.json';
 import backgroundsData from '../data/backgrounds.json';
 import { computeState, type State } from '../core/schedule';
 import { iqamaTime } from '../core/prayer';
@@ -12,7 +13,7 @@ import { audioUnlocked, chime, onUnlock, playAthan, stopAudio, fadeOut } from '.
 import { blobUrl } from '../core/idb';
 import { fetchWeather, weatherKind, type Weather } from '../core/geo';
 import { $, h, setText, svg, toggleClass } from './dom';
-import { divider, icons, patternDataUri, star8 } from './icons';
+import { brandMark, divider, icons, ornament } from './icons';
 
 interface Ayah { ref: string; surah: { number: number; ar: string; en: string }; ar: string; fr: string; en: string }
 interface Dhikr { id: number; chapter: number; title: { ar: string; en: string }; ar: string; en: string; translit: string; repeat: number }
@@ -20,13 +21,15 @@ type Slide = { kind: 'ayah'; v: Ayah } | { kind: 'dhikr'; v: Dhikr } | { kind: '
 
 const AYAT = ayatData as Ayah[];
 const ADHKAR = adhkarData as Dhikr[];
+interface Hadith { ref: { collection: string; number: number; ar: string; fr: string; en: string }; ar: string; fr: string; en: string }
+const AHADITH = ahadithData as Hadith[];
 const AFTER_SALAH = ADHKAR.filter((d) => d.chapter === 25);
 const DUA_AFTER_ADHAN = ADHKAR.find((d) => d.id === 25);
 const BACKGROUNDS = backgroundsData as { id: string; label: string }[];
 
 const isArabic = (s: string) => /[؀-ۿ]/.test(s);
 const shuffle = <T,>(a: T[]) => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
-const sizeClass = (n: number) => (n < 110 ? 'sz-s' : n < 220 ? 'sz-m' : n < 360 ? 'sz-l' : 'sz-xl');
+const sizeClass = (n: number) => (n < 95 ? 'sz-s' : n < 180 ? 'sz-m' : n < 300 ? 'sz-l' : 'sz-xl');
 /** Hisn al-Muslim often wraps the spoken words in (( )) after a short instruction: keep the words. */
 const spoken = (s: string) => { const m = /\(\(([^]*?)\)\)/.exec(s); return (m ? m[1] : s).replace(/^يَقُولُ:\s*/, '').trim(); };
 
@@ -82,7 +85,7 @@ export class Display {
     const mk = <K extends keyof HTMLElementTagNameMap>(name: string, tag: K, cls: string, ...kids: (Node | string)[]) => (r[name] = h(tag, { class: cls }, ...kids));
 
     const bg = h('div', { class: 'bg' },
-      mk('bgA', 'div', 'bg-layer'), mk('bgB', 'div', 'bg-layer'), mk('bgPattern', 'div', 'bg-pattern'), h('div', { class: 'bg-shade' }));
+      mk('bgA', 'div', 'bg-layer'), mk('bgB', 'div', 'bg-layer'), h('div', { class: 'bg-shade' }));
 
     const top = h('header', { class: 'top' },
       h('div', { class: 'brand' },
@@ -116,14 +119,14 @@ export class Display {
         prog: h('i', { class: 'card-progress' }),
       };
       c.iqama.append(h('span', null, ''), c.iqamaVal);
-      c.root.append(h('div', { class: 'card-name' }, c.ar, c.lat), c.time, c.iqama, c.prog);
+      c.root.append(svg(icons[k], 'ico card-ico'), h('div', { class: 'card-name' }, c.ar, c.lat), c.time, c.iqama, c.prog);
       this.cards[k] = c;
       prayers.appendChild(c.root);
     }
 
     const ticker = h('footer', { class: 'ticker' },
-      h('div', { class: 'ticker-label', html: star8() }),
-      h('div', { class: 'ticker-track' }, mk('tickerText', 'div', 'ticker-text')));
+      h('div', { class: 'ticker-label' }, svg(icons.megaphone)),
+      h('div', { class: 'ticker-track' }, mk('tickerText', 'div', 'ticker-text'), mk('tickerAlert', 'div', 'ticker-alert')));
 
     const layout = h('div', { class: 'layout' }, top, hero, feature, prayers, ticker);
     this.stage.append(bg, layout, mk('overlay', 'div', 'overlay'), mk('dim', 'div', 'dim'));
@@ -142,7 +145,11 @@ export class Display {
     toggleClass(document.body, 'lite', this.lite);
     toggleClass(this.stage, 'kb', s.display.kenBurns && !this.lite);
     toggleClass(this.stage, 'no-sec', !s.display.showSeconds);
-    toggleClass(this.stage, 'no-ticker', !s.display.ticker || !s.mosque.announcements.some((a) => a.trim()));
+    toggleClass(this.stage, 'no-ticker', !s.display.ticker || (!s.display.tickerHadith && !s.mosque.announcements.some((a) => a.trim())));
+    toggleClass(this.stage, 'no-sunrise', !s.display.showSunrise);
+    toggleClass(this.stage, 'no-iqama', !s.display.showIqamaOnCards);
+    toggleClass(this.stage, 'no-hijri', !s.display.showHijri);
+    this.stage.style.setProperty('--ts', String(s.display.textScale || 1));
     this.fit();
 
     // Brand
@@ -163,18 +170,9 @@ export class Display {
     }
 
     // Ticker
-    const ann = s.mosque.announcements.filter((a) => a.trim());
-    this.r.tickerText.innerHTML = '';
-    const parts: Node[] = [];
-    ann.forEach((a, i) => {
-      if (i) parts.push(h('span', { class: 'sep', html: '✦' }));
-      parts.push(h('span', { class: isArabic(a) ? 'ar' : '' }, a));
-    });
-    this.r.tickerText.append(...parts);
-    this.r.tickerText.style.setProperty('--dur', `${Math.max(30, ann.join(' ').length * 0.32)}s`);
-
-    // Pattern layer
-    this.r.bgPattern.style.backgroundImage = s.display.background === 'pattern' || !this.lite ? patternDataUri(getComputedStyle(root).getPropertyValue('--gold').trim() || '#e8c77d', s.display.background === 'pattern' ? 0.22 : 0.06) : '';
+    this.buildTicker();
+    this.r.tickerAlert.innerHTML = '';
+    this.r.tickerAlert.append(svg(icons.phoneOff), h('span', { class: 'ar' }, 'يرجى إغلاق الهواتف النقالة'), L === 'ar' ? '' : h('span', null, t('silence', L)));
 
     // Background & slides only rebuild when relevant settings changed
     const bgSig = (x: Settings) => JSON.stringify([x.display.background, x.display.backgrounds, x.display.slideSeconds, x.mosque.hasImage, this.lite]);
@@ -191,7 +189,7 @@ export class Display {
     const url = this.s.mosque.hasLogo ? await blobUrl('logo') : null;
     this.r.logo.innerHTML = '';
     if (url) this.r.logo.appendChild(h('img', { src: url, alt: '' }));
-    else this.r.logo.innerHTML = star8();
+    else this.r.logo.innerHTML = brandMark();
   }
 
   fit() {
@@ -299,7 +297,7 @@ export class Display {
     body.innerHTML = '';
     kind.innerHTML = '';
     const label = sl.kind === 'ayah' ? ['ayah', 'قال الله تعالى'] : sl.kind === 'dhikr' ? ['dhikr', sl.v.title.ar] : ['info', 'إعلان'];
-    kind.append(svg(star8(), 'ico star-ico'), L === 'ar' ? '' : h('span', null, t(label[0] as 'ayah', L)), h('span', { class: 'ar' }, label[1]));
+    kind.append(svg(sl.kind === 'ayah' ? icons.book : sl.kind === 'dhikr' ? icons.scroll : icons.megaphone), L === 'ar' ? '' : h('span', null, t(label[0] as 'ayah', L)), h('span', { class: 'ar' }, label[1]));
     if (sl.kind === 'ayah') {
       const v = sl.v;
       const tr = L === 'ar' ? '' : L === 'fr' ? v.fr : v.en;
@@ -341,9 +339,10 @@ export class Display {
 
     // Clock
     const hh = h24 ? z.h : z.h % 12 || 12;
-    setText(this.r.hh, `${hh < 10 && h24 ? '0' : ''}${hh}`);
-    setText(this.r.mm, `${z.min < 10 ? '0' : ''}${z.min}`);
-    setText(this.r.sec, `${z.s < 10 ? '0' : ''}${z.s}`);
+    const D = this.digits;
+    setText(this.r.hh, D(`${hh < 10 && h24 ? '0' : ''}${hh}`));
+    setText(this.r.mm, D(`${z.min < 10 ? '0' : ''}${z.min}`));
+    setText(this.r.sec, D(`${z.s < 10 ? '0' : ''}${z.s}`));
     setText(this.r.ampm, h24 ? '' : meridiem(now, tz, this.offsetMin));
 
     // Dates (once per day / on settings change / at Maghrib for the Hijri day)
@@ -364,7 +363,7 @@ export class Display {
     setText(this.r.nextAr, PRAYER_AR[n.key]);
     setText(this.r.nextName, L === 'ar' ? PRAYER_AR[n.key] : prayerName(n.key, L));
     toggleClass(this.r.nextName, 'ar', L === 'ar');
-    setText(this.r.nextCount, formatCountdown(remain, true));
+    setText(this.r.nextCount, D(formatCountdown(remain, true)));
     toggleClass(this.r.next, 'soon', remain < 600);
     const span = n.at.getTime() - n.prev.getTime();
     const prog = span > 0 ? Math.min(1, Math.max(0, (now.getTime() - n.prev.getTime()) / span)) : 0;
@@ -388,6 +387,10 @@ export class Display {
     // Dimming
     toggleClass(this.r.dim, 'on', st.nightDim);
 
+    // From the adhan until the end of the prayer, the ticker asks to silence phones.
+    const atPrayer = s.display.phoneNotice && s.mode === 'mosque' && !!st.event && st.phase !== 'adhkar';
+    toggleClass(this.stage, 'prayer-time', atPrayer);
+
     // Weather (every 30 min)
     if (s.display.weather && navigator.onLine !== false && now.getTime() - this.weatherAt > 30 * 60000) {
       this.weatherAt = now.getTime();
@@ -402,6 +405,39 @@ export class Display {
     }
   }
 
+  private digits = (x: string) => (this.s.display.arabicDigits ? toArabicDigits(x) : x);
+
+  /** Ticker: authentic ahadith (Sahih al-Bukhari) interleaved with the mosque's notices. */
+  private buildTicker() {
+    const s = this.s, L = s.lang;
+    const el = this.r.tickerText;
+    el.innerHTML = '';
+    const items: Node[] = [];
+    const ann = s.mosque.announcements.filter((a) => a.trim());
+    const hadiths = s.display.tickerHadith ? shuffle(AHADITH) : [];
+    const n = Math.max(hadiths.length, ann.length);
+    let chars = 0;
+    for (let i = 0; i < n; i++) {
+      if (i < hadiths.length) {
+        const hd = hadiths[i];
+        const tr = L === 'fr' ? hd.fr : L === 'en' ? hd.en : '';
+        const src = L === 'ar' ? hd.ref.ar : L === 'fr' ? hd.ref.fr : hd.ref.en;
+        items.push(h('span', { class: 'hadith' },
+          h('span', { class: 'ar' }, 'قال رسول الله ﷺ: «', hd.ar, '»'),
+          tr ? h('span', { class: 'tr' }, ` — ${tr}`) : '',
+          h('small', null, ` ${src} ${this.digits(String(hd.ref.number))}`)));
+        chars += hd.ar.length + tr.length;
+      }
+      if (i < ann.length) {
+        items.push(h('span', { class: `ann ${isArabic(ann[i]) ? 'ar' : ''}` }, svg(icons.megaphone), ann[i]));
+        chars += ann[i].length;
+      }
+    }
+    items.forEach((node, i) => { if (i) el.appendChild(h('span', { class: 'sep', html: ornament('') })); el.appendChild(node); });
+    const speed = s.display.tickerSpeed === 'slow' ? 0.42 : s.display.tickerSpeed === 'fast' ? 0.2 : 0.3;
+    el.style.setProperty('--dur', `${Math.max(30, chars * speed)}s`);
+  }
+
   private renderCards(st: State) {
     const s = this.s, tz = s.location.timezone, h24 = s.display.clock24;
     for (const k of PRAYERS) {
@@ -413,26 +449,31 @@ export class Display {
       const tomorrowFajr = k === 'fajr' && st.next.tomorrow;
       const at = tomorrowFajr ? st.tomorrow.times.fajr : st.today.times[k];
       c.time.innerHTML = '';
-      c.time.append(formatHM(at, tz, h24, this.offsetMin), h24 ? '' : h('small', null, meridiem(at, tz, this.offsetMin)));
+      c.time.append(this.digits(formatHM(at, tz, h24, this.offsetMin)), h24 ? '' : h('small', null, meridiem(at, tz, this.offsetMin)));
       if (k !== 'sunrise') {
         const iq = tomorrowFajr ? iqamaTime(s, 'fajr', at, st.tomorrow.date) : st.todayIqama[k];
-        setText(c.iqamaVal, formatHM(iq, tz, h24, this.offsetMin));
+        setText(c.iqamaVal, this.digits(formatHM(iq, tz, h24, this.offsetMin)));
       }
     }
   }
 
   private renderChips(st: State, h24: boolean) {
     const tz = this.s.location.timezone, L = this.s.lang;
-    const sig = st.ramadan && st.imsak && st.iftar ? `${st.imsak.getTime()}-${st.iftar.getTime()}-${L}-${h24}` : '';
+    const d = this.s.display;
+    const sig = JSON.stringify([st.ramadan && st.imsak?.getTime(), st.iftar?.getTime(), d.showDuha && st.duha.getTime(), d.showQiyam && st.qiyam.getTime(), st.eid?.getTime(), L, h24, d.arabicDigits]);
     if (this.chipsSig === sig) return;
     this.chipsSig = sig;
     this.r.chips.innerHTML = '';
-    if (!sig) return;
-    const chip = (ar: string, lat: string, d: Date) => h('div', { class: 'chip' }, h('span', { class: 'ar' }, ar), L === 'ar' ? '' : h('span', null, lat), h('b', { class: 'num' }, formatHM(d, tz, h24)));
-    this.r.chips.append(
-      h('div', { class: 'chip' }, h('span', { class: 'ar' }, 'رمضان كريم')),
-      chip('الإمساك', t('imsak', L), st.imsak!),
-      chip('الإفطار', t('iftar', L), st.iftar!));
+    const chip = (ar: string, lat: string, at: Date) => h('div', { class: 'chip' }, h('span', { class: 'ar' }, ar), L === 'ar' ? '' : h('span', null, lat), h('b', { class: 'num' }, this.digits(formatHM(at, tz, h24))));
+    if (st.ramadan && st.imsak && st.iftar) {
+      this.r.chips.append(
+        h('div', { class: 'chip' }, h('span', { class: 'ar' }, 'رمضان كريم')),
+        chip('الإمساك', t('imsak', L), st.imsak),
+        chip('الإفطار', t('iftar', L), st.iftar));
+    }
+    if (st.eid) this.r.chips.append(chip('صلاة العيد', t('eid', L), st.eid));
+    if (d.showDuha) this.r.chips.append(chip('الضحى', t('duha', L), st.duha));
+    if (d.showQiyam) this.r.chips.append(chip('الثلث الأخير', t('qiyam', L), st.qiyam));
   }
 
   private renderWeather() {
@@ -441,8 +482,10 @@ export class Display {
     toggleClass(el, 'hidden', !this.weather);
     if (!this.weather) return;
     const kind = weatherKind(this.weather.code);
-    const ic = kind === 'clear' && !this.weather.isDay ? icons.moon : icons[kind];
-    el.append(svg(ic), h('span', { class: 'num' }, `${this.weather.temp}°`));
+    const night = !this.weather.isDay;
+    const ic = kind === 'clear' && night ? icons.moon : kind === 'partly' && night ? icons.partlyNight : icons[kind];
+    const temp = this.s.display.tempUnit === 'f' ? Math.round(this.weather.temp * 9 / 5 + 32) : this.weather.temp;
+    el.append(svg(ic), h('span', { class: 'num' }, `${this.digits(String(temp))}°`));
   }
 
   /* ------------------------------------------------------------------ phases */
@@ -465,7 +508,7 @@ export class Display {
       if (tNow >= adhanAt && tNow - adhanAt < 15000 && this.lastAdhanAt !== adhanAt) {
         this.lastAdhanAt = adhanAt;
         const mode = s.athan.perPrayer[k];
-        if (s.athan.enabled && mode === 'athan') void playAthan(k === 'fajr' ? s.athan.fajrSound : s.athan.sound, s.athan.volume);
+        if (s.athan.enabled && mode === 'athan') void playAthan(k === 'fajr' ? s.athan.fajrSound : s.athan.sound, k === 'fajr' ? s.athan.fajrVolume : s.athan.volume);
         else if (s.athan.enabled && mode === 'beep') chime(s.athan.volume);
       }
       if (s.mode !== 'mosque') continue;
@@ -487,7 +530,7 @@ export class Display {
     if (st.phase === 'iqama' && ev) {
       const total = (ev.iqama.getTime() - ev.adhan.getTime()) / 1000;
       const left = (ev.iqama.getTime() - now.getTime()) / 1000;
-      setText($('.ring-count', ov), formatCountdown(left));
+      setText($('.ring-count', ov), this.digits(formatCountdown(left)));
       const prog = $('.ring .prog', ov) as unknown as SVGCircleElement | null;
       if (prog) prog.style.strokeDashoffset = String(1696.46 * (1 - Math.max(0, Math.min(1, left / Math.max(1, total)))));
       const last = left <= 60;
@@ -495,10 +538,10 @@ export class Display {
       if (notice && notice.dataset.last !== String(last)) {
         notice.dataset.last = String(last);
         notice.innerHTML = '';
-        notice.append(svg(last ? star8() : icons.phoneOff), h('span', { class: 'ar' }, last ? 'استووا واعتدلوا وسدّوا الخلل' : 'يرجى إغلاق الهواتف النقالة'), s.lang === 'ar' ? '' : h('span', null, `· ${t(last ? 'straighten' : 'silence', s.lang)}`));
+        notice.append(svg(last ? icons.rows : icons.phoneOff), h('span', { class: 'ar' }, last ? 'استووا واعتدلوا وسدّوا الخلل' : 'يرجى إغلاق الهواتف النقالة'), s.lang === 'ar' ? '' : h('span', null, `· ${t(last ? 'straighten' : 'silence', s.lang)}`));
       }
     }
-    if (st.phase === 'prayer') setText($('.ov-clock', ov), formatHM(now, s.location.timezone, s.display.clock24, this.offsetMin));
+    if (st.phase === 'prayer') setText($('.ov-clock', ov), this.digits(formatHM(now, s.location.timezone, s.display.clock24, this.offsetMin)));
     if (st.phase === 'adhkar' && now.getTime() - this.adhkarStamp > 22000) { this.adhkarStamp = now.getTime(); this.renderAdhkar(); }
   }
 
@@ -515,13 +558,14 @@ export class Display {
     if (st.phase === 'adhan') {
       const dua = DUA_AFTER_ADHAN ? spoken(DUA_AFTER_ADHAN.ar) : '';
       ov.append(
-        h('div', { html: star8('ov-star') }),
+        h('div', { class: 'ov-star', html: ornament() }),
         h('div', { class: 'ov-kicker' }, L === 'ar' ? 'الأذان' : `${t('adhan', L)} · ${lat}`),
         h('div', { class: 'ov-title' }, ev.jumuah ? 'حان الآن موعد ' : 'حان الآن موعد أذان ', h('b', null, ev.jumuah ? 'صلاة الجمعة' : PRAYER_AR[ev.key])),
         L === 'ar' ? '' : h('div', { class: 'ov-sub' }, `${t('adhanNow', L)} — ${lat}`),
         h('div', { class: 'ov-divider', html: divider() }),
         dua ? h('div', { class: 'ov-text small' }, dua) : '',
-        L === 'en' && DUA_AFTER_ADHAN ? h('div', { class: 'ov-tr' }, spoken(DUA_AFTER_ADHAN.en)) : '');
+        L === 'en' && DUA_AFTER_ADHAN ? h('div', { class: 'ov-tr' }, spoken(DUA_AFTER_ADHAN.en)) : '',
+        s.mode === 'mosque' && s.display.phoneNotice ? h('div', { class: 'notice' }, svg(icons.phoneOff), h('span', { class: 'ar' }, 'يرجى إغلاق الهواتف النقالة'), L === 'ar' ? '' : h('span', null, `· ${t('silence', L)}`)) : '');
     } else if (st.phase === 'iqama') {
       const C = 2 * Math.PI * 270;
       ov.append(
@@ -536,7 +580,7 @@ export class Display {
         h('div', { class: 'notice' }));
     } else if (st.phase === 'prayer') {
       ov.append(
-        h('div', { html: star8('ov-star') }),
+        h('div', { class: 'ov-star', html: ornament() }),
         h('div', { class: 'ov-title' }, ev.jumuah ? 'خطبة وصلاة الجمعة' : 'الصلاة قائمة'),
         L === 'ar' ? '' : h('div', { class: 'ov-sub' }, `${t('prayerNow', L)} — ${lat}`),
         h('div', { class: 'ov-clock num' }));

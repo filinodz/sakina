@@ -3,90 +3,120 @@
   "id": "djamaa-el-djazair-night",
   "label": "Djamaâ El-Djazaïr, Alger",
   "author": "Riad Salih",
-  "license": "CC BY 4.0"
+  "license": "CC BY 4.0",
+  "labelAr": "جامع الجزائر",
+  "labelEn": "Djamaa El-Djazair, Algiers"
  },
  {
   "id": "blue-mosque-dusk",
   "label": "Mosquée Bleue, Istanbul",
   "author": "Benh LIEU SONG (Flickr)",
-  "license": "CC BY-SA 3.0"
+  "license": "CC BY-SA 3.0",
+  "labelAr": "المسجد الأزرق، إسطنبول",
+  "labelEn": "Blue Mosque, Istanbul"
  },
  {
   "id": "omar-ali-saifuddin",
   "label": "Omar Ali Saifuddien, Brunei",
   "author": "sam garza from Los Angeles, USA",
-  "license": "CC BY 2.0"
+  "license": "CC BY 2.0",
+  "labelAr": "مسجد عمر علي سيف الدين، بروناي",
+  "labelEn": "Omar Ali Saifuddien, Brunei"
  },
  {
   "id": "lotfollah-ceiling",
   "label": "Cheikh Lotfollah, Ispahan",
   "author": "Phillip Maiwald (Nikopol)",
-  "license": "CC BY-SA 3.0"
+  "license": "CC BY-SA 3.0",
+  "labelAr": "مسجد الشيخ لطف الله، أصفهان",
+  "labelEn": "Sheikh Lotfollah, Isfahan"
  },
  {
   "id": "shah-mosque",
   "label": "Mosquée du Shah, Ispahan",
   "author": "Amir Pashaei",
-  "license": "CC BY-SA 4.0"
+  "license": "CC BY-SA 4.0",
+  "labelAr": "مسجد الشاه، أصفهان",
+  "labelEn": "Shah Mosque, Isfahan"
  },
  {
   "id": "jameh-isfahan-vault",
   "label": "Mosquée du Vendredi, Ispahan",
   "author": "Amir Pashaei",
-  "license": "CC BY-SA 4.0"
+  "license": "CC BY-SA 4.0",
+  "labelAr": "المسجد الجامع، أصفهان",
+  "labelEn": "Jameh Mosque, Isfahan"
  },
  {
   "id": "kota-kinabalu",
   "label": "Mosquée de Kota Kinabalu",
   "author": "CEphoto, Uwe Aranas",
-  "license": "CC BY-SA 4.0"
+  "license": "CC BY-SA 4.0",
+  "labelAr": "مسجد كوتا كينابالو",
+  "labelEn": "Kota Kinabalu City Mosque"
  },
  {
   "id": "suleymaniye",
   "label": "Süleymaniye, Istanbul",
   "author": "Alvesgaspar",
-  "license": "CC BY-SA 4.0"
+  "license": "CC BY-SA 4.0",
+  "labelAr": "جامع السليمانية، إسطنبول",
+  "labelEn": "Süleymaniye, Istanbul"
  },
  {
   "id": "emir-abdelkader",
   "label": "Mosquée Émir Abdelkader, Constantine",
   "author": "Bernard Gagnon",
-  "license": "CC BY 4.0"
+  "license": "CC BY 4.0",
+  "labelAr": "جامع الأمير عبد القادر، قسنطينة",
+  "labelEn": "Emir Abdelkader Mosque, Constantine"
  },
  {
   "id": "sultan-ahmed",
   "label": "Sultan Ahmed, Istanbul",
   "author": "Moonik",
-  "license": "CC BY-SA 3.0"
+  "license": "CC BY-SA 3.0",
+  "labelAr": "جامع السلطان أحمد، إسطنبول",
+  "labelEn": "Sultan Ahmed Mosque, Istanbul"
  },
  {
   "id": "sidi-okba",
   "label": "Mosquée Sidi Okba, Biskra",
   "author": "Bernard Gagnon",
-  "license": "CC BY 4.0"
+  "license": "CC BY 4.0",
+  "labelAr": "مسجد سيدي عقبة، بسكرة",
+  "labelEn": "Sidi Okba Mosque, Biskra"
  },
  {
   "id": "kazan-azimov",
   "label": "Mosquée Azimov, Kazan",
   "author": "Mike1979 Russia",
-  "license": "CC BY-SA 4.0"
+  "license": "CC BY-SA 4.0",
+  "labelAr": "مسجد عظيموف، قازان",
+  "labelEn": "Azimov Mosque, Kazan"
  },
  {
   "id": "khiva-juma",
   "label": "Mosquée Juma, Khiva",
   "author": "Bgag",
-  "license": "CC0"
+  "license": "CC0",
+  "labelAr": "مسجد الجمعة، خيوة",
+  "labelEn": "Juma Mosque, Khiva"
  },
  {
   "id": "ibn-tulun",
   "label": "Ibn Touloun, Le Caire",
   "author": "Berthold Werner",
-  "license": "CC BY 3.0"
+  "license": "CC BY 3.0",
+  "labelAr": "جامع ابن طولون، القاهرة",
+  "labelEn": "Ibn Tulun, Cairo"
  },
  {
   "id": "djamaa-el-djazair-ceiling",
   "label": "Djamaâ El-Djazaïr, plafond",
   "author": "Riad Salih",
-  "license": "CC BY 4.0"
+  "license": "CC BY 4.0",
+  "labelAr": "جامع الجزائر — سقف",
+  "labelEn": "Djamaa El-Djazair, ceiling"
  }
 ]

@@ -15,7 +15,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: false, // registered in src/main.ts (with error handling)
-      includeAssets: ['icons/*.png', 'icons/*.svg'],
+      includeAssets: ['icons/*.png'],
       manifest: {
         name: 'Sakina — Écran de prière',
         short_name: 'Sakina',
@@ -30,13 +30,13 @@ export default defineConfig({
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
-          { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: 'icons/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
       workbox: {
-        // App shell + fonts are precached; photos are cached on first view (they are big).
-        globPatterns: ['**/*.{js,css,html,woff2,svg,png}'],
-        globIgnores: ['backgrounds/**'],
+        // Everything is precached at install — app, fonts and every background photo (~9 MB) —
+        // so a configured screen keeps working forever without internet.
+        globPatterns: ['**/*.{js,css,html,woff2,png,jpg,webmanifest}'],
         navigateFallback: 'index.html',
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
         runtimeCaching: [

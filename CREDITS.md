@@ -35,6 +35,17 @@ Les enregistrements d'adhan sont diffusés en streaming depuis [Internet Archive
 
 [adhan-js](https://github.com/batoulapps/adhan-js) (Batoul Apps, MIT) — algorithmes astronomiques de *Astronomical Algorithms* (Jean Meeus).
 
+## Icônes
+
+[Lucide](https://lucide.dev) — licence ISC. Logo et icône de l’application : « mosque » de [Phosphor Icons](https://phosphoricons.com) — licence MIT. L’ornement ۞ est le caractère Unicode U+06DE (« début de rub el hizb ») issu de la police Noto Kufi Arabic (Google, SIL OFL), réduite à ce seul caractère.
+
+## Hadiths
+
+Sahih al-Bukhari (arabe, français, anglais) via [hadith-api](https://github.com/fawazahmed0/hadith-api) — sélection relue de hadiths courts, chacun avec son numéro.
+
 ## Polices
+
+- **KFGQPC Uthmanic Script HAFS** — police du Mushaf de Médine, © Complexe du Roi Fahd pour l’impression du Noble Coran (distribution libre, non modifiée). Texte coranique correspondant via [quran.com](https://quran.com).
+
 
 Amiri, Amiri Quran, Reem Kufi, Manrope, Cormorant Garamond — SIL Open Font License, via [Fontsource](https://fontsource.org).

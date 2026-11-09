@@ -11,6 +11,8 @@ import type { MethodId } from '../core/settings';
 export interface MethodDef {
   id: MethodId;
   label: string;
+  ar: string;
+  en: string;
   region: string;
   fajr: number;
   isha: number;
@@ -22,7 +24,7 @@ export interface MethodDef {
   aladhan: number;
 }
 
-export const METHODS: MethodDef[] = [
+const RAW: Omit<MethodDef, 'ar' | 'en'>[] = [
   { id: 'algeria', label: 'Algérie — Ministère des Affaires religieuses', region: 'DZ', fajr: 18, isha: 17, aladhan: 19 },
   { id: 'morocco', label: 'Maroc — Ministère des Habous', region: 'MA', fajr: 19, isha: 17, dhuhrAdj: 5, maghribAdj: 5, aladhan: 21 },
   { id: 'tunisia', label: 'Tunisie', region: 'TN', fajr: 18, isha: 18, aladhan: 18 },
@@ -45,6 +47,32 @@ export const METHODS: MethodDef[] = [
   { id: 'moonsighting', label: 'Moonsighting Committee Worldwide', region: 'WW', fajr: 18, isha: 18, adhanPreset: 'MoonsightingCommittee', aladhan: 15 },
   { id: 'custom', label: 'Personnalisée (angles manuels)', region: '', fajr: 18, isha: 17, aladhan: 99 },
 ];
+
+const NAMES: Record<MethodId, [string, string]> = {
+  algeria: ['الجزائر — وزارة الشؤون الدينية والأوقاف', 'Algeria — Ministry of Religious Affairs'],
+  morocco: ['المغرب — وزارة الأوقاف والشؤون الإسلامية', 'Morocco — Ministry of Habous'],
+  tunisia: ['تونس', 'Tunisia'],
+  mwl: ['رابطة العالم الإسلامي', 'Muslim World League (MWL)'],
+  egypt: ['الهيئة المصرية العامة للمساحة', 'Egyptian General Authority of Survey'],
+  makkah: ['أم القرى — مكة المكرمة', 'Umm al-Qura, Makkah'],
+  france12: ['فرنسا — اتحاد المنظمات الإسلامية (12°)', 'France — UOIF (12°)'],
+  france15: ['فرنسا — 15°', 'France — 15°'],
+  france18: ['فرنسا — مسجد باريس الكبير (18°)', 'France — Grand Mosque of Paris (18°)'],
+  isna: ['أمريكا الشمالية (ISNA)', 'North America (ISNA)'],
+  karachi: ['جامعة العلوم الإسلامية — كراتشي', 'University of Islamic Sciences, Karachi'],
+  dubai: ['دبي', 'Dubai'],
+  kuwait: ['الكويت', 'Kuwait'],
+  qatar: ['قطر', 'Qatar'],
+  jordan: ['الأردن — وزارة الأوقاف', 'Jordan — Ministry of Awqaf'],
+  singapore: ['سنغافورة / ماليزيا / إندونيسيا', 'Singapore / Malaysia / Indonesia'],
+  turkey: ['تركيا — رئاسة الشؤون الدينية', 'Turkey — Diyanet'],
+  russia: ['روسيا — الإدارة الدينية للمسلمين', 'Russia — Spiritual Administration of Muslims'],
+  tehran: ['طهران — معهد الجيوفيزياء', 'Tehran — Institute of Geophysics'],
+  moonsighting: ['لجنة رؤية الهلال العالمية', 'Moonsighting Committee Worldwide'],
+  custom: ['مخصّصة (زوايا يدوية)', 'Custom (manual angles)'],
+};
+
+export const METHODS: MethodDef[] = RAW.map((m) => ({ ...m, ar: NAMES[m.id][0], en: NAMES[m.id][1] }));
 
 export const methodById = (id: MethodId) => METHODS.find((m) => m.id === id) ?? METHODS[0];
 

@@ -1,0 +1,57 @@
+{
+  "name": "sakina",
+  "version": "1.0.0",
+  "description": "Sakina — écran de prière premium et open source pour mosquées, foyers et Smart TV. Horaires précis, iqama, adhan, versets et adhkar.",
+  "type": "module",
+  "license": "MIT",
+  "author": "filinodz (https://github.com/filinodz)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/filinodz/sakina"
+  },
+  "keywords": [
+    "mosque",
+    "masjid",
+    "prayer-times",
+    "salah",
+    "adhan",
+    "iqama",
+    "android-tv",
+    "smart-tv",
+    "pwa"
+  ],
+  "scripts": {
+    "start": "vite build && vite preview --host --port 4173 --open",
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "fixtures": "node scripts/fetch-fixtures.mjs",
+    "android:assets": "node scripts/android-assets.mjs",
+    "content": "node scripts/fetch-content.mjs",
+    "backgrounds": "node scripts/fetch-backgrounds.mjs",
+    "android:sync": "vite build && cap sync android",
+    "android:open": "cap open android",
+    "android:apk": "vite build && cap sync android && cd android && ./gradlew assembleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.6.0",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource/amiri": "^5.3.0",
+    "@fontsource/amiri-quran": "^5.3.0",
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/reem-kufi": "^5.3.0",
+    "adhan": "^4.4.6"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.0",
+    "sharp": "^0.33.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6",
+    "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^4.1.12"
+  }
+}

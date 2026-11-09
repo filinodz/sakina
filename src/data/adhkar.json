@@ -1,0 +1,794 @@
+[
+ {
+  "id": 66,
+  "chapter": 25,
+  "title": {
+   "ar": "الأذكار بعد السلام من الصلاة",
+   "en": "What to say after completing the prayer"
+  },
+  "ar": "أَسْتَغْفِرُ اللَّهَ (ثَلاَثَاً) اللَّهُمَّ أَنْتَ السَّلاَمُ، وَمِنْكَ السَّلاَمُ، تَبَارَكْتَ يَا ذَا الْجَلاَلِ وَالْإِكْرَامِ",
+  "en": "I ask Allah for forgiveness.(three times) (O Allah, You are As-Salam and from You is all peace, blessed are You, O Possessor of majesty and honour.)",
+  "translit": "Astaghfirul-lah (three times) Allahumma antas-salam waminkas-salam, tabarakta ya thal-jalali wal-ikram",
+  "repeat": 1
+ },
+ {
+  "id": 67,
+  "chapter": 25,
+  "title": {
+   "ar": "الأذكار بعد السلام من الصلاة",
+   "en": "What to say after completing the prayer"
+  },
+  "ar": "لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ [ثلاثاً]، اللَّهُمَّ لاَ مَانِعَ لِمَا أَعْطَيْتَ، وَلاَ مُعْطِيَ لِمَا مَنَعْتَ، وَلاَ يَنْفَعُ ذَا الْجَدِّ مِنْكَ الجَدُّ",
+  "en": "None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise and He is over all things omnipotent.O Allah, none can prevent what You have willed to bestow and none can bestow what You have willed to prevent, and no wealth or majesty can benefit anyone, as from You is all wealth and majesty",
+  "translit": "La ilaha illal-lahu wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shayin qadeer, allahumma la maniAAa lima aAAtayt, wala muAAtiya lima manaAAt, wala yanfaAAu thal-jaddi minkal-jad",
+  "repeat": 1
+ },
+ {
+  "id": 68,
+  "chapter": 25,
+  "title": {
+   "ar": "الأذكار بعد السلام من الصلاة",
+   "en": "What to say after completing the prayer"
+  },
+  "ar": "لَا إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ، وَلَهُ الْحَمدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ. لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ، لاَ إِلَهَ إِلاَّ اللَّهُ، وَلاَ نَعْبُدُ إِلاَّ إِيَّاهُ, لَهُ النِّعْمَةُ وَلَهُ الْفَضْلُ وَلَهُ الثَّنَاءُ الْحَسَنُ، لَا إِلَهَ إِلاَّ اللَّهُ مُخْلِصِينَ لَهُ الدِّينَ وَلَوْ كَرِهَ الكَافِرُونَ",
+  "en": "None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise and He is over all things omnipotent. There is no might nor power except with Allah, none has the right to be worshipped except Allah and we worship none except Him. For Him is all favour, grace, and glorious praise. None has the right to be worshipped except Allah and we are sincere in faith and devotion to Him although the disbelievers detest it",
+  "translit": "La ilaha illal-lah, wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shayin qadeer. la hawla wala quwwata illa billah, la ilaha illal-lah, wala naAAbudu illa iyyah, lahun-niAAmatu walahul-fadl walahuth-thana-ol- hasan, la ilaha illal-lah mukhliseena lahud-deen walaw karihal-kafiroon",
+  "repeat": 1
+ },
+ {
+  "id": 69,
+  "chapter": 25,
+  "title": {
+   "ar": "الأذكار بعد السلام من الصلاة",
+   "en": "What to say after completing the prayer"
+  },
+  "ar": "سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَاللَّهُ أَكْبَرُ (ثلاثاً وثلاثين) لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+  "en": "How perfect Allah is, all praise is for Allah, and Allah is the greatest.(thirty-three times) None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise and He is over all things omnipotent",
+  "translit": "Subhanal-lah walhamdu lillah, wallahu akbar (thirty-three times). La ilaha illal-lahu wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shayin qadeer",
+  "repeat": 33
+ },
+ {
+  "id": 71,
+  "chapter": 25,
+  "title": {
+   "ar": "الأذكار بعد السلام من الصلاة",
+   "en": "What to say after completing the prayer"
+  },
+  "ar": "﴿اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾ عَقِبَ كلِّ صَلاَةٍ",
+  "en": "It is also from the Sunnah to recite Aayat ul-Kursee after each prayer:[Soorah al-Baqarah, Aayah 255]",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 72,
+  "chapter": 25,
+  "title": {
+   "ar": "الأذكار بعد السلام من الصلاة",
+   "en": "What to say after completing the prayer"
+  },
+  "ar": "لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ عَشْرَ مَرّاتٍ بَعْدَ صَلاةِ الْمَغْرِبِ وَالصُّبْحِ",
+  "en": "None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise, He gives life and causes death and He is over all things omnipotent.ten times after the maghrib and fajr prayers",
+  "translit": "La ilaha illal-lahu wahdahu la shareeka lah, lahul-mulku walahul-hamd, yuhyee wayumeet, wahuwa AAala kulli shayin qadeer.ten times after the maghrib & fajr prayers",
+  "repeat": 10
+ },
+ {
+  "id": 73,
+  "chapter": 25,
+  "title": {
+   "ar": "الأذكار بعد السلام من الصلاة",
+   "en": "What to say after completing the prayer"
+  },
+  "ar": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْماً نافِعاً، وَرِزْقاً طَيِّباً، وَعَمَلاً مُتَقَبَّلاً بَعْدَ السّلامِ مِنْ صَلاَةِ الفَجْرِ",
+  "en": "(O Allah, I ask You for knowledge which is beneficial and sustenance which is good, and deeds which are acceptable.)(To be said after giving salam for the fajr prayer)",
+  "translit": "Allahumma innee as-aluka AAilman nafiAAan, warizqan tayyiban, waAAamalan mutaqabbalan.after salam from fajr prayer",
+  "repeat": 1
+ },
+ {
+  "id": 20,
+  "chapter": 13,
+  "title": {
+   "ar": "دعاء دخول المسجد",
+   "en": "Invocation for entering the mosque"
+  },
+  "ar": "(يَبْدَأُ بِرِجْلِهِ الْيُمْنَى)، وَيَقُولُ: أَعُوذُ بِاللَّهِ العَظِيمِ، وَبِوَجْهِهِ الْكَرِيمِ، وَسُلْطَانِهِ الْقَدِيمِ، مِنَ الشَّيْطَانِ الرَّجِيمِ [بِسْمِ اللَّهِ، وَالصَّلَاةُ] [وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ] اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+  "en": "I take refuge with Allah, The Supreme and with His Noble Face, and His eternal authority from the accursed devil. In the name of Allah, and prayers and peace be upon the Messenger of Allah. O Allah, open the gates of Your mercy for me",
+  "translit": "aAAoothu billahil-AAatheem wabiwajhihil-kareem wasultanihil-qadeem minash-shaytanir-rajeem, [bismil-lah, wassalatu] [wassalamu AAala rasoolil-lah], allahumma iftah lee abwaba rahmatik",
+  "repeat": 1
+ },
+ {
+  "id": 21,
+  "chapter": 14,
+  "title": {
+   "ar": "دعاء الخروج من المسجد",
+   "en": "Invocation for leaving the mosque"
+  },
+  "ar": "يَبْدَأُ بِرِجْلِهِ الْيُسْرَى وَيَقُولُ: بِسْمِ اللَّهِ وَالصّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِك، اللَّهُمَّ اعْصِمْنِي مِنَ الشَّيْطَانِ الرَّجِيمِ",
+  "en": "In the name of Allah, and prayers and peace be upon the Messenger of Allah. O Allah, I ask You from Your favour. O Allah, guard me from the accursed devil",
+  "translit": "Bismil-lah wassalatu wassalamu AAala rasoolil-lah, allahumma innee as-aluka min fadlik, allahumma iAAsimnee minash-shaytanir-rajeem",
+  "repeat": 1
+ },
+ {
+  "id": 22,
+  "chapter": 15,
+  "title": {
+   "ar": "أذكار الآذان",
+   "en": "What to say upon hearing the Athan (call to prayer)"
+  },
+  "ar": "يَقُولُ مِثْلَ مَا يَقُولُ المُؤَذِّنُ إِلاَّ فِي حَيَّ عَلَى الصَّلَاةِ وَحَيَّ عَلَى الْفَلَاحِ فَيقُولُ: لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ",
+  "en": "‘One repeats just as the mu-aththin (one who calls to prayer) says, except when he says: Hayya AAalas-salah (or) hayya AAalal-falah ‘come to prayer, come to success’ instead, one should say: La hawla wala quwwata illa billah. ‘There is no might nor power except with Allah.’",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 23,
+  "chapter": 15,
+  "title": {
+   "ar": "أذكار الآذان",
+   "en": "What to say upon hearing the Athan (call to prayer)"
+  },
+  "ar": "يَقُولُ: وَأَنَا أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ وَأَنَّ مُحَمَّداً عَبْدُهُ وَرَسُولُهُ، رَضِيتُ بِاللَّهِ رَبَّاً، وَبِمُحَمَّدٍ رَسُولاً، وَبِالْإِسْلاَمِ دِينَاً يَقُولُ ذَلِكَ عَقِبَ تَشَهُّدِ الْمُؤَذِّنِ",
+  "en": "Immediately following the declaration of faith called by the mu-aththin, one says:‘And I too bear witness that none has the right to be worshipped except Allah, alone, without partner, and that Muhammad is His salve and Messenger. I am pleased with Allah as a Lord, and Muhammad as a Messenger and Islam as a religion.’",
+  "translit": "Immediately following the declaration of faith called by the mu-aththin, one says:Wa-ana ashhadu an la ilaha illal-lahu wahdahu la shareeka lah, wa-anna Muhammadan AAabduhu warasooluh, radeetu billahi rabban wabimuhammadin rasoolan wabil-islami deena",
+  "repeat": 1
+ },
+ {
+  "id": 24,
+  "chapter": 15,
+  "title": {
+   "ar": "أذكار الآذان",
+   "en": "What to say upon hearing the Athan (call to prayer)"
+  },
+  "ar": "يُصَلِّي عَلَى النَّبِيِّ صلى الله عليه وسلم بَعْدَ فَرَاغِهِ مِنْ إِجَابَةِ الْمُؤَذِّنِ",
+  "en": "‘One should then send prayers on the Prophet (sal-Allaahu 'alayhe wa sallam) after answering the call of the mu.adhdhin’",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 25,
+  "chapter": 15,
+  "title": {
+   "ar": "أذكار الآذان",
+   "en": "What to say upon hearing the Athan (call to prayer)"
+  },
+  "ar": "يَقُولُ: اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ، وَالصَّلاَةِ الْقَائِمَةِ، آتِ مُحَمَّداً الْوَسِيلَةَ وَالْفَضِيلَةَ، وَابْعَثْهُ مَقَامَاً مَحمُوداً الَّذِي وَعَدْتَهُ، [إِنَّكَ لَا تُخْلِفُ الْمِيعَادَ]",
+  "en": "‘O Allah, Owner of this perfect call and Owner of this prayer to be performed, bestow upon Muhammad al-waseelah and al-fadeelah and send him upon a praised platform which You have promised him. Verily, You never fail in Your promise.’",
+  "translit": "Allahumma rabba hathihid-daAAwatit-tammah, wassalatil-qa-imah ati Muhammadan alwaseelata wal-fadeelah, wabAAath-hu maqaman mahmoodan allathee waAAadtah, innaka la tukhliful-meeAAad",
+  "repeat": 1
+ },
+ {
+  "id": 26,
+  "chapter": 15,
+  "title": {
+   "ar": "أذكار الآذان",
+   "en": "What to say upon hearing the Athan (call to prayer)"
+  },
+  "ar": "يَدْعُو لِنَفسِهِ بَيْنَ الْأَذَانِ وَالْإِقَامَةِ فَإِنَّ الدُّعَاءَ حِينَئِذٍ لاَ يُرَدُّ",
+  "en": "One should also supplicate for himself during the time between the athan and the iqamah as supplication at such time is not rejected",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 78,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ. [وإذا أمسى قال: اللَّهم بك أمسينا، وبك أصبحنا، وبك نحيا، وبك نموت، وإليك المصير.]",
+  "en": "(O Allah, by your leave we have reached the morning and by Your leave we have reached the evening, by Your leave we live and die and unto You is our resurrection.)[In the evening:](O Allah, by Your leave we have reached the evening and by Your leave we have reached the morning, by Your leave we live and die and unto You is our return.)",
+  "translit": "(Allahumma bika asbahna wabika amsayna, wabika nahya,wabika namootu wa-ilaykan-nushoor.)[In the evening:] (Allahumma bika amsayna, wabika asbahna, wabika nahya wabika namootu wa-ilaykal-maseer.)",
+  "repeat": 1
+ },
+ {
+  "id": 79,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لاَ يَغْفِرُ الذُّنوبَ إِلاَّ أَنْتَ",
+  "en": "O Allah, You are my Lord, none has the right to be worshipped except You, You created me and I am Your servant and I abide to Your covenant and promise as best I can, I take refuge in You from the evil of which I have committed. I acknowledge Your favour upon me and I acknowledge my sin, so forgive me, for verily none can forgive sin except You",
+  "translit": "Allahumma anta rabbee la ilaha illa ant, khalaqtanee wa-ana AAabduk, wa-ana AAala AAahdika wawaAAdika mas-tataAAt, aAAoothu bika min sharri ma sanaAAt, aboo-o laka biniAAmatika AAalay, wa-aboo-o bithanbee, faghfir lee fa-innahu la yaghfiruth-thunooba illa ant",
+  "repeat": 1
+ },
+ {
+  "id": 80,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "اللَّهُمَّ إِنِّي أَصْبَحْتُ أُشْهِدُكَ، وَأُشْهِدُ حَمَلَةَ عَرْشِكَ، وَمَلاَئِكَتِكَ، وَجَمِيعَ خَلْقِكَ، أَنَّكَ أَنْتَ اللَّهُ لَا إِلَهَ إِلاَّ أَنْتَ وَحْدَكَ لاَ شَرِيكَ لَكَ، وَأَنَّ مُحَمَّداً عَبْدُكَ وَرَسُولُكَ (أربعَ مَرَّاتٍ).[ وإذا أمسى قال: اللَّهم إني أمسيت...]",
+  "en": "(O Allah, verily I have reached the morning and call on You, the bearers of Your throne, Your angles, and all of Your creation to witness that You are Allah, none has the right to be worshipped except You, alone, without partner and that Muhammad is Your Servant and Messenger.) (four times in the morning & evening)(Note: for the evening, one reads (amsaytu) instead of (asbahtu).)",
+  "translit": "(Allahumma innee asbahtu oshhiduk, wa-oshhidu hamalata AAarshik, wamala-ikatak, wajameeAAa khalqik, annaka antal-lahu la ilaha illa ant, wahdaka la shareeka lak, wa-anna Muhammadan AAabduka warasooluk.) (four times in the morning & evening)(Note: for the evening, one reads (amsaytu) instead of (asbahtu).)",
+  "repeat": 4
+ },
+ {
+  "id": 81,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "اللَّهُمَّ مَا أَصْبَحَ بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ. [وإذا أمسى قال: اللَّهم ما أمسى بي...]",
+  "en": "(O Allah, what blessing I or any of Your creation have risen upon, is from You alone, without partner, so for You is all praise and unto You all thanks.)(…whoever says this in the morning has indeed offered his day’s thanks and whoever says this in the evening has indeed offered his night’s thanks.)(Note: for the evening, one reads (amsa) instead of (asbaha).)",
+  "translit": "(Allahumma ma asbaha bee min niAAmatin, aw bi-ahadin min khalqik, faminka wahdaka la shareeka lak, falakal-hamdu walakash-shukr.)(Note: for the evening, one reads (amsa) instead of (asbaha).)",
+  "repeat": 1
+ },
+ {
+  "id": 82,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لاَ إِلَهَ إِلاَّ أَنْتَ. اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ، وَالفَقْرِ، وَأَعُوذُ بِكَ مِنْ عَذَابِ القَبْرِ، لاَ إِلَهَ إِلاَّ أَنْتَ (ثلاثَ مرَّاتٍ)",
+  "en": "(O Allah, grant my body health, O Allah, grant my hearing health, O Allah, grant my sight health. None has the right to be worshipped except You.)(three times) O Allah, I take refuge with You from disbelief and poverty, and I take refuge with You from the punishment of the grave. None has the right to be worshipped except You. three times",
+  "translit": "(Allahumma AAafinee fee badanee, allahumma AAafinee fee samAAee, allahumma AAafinee fee basaree, la ilaha illa ant.(three times).)(Allahumma innee aAAoothu bika minal-kufr, walfaqr, wa-aAAoothu bika min AAathabil-qabr, la ilaha illa ant (three times).)",
+  "repeat": 3
+ },
+ {
+  "id": 83,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ عَلَيهِ تَوَكَّلتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ (سَبْعَ مَرّاتٍ)",
+  "en": "Allah is Sufficient for me, none has the right to be worshipped except Him, upon Him I rely and He is Lord of the exalted throne.’ (Recite seven times in Arabic.)",
+  "translit": "Hasbiyal-lahu la ilaha illa huwa, AAalayhi tawakkalt, wahuwa rabbul-AAarshil-AAatheem (Recite seven times in Arabic.)",
+  "repeat": 1
+ },
+ {
+  "id": 84,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ: فِي دِينِي وَدُنْيَايَ وَأَهْلِي، وَمَالِي، اللَّهُمَّ اسْتُرْ عَوْرَاتِي، وَآمِنْ رَوْعَاتِي، اللَّهُمَّ احْفَظْنِي مِنْ بَينِ يَدَيَّ، وَمِنْ خَلْفِي، وَعَنْ يَمِينِي، وَعَنْ شِمَالِي، وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
+  "en": "O Allah, I ask You for pardon and well-being in this life and the next. O Allah, I ask You for pardon and well-being in my religious and worldly affairs, and my family and my wealth. O Allah, veil my weaknesses and set at ease my dismay. O Allah, preserve me from the front and from behind and on my right and on my left and from above, and I take refuge with You lest I be swallowed up by the earth",
+  "translit": "Allahumma innee as-alukal-AAafwa walAAafiyah, fid-dunya wal-akhirah, allahumma innee as-alukal-AAafwa walAAafiyah fee deenee, wadunyaya wa-ahlee, wamalee, allahummas-tur AAawratee, wa-amin rawAAatee, allahummah-fathnee min bayni yaday, wamin khalfee, waAAan yameenee, waAAan shimalee, wamin fawqee, wa-aAAoothu biAAathamatika an oghtala min tahtee",
+  "repeat": 1
+ },
+ {
+  "id": 85,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "اللَّهُمَّ عَالِمَ الغَيْبِ وَالشَّهَادَةِ فَاطِرَ السَّمَوَاتِ وَالْأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ أَنْتَ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي، وَمِنْ شَرِّ الشَّيْطانِ وَشَرَكِهِ، وَأَنْ أَقْتَرِفَ عَلَى نَفْسِي سُوءاً، أَوْ أَجُرَّهُ إِلَى مُسْلِمٍ",
+  "en": "(O Allah, Knower of the unseen and the seen, Creator of the heavens and the Earth, Lord and Sovereign of all things, I bear witness that none has the right to be worshipped except You. I take refuge in You from the evil of my soul and from the evil and shirk of the devil, and from committing wrong against my soul or bringing such upon another Muslim.)(shirk: to associate others with Allah in those things which are specific to Him. This can occur in (1) belief, e.g. to believe that other than Allah has the power to benefit or harm, (2) speech, e.g. to swear by other than Allah and (3) action, e.g. to bow or prostrate to other than Allah.)",
+  "translit": "Allahumma AAalimal-ghaybi washshahadah, fatiras-samawati wal-ard, rabba kulli shayin wamaleekah, ashhadu an la ilaha illa ant, aAAoothu bika min sharri nafsee wamin sharrish-shaytani washirkih, waan aqtarifa AAala nafsee soo-an aw ajurrahu ila muslim",
+  "repeat": 1
+ },
+ {
+  "id": 86,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلاَ فِي السّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ (ثلاثَ مرَّاتٍ)",
+  "en": "In the name of Allah with whose name nothing is harmed on earth nor in the heavens and He is The All-Seeing, The All-Knowing.’three times",
+  "translit": "Bismil-lahil-lathee la yadurru maAAas-mihi shay-on fil-ardi wala fis-sama-i wahuwas-sameeAAul-AAaleem. (three times)",
+  "repeat": 3
+ },
+ {
+  "id": 87,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "رَضِيتُ بِاللَّهِ رَبَّاً، وَبِالْإِسْلاَمِ دِيناً، وَبِمُحَمَّدٍ صلى الله عليه وسلم نَبِيّاً (ثلاثَ مرَّاتٍ)",
+  "en": "I am pleased with Allah as a Lord, and Islam as a religion and Muhammad as a Prophet.’three times",
+  "translit": "Radeetu billahi rabban wabil-islami deenan wabiMuhammadin nabiyya. three times",
+  "repeat": 3
+ },
+ {
+  "id": 88,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ أَصْلِحْ لِي شَأْنِيَ كُلَّهُ وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ",
+  "en": "O Ever Living, O Self-Subsisting and Supporter of all, by Your mercy I seek assistance, rectify for me all of my affairs and do not leave me to myself, even for the blink of an eye",
+  "translit": "Ya hayyu ya qayyoom, birahmatika astagheeth, aslih lee sha/nee kullah, wala takilnee ila nafsee tarfata AAayn",
+  "repeat": 1
+ },
+ {
+  "id": 89,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ، اللَّهُـمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ:فَتْحَهُ، وَنَصْرَهُ، وَنورَهُ، وَبَرَكَتَهُ، وَهُدَاهُ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِيهِ وَشَرِّ مَا بَعْدَهُ. [وإذا أمسى قال: أمسينا وأمسى الملك للَّه ربّ العالمين اللَّهم إني أسألك خير هذه الليلة: فتحها، ونصرها، ونورها، وبركتها، وهداها، وأعوذ بك من شر ما فيها، وشر ما بعدها.]",
+  "en": "(We have reached the morning and at this very time all sovereignty belongs to Allah, Lord of the worlds. O Allah, I ask You for the good of this day, its triumphs and its victories, its light and its blessings and its guidance, and I take refuge in You from the evil of this day and the evil that follows it.)[For the evening, the supplication is read as follows:](We have reached the evening and at this very time all sovereignty belongs to Allah, Lord of the worlds. O Allah, I ask You for the good of tonight, its triumphs and its victories, its light and its blessings and its guidance, and I take refuge in You from the evil of tonight and the evil that follows it.)",
+  "translit": "(Asbahna wa-asbahal-mulku lillahi rabbil-AAalameen, allahumma innee as-aluka khayra hathal-yawm, fat-hahu, wanasrahu, wanoorahu, wabarakatahu, wahudahu, wa-aAAoothu bika min sharri ma feehi, washarri ma baAAdah.)[For the evening, the supplication is read as follows: ](Amsayna wa-amsal-mulku lillahi rabbil-AAalameen, allahumma innee as-aluka khayra hathihil-laylah, fat-haha, wanasraha, wanooraha, wabarakataha, wahudaha, wa-aAAoothu bika min sharri ma feeha washarri ma baAAdaha.)",
+  "repeat": 1
+ },
+ {
+  "id": 90,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "أَصْبَحْنا عَلَى فِطْرَةِ الْإِسْلاَمِ، وَعَلَى كَلِمَةِ الْإِخْلاَصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صلى الله عليه وسلم، وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ، حَنِيفاً مُسْلِماً وَمَا كَانَ مِنَ الْمُشرِكِينَ. [وإذا أمسى قال: أمسينا على فطرة الإسلام...]",
+  "en": "(We rise upon the fitrah of Islam, and the word of pure faith, and upon the religion of our Prophet Muhammad and the religion of our forefather Ibraheem, who was a Muslim and of true faith and was not of those who associate others with Allah.)(fitrah: the religion of Islam, the way of Ibraheem u.)(Note: for the evening, one reads amsayna instead of asbahna.)",
+  "translit": "(Asbahna AAala fitratil-islam, waAAala kalimatil-ikhlas, waAAala deeni nabiyyina Muhammad waAAala millati abeena Ibraheem, haneefan musliman wama kana minal-mushrikeen.)(Note: for the evening, one reads amsayna instead of asbahna.)",
+  "repeat": 1
+ },
+ {
+  "id": 91,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ (مائة مرَّةٍ)",
+  "en": "(How perfect Allah is and I praise Him.)(one hundred times)",
+  "translit": "(Subhanal-lahi wabihamdih.)one hundred times",
+  "repeat": 100
+ },
+ {
+  "id": 92,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ (عشرَ مرَّات)، أَوْ (مرَّةً واحدةً عندَ الكَسَلِ)",
+  "en": "(None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise, and He is over all things omnipotent.)( [ten times or once if lazy])",
+  "translit": "La ilaha illal-lah, wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shay-in qadeer. [ten times or once if lazy]",
+  "repeat": 10
+ },
+ {
+  "id": 93,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "لاَ إِلَهَ إِلاَّ اللَّهُ، وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ (مائةَ مرَّةٍ إذا أصبحَ)",
+  "en": "(None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise, and He is over all things omnipotent.)one hundred times every day",
+  "translit": "La ilaha illal-lah, wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shay-in qadeer. one hundred times every day",
+  "repeat": 100
+ },
+ {
+  "id": 94,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ: عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ (ثلاثَ مرَّاتٍ إذا أصبحَ)",
+  "en": "(How perfect Allah is and I praise Him by the number of His creation and His pleasure, and by the weight of His throne, and the ink of His words.)(three times)",
+  "translit": "(Subhanal-lahi wabihamdih, AAadada khalqihi warida nafsih, wazinata AAarshih, wamidada kalimatih.)(three times)",
+  "repeat": 3
+ },
+ {
+  "id": 95,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْماً نَافِعاً، وَرِزْقاً طَيِّباً، وَعَمَلاً مُتَقَبَّلاً (إذا أصبحَ)",
+  "en": "O Allah, I ask You for knowledge which is beneficial and sustenance which is good, and deeds which are acceptable",
+  "translit": "Allahumma innee as-aluka AAilman nafiAAan, warizqan tayyiban, waAAamalan mutaqabbalan",
+  "repeat": 1
+ },
+ {
+  "id": 96,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ (مِائَةَ مَرَّةٍ فِي الْيَوْمِ)",
+  "en": "‘I seek Allaah’s forgiveness and I turn to Him in repentance.’ [one hundred times a day]",
+  "translit": "Astaghfirullaaha wa 'atoobu 'ilayhi[one hundred times a day]",
+  "repeat": 100
+ },
+ {
+  "id": 97,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ (ثلاثَ مرَّاتٍ إذا أمسى)",
+  "en": "(I take refuge in Allah’s perfect words from the evil He has created.)(three times in the evening)",
+  "translit": "(aAAoothu bikalimatil-lahit-tammati min sharri ma khalaq.) (three times in the evening)",
+  "repeat": 3
+ },
+ {
+  "id": 98,
+  "chapter": 27,
+  "title": {
+   "ar": "أذكار الصباح والمساء",
+   "en": "Words of remembrance for morning and evening"
+  },
+  "ar": "اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبَيِّنَا مُحَمَّدٍ (عشرَ مرَّاتٍ)",
+  "en": "‘O Allaah, send prayers and peace upon our Prophet Muhammad.’ [ten times]",
+  "translit": "Allaahumma salli wa sallim 'alaa Nabiyyinaa Muhammadin[ten times]",
+  "repeat": 10
+ },
+ {
+  "id": 248,
+  "chapter": 129,
+  "title": {
+   "ar": "الاستغفار و التوبة",
+   "en": "Repentance and seeking forgiveness"
+  },
+  "ar": "قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم: وَاللَّهِ إِنِّي لأَسْتَغفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ فِي الْيَوْمِ أَكْثَرَ مِنْ سَبْعِينَ مَرَّةٍ",
+  "en": "The Messenger of Allah said: ‘By Allah, I seek forgiveness and repent to Allah, more than seventy times a day",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 249,
+  "chapter": 129,
+  "title": {
+   "ar": "الاستغفار و التوبة",
+   "en": "Repentance and seeking forgiveness"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: يَا أَيُّهَا النَّاسُ تُوبُوا إِلَى اللَّهِ فَإِنِّي أَتُوبُ فِي الْيَوْمِ إِلَيْهِ مِائَةَ مَرَّةٍ",
+  "en": "He also said: ‘O People, Repent! Verily I repent to Allah, a hundred times a day",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 250,
+  "chapter": 129,
+  "title": {
+   "ar": "الاستغفار و التوبة",
+   "en": "Repentance and seeking forgiveness"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: مَنْ قَالَ أَسْتَغْفِرُ اللَّهَ الْعَظيمَ الَّذِي لاَ إِلَهَ إِلاَّ هُوَ الْحَيُّ القَيّوُمُ وَأَتُوبُ إِلَيهِ، غَفَرَ اللَّهُ لَهُ وَإِنْ كَانَ فَرَّ مِنَ الزَّحْفِ",
+  "en": "He also said: ‘Whoever says:(I seek Allah’s forgiveness, besides whom, none has the right to be worshipped except He, The Ever Living, The Self-Subsisting and Supporter of all, and I turn to Him in repentance.) Allah would forgive him even if he was one who fled during the advance of an army",
+  "translit": "He also said: ‘Whoever says:(Astaghfirul-lahal-lathee la ilaha illa huwal-hayyul-qayyoomu wa-atoobu ilayh.) Allah would forgive him even if he was one who fled during the advance of an army",
+  "repeat": 1
+ },
+ {
+  "id": 251,
+  "chapter": 129,
+  "title": {
+   "ar": "الاستغفار و التوبة",
+   "en": "Repentance and seeking forgiveness"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: أَقْرَبُ مَا يَكُونُ الرَّبُّ مِنَ الْعَبْدِ فِي جَوْفِ اللَّيْلِ الآخِرِ فَإِنِ اسْتَطَعْتَ أَنْ تَكُونَ مِمَّنْ يَذْكُرُ اللَّهَ فِي تِلْكَ السَّاعَةِ فَكُنْ",
+  "en": "He said: ‘The nearest the Lord comes to His servant is in the middle of the night, so if you are able to be of those who remember Allah at that time, then be so",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 252,
+  "chapter": 129,
+  "title": {
+   "ar": "الاستغفار و التوبة",
+   "en": "Repentance and seeking forgiveness"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: أَقْرَبُ مَا يَكُونُ الْعَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ فَأَكثِرُوا الدُّعَاءَ",
+  "en": "He also said: ‘The nearest a servant is to his Lord is when he is prostrating, so supplicate much therein",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 253,
+  "chapter": 129,
+  "title": {
+   "ar": "الاستغفار و التوبة",
+   "en": "Repentance and seeking forgiveness"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: إِنَّهُ لَيُغَانُ عَلَى قَلْبِي وَإِنِّي لأَسْتَغْفِرُ اللَّهَ فِي الْيَوْمِ مِائَةَ مَرَّةٍ",
+  "en": "(He also said: ‘verily my heart becomes preoccupied, and verily I seek Allah’s forgiveness a hundred times a day.)(preoccupied: i.e. in a state of ‘forgetfulness’. The Prophet always used to increase in his remembrance of his Lord, in attaining a nearness to Allah and having consciousness of Allah to the extent that if this intensity lessened in anyway, he would regard it as a sin and would then race to seek forgiveness from Allah.)",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 254,
+  "chapter": 130,
+  "title": {
+   "ar": "فضل التسبيح و التحميد، و التهليل، و التكبير",
+   "en": "The excellence of remembering Allah"
+  },
+  "ar": "قَالَ صلى الله عليه وسلم مَنْ قَالَ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ فِي يَوْمٍ مِائَةَ مَرَّةٍ حُطَّتْ خَطَايَاهُ وَلَوْ كَانَتْ مِثْلَ زَبَدِ الْبَحْر",
+  "en": "Whoever says:(How perfect Allah is and I praise Him.) a hundred times during the day, his sins are wiped away, even if they are like the foam of the sea",
+  "translit": "Whoever says:(Subhanal-lahi wabihamdih.) a hundred times during the day, his sins are wiped away, even if they are like the foam of the sea",
+  "repeat": 100
+ },
+ {
+  "id": 255,
+  "chapter": 130,
+  "title": {
+   "ar": "فضل التسبيح و التحميد، و التهليل، و التكبير",
+   "en": "The excellence of remembering Allah"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: مَنْ قَالَ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ، وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ عَشْرَ مِرَارٍ، كَانَ كَمَنْ أَعْتَقَ أَرْبَعَةَ أَنْفُسٍ مِنْ وَلَدِ إِسْمَاعِيلَ",
+  "en": "Abu Hurayrah reported that the Messenger of Allah said: ‘Whoever says: (None has the right to be worshipped except Allah, alone, without partner. To Him belongs all sovereignty and praise and He is over all things omnipotent.) a hundred times during the day, has the reward of freeing ten slaves, a hundred good deeds are recorded for him and a hundred bad deeds are wiped away and he has gained refuge from the devil that day until evening and none shall come with anything better except someone who has done more",
+  "translit": "Abu Hurayrah reported that the Messenger of Allah said: ‘Whoever says: (La ilaha illal-lahu wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shayin qadeer.) a hundred times during the day, has the reward of freeing ten slaves, a hundred good deeds are recorded for him and a hundred bad deeds are wiped away and he has gained refuge from the devil that day until evening and none shall come with anything better except someone who has done more",
+  "repeat": 10
+ },
+ {
+  "id": 256,
+  "chapter": 130,
+  "title": {
+   "ar": "فضل التسبيح و التحميد، و التهليل، و التكبير",
+   "en": "The excellence of remembering Allah"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: كَلِمَتَانِ خَفِيفَتَانِ عَلَى اللِّسَانِ، ثَقِيلَتَانِ فِي الْمِيزَانِ، حَبِيبَتَانِ إِلَى الرَّحْمَنِ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحانَ اللَّهِ الْعَظِيمِ",
+  "en": "Aboo Hurayrah reported that the Messenger of Allah said:’(There are) Two words, (which are ) light on the tongue, heavy on the Scale and beloved to The Most Gracious: How perfect Allah is and I praise Him. How perfect Allah is, The Supreme",
+  "translit": "Aboo Hurayrah reported that the Messenger of Allah said:’(There are) Two words, (which are ) light on the tongue, heavy on the Scale and beloved to The Most Gracious: Subhanal-lahi wabihamdih, wasubhanal-lahil-AAatheem",
+  "repeat": 1
+ },
+ {
+  "id": 257,
+  "chapter": 130,
+  "title": {
+   "ar": "فضل التسبيح و التحميد، و التهليل، و التكبير",
+   "en": "The excellence of remembering Allah"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: لَأَنْ أَقُولَ سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلاَ إِلَهَ إِلاَّ اللَّهُ، وَاللَّهُ أَكْبَرُ، أَحَبُّ إِلَيَّ مِمَّا طَلَعَتْ عَلَيْهِ الشَّمسُ",
+  "en": "Aboo Hurayrah reported that the Messenger of Allah said: ‘Saying: (How perfect Allah is, and all praise is for Allah. None has the right to be worshipped except Allah, and Allah is the greatest.) is more beloved to me than everything the sun has risen over",
+  "translit": "Aboo Hurayrah reported that the Messenger of Allah said: ‘Saying: (Subhanal-lah, walhamdu lillah, la ilaha illal-lah wallahu akbar.) is more beloved to me than everything the sun has risen over",
+  "repeat": 1
+ },
+ {
+  "id": 258,
+  "chapter": 130,
+  "title": {
+   "ar": "فضل التسبيح و التحميد، و التهليل، و التكبير",
+   "en": "The excellence of remembering Allah"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: أَيَعْجِزُ أَحَدُكُم أَنْ يَكْسِبَ كُلَّ يَوْمٍ أَلْفَ حَسَنَةٍ فَسَأَلَهُ سَائِلٌ مِنْ جُلَسَائِهِ كَيْفَ يَكْسِبُ أَحَدُنَا أَلْفَ حَسَنَةٍ؟ قَالَ: يُسَبِّحُ مِائَةَ تَسْبِيحَةٍ، فَيُكتَبُ لَهُ أَلْفُ حَسَنَةٍ أَوْ يُحَطُّ عَنْهُ أَلْفُ خَطِيئَةٍ",
+  "en": "Sa’",
+  "translit": "Sa’d said: ‘We were sitting with the Messenger of Allah, and he said: ‘Are any of you unable to gain a thousand good deeds each day?’ Somebody then asked him : How does one achieve a thousand good deeds? He replied: ‘He should say: (Subhanal-lah.) one hundred times, for a thousand good deeds are recorded for him or a thousand bad deeds are wiped away",
+  "repeat": 100
+ },
+ {
+  "id": 259,
+  "chapter": 130,
+  "title": {
+   "ar": "فضل التسبيح و التحميد، و التهليل، و التكبير",
+   "en": "The excellence of remembering Allah"
+  },
+  "ar": "مَنْ قَالَ: سُبْحَانَ اللَّهِ الْعَظِيمِ وَبِحَمْدِهِ غُرِسَتْ لَهُ نَخْلَةٌ فِي الْجَنَّةِ",
+  "en": "Jabbir related that the Prophet said: ‘Whoever says: (How perfect Allah is. The Supreme, and I praise Him.) a palm tree is planted for him in paradise",
+  "translit": "Jabbir related that the Prophet said: ‘Whoever says: (Subhanal-lahil-AAatheemi wabihamdih.) a palm tree is planted for him in paradise",
+  "repeat": 1
+ },
+ {
+  "id": 260,
+  "chapter": 130,
+  "title": {
+   "ar": "فضل التسبيح و التحميد، و التهليل، و التكبير",
+   "en": "The excellence of remembering Allah"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: يَا عَبْدَ اللَّهِ بْنَ قَيْسٍ أَلاَ أَدُلُّكَ عَلَى كَنْزٍ مِنْ كُنُوزِ الْجَنَّةِ؟ فَقُلْتُ: بَلَى يَا رَسُولَ اللَّهِ، قَالَ: قُلْ لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ",
+  "en": "AAabdullah Ibn Qays related that the Prophet said to him: ‘ O ‘AAabdullah Ibn Qays, shall I not inform you of a treasure from the treasures of paradise?’",
+  "translit": "AAabdullah Ibn Qays related that the Prophet said to him: ‘ O ‘AAabdullah Ibn Qays, shall I not inform you of a treasure from the treasures of paradise?’ He then said: ‘Say: La hawla wala quwwata illa billah",
+  "repeat": 1
+ },
+ {
+  "id": 261,
+  "chapter": 130,
+  "title": {
+   "ar": "فضل التسبيح و التحميد، و التهليل، و التكبير",
+   "en": "The excellence of remembering Allah"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: أَحَبُّ الْكَلاَمِ إِلَى اللَّهِ أَرْبَعٌ: سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلاَ إِلَهَ إِلاَّ اللَّهُ، وَاللَّهُ أَكْبَرُ، لاَ يَضُرُّكَ بِأَيِّهِنَّ بَدَأتَ",
+  "en": "the most beloved words to Allah are four: How perfect Allah is, all praise is for Allah. None has the right to be worshipped except Allah and Allah is the greatest.(it does not matter which of them you start with.)",
+  "translit": "the most beloved words to Allah are four: Subhanal-lah, walhamdu lillah, wala ilaha illal-lah, wallahu akbar.(it does not matter which of them you start with.)",
+  "repeat": 1
+ },
+ {
+  "id": 263,
+  "chapter": 130,
+  "title": {
+   "ar": "فضل التسبيح و التحميد، و التهليل، و التكبير",
+   "en": "The excellence of remembering Allah"
+  },
+  "ar": "كَانَ الرَّجُلُ إِذَا أَسْلَمَ عَلَّمَهُ النَّبيُّ صلى الله عليه وسلم الصَّلاَةَ ثُمَّ أَمَرَهُ أَنْ يَدْعُوَ بِهَؤُلاَءِ الْكَلِمَاتِ: اللَّهُمَّ اغْفِرِ لِي، وَارْحَمْنِي، وَاهْدِنِي، وَعَافِنِي وَارْزُقْنِي",
+  "en": "Tariq Al-AshjaAAee said: ‘When someone would embrace Islam, the Prophet would teach him how to perform prayer and then order him to supplicate with the following words: O Allah, forgive me, have mercy upon me, guide me, give me health and grant me sustenance",
+  "translit": "Tariq Al-AshjaAAee said: ‘When someone would embrace Islam, the Prophet would teach him how to perform prayer and then order him to supplicate with the following words: Allahummagh-fir lee, warhamnee, wahdinee, waAAafinee warzuqnee",
+  "repeat": 1
+ },
+ {
+  "id": 264,
+  "chapter": 130,
+  "title": {
+   "ar": "فضل التسبيح و التحميد، و التهليل، و التكبير",
+   "en": "The excellence of remembering Allah"
+  },
+  "ar": "إِنَّ أَفْضَلَ الدُّعَاءِ الْحَمْدُ لِلَّهِ، وَأَفْضَلَ الذِّكْرِ لاَ إِلَهَ إِلاَّ اللَّهُ",
+  "en": "Jabir Ibn ‘AAabdullah related that the Messenger of Allah said: ‘Verily, the best supplication is: (All praise is for Allah.) and indeed, the best form of remembrance is: None has the right to be worshipped except Allah",
+  "translit": "Jabir Ibn ‘AAabdullah related that the Messenger of Allah said: ‘Verily, the best supplication is: (Alhamdu lillah) and indeed, the best form of remembrance is: La ilaha illal-lah",
+  "repeat": 1
+ },
+ {
+  "id": 265,
+  "chapter": 130,
+  "title": {
+   "ar": "فضل التسبيح و التحميد، و التهليل، و التكبير",
+   "en": "The excellence of remembering Allah"
+  },
+  "ar": "الباقيات الصالحات : سبحان الله والحمد لله، ولا إله إلا الله،والله أكبر،و لا حول ولا قوة إلا بالله",
+  "en": "The good deeds which endure are 'Glorified is Allah', and 'The praise is for Allah', and 'but There is none worthy of worship Allah', and 'Allah is the Most Great', and 'There is no power and no might except by Allah'",
+  "translit": "The good deeds which endure are 'Subhaanallaah.', and 'Walhamdulillaah.', and 'Wa laa ilaaha illallaah'., and 'Wallaahu Akbar',and 'Wa laa hawla wa laa guwawala illaa billaah'",
+  "repeat": 1
+ },
+ {
+  "id": 219,
+  "chapter": 107,
+  "title": {
+   "ar": "فضل الصلاة على النبي صلى الله عليه و سلم",
+   "en": "The excellence of asking for Allah's blessings upon the Prophet PBUH"
+  },
+  "ar": "قَالَ النَّبِيُّ صلى الله عليه وسلم: مَنْ صَلَّى عَلَيَّ صَلاَةً صَلَّى اللَّهُ عَلَيْهِ بِهَا عَشْراً",
+  "en": "The Prophet (PBUH)",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 220,
+  "chapter": 107,
+  "title": {
+   "ar": "فضل الصلاة على النبي صلى الله عليه و سلم",
+   "en": "The excellence of asking for Allah's blessings upon the Prophet PBUH"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: لاَ تَجْعَلُوا قَبْرِي عِيداً وَصَلُّوا عَلَيَّ؛ فَإِنَّ صَلاَتَكُم تَبْلُغُنِي حَيْثُ كُنْتُمْ",
+  "en": "He (PBUH)",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 221,
+  "chapter": 107,
+  "title": {
+   "ar": "فضل الصلاة على النبي صلى الله عليه و سلم",
+   "en": "The excellence of asking for Allah's blessings upon the Prophet PBUH"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: الْبَخِيلُ مَنْ ذُكِرْتُ عِنْدَهُ فَلَمْ يُصَلِّ عَلَيَّ",
+  "en": "He (PBUH)",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 222,
+  "chapter": 107,
+  "title": {
+   "ar": "فضل الصلاة على النبي صلى الله عليه و سلم",
+   "en": "The excellence of asking for Allah's blessings upon the Prophet PBUH"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم:إِنَّ لِلَّهِ مَلاَئِكَةً سَيَّاحِينَ فِي الْأَرْضِ يُبَلِّغُونِي مِنْ أُمَّتِي السَّلاَمَ",
+  "en": "The Prophet [PBUH] said:'Indeed Allah has angels who roam the earth and they convey to me the greetings (or prayers of peace) of my 'Ummah (nation)",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 223,
+  "chapter": 107,
+  "title": {
+   "ar": "فضل الصلاة على النبي صلى الله عليه و سلم",
+   "en": "The excellence of asking for Allah's blessings upon the Prophet PBUH"
+  },
+  "ar": "وَقَالَ صلى الله عليه وسلم: مَا مِنْ أَحَدٍ يُسَلِّمُ عَلَيَّ إِلاَّ رَدَّ اللَّهُ عَلَيَّ رُوحِيَ حَتَّى أَرُدَّ عَلَيْهِ السَّلاَمَ",
+  "en": "The Prophet [PBUH] said: 'No one sends greetings (or prayers of peace) upon me but Allah returns my soul to me so that I may return his greetings",
+  "translit": "",
+  "repeat": 1
+ },
+ {
+  "id": 120,
+  "chapter": 34,
+  "title": {
+   "ar": "دعاء الهم والحزن",
+   "en": "Invocations in times of worry and grief"
+  },
+  "ar": "اللَّهُمَّ إِنِّي عَبْدُكَ، ابْنُ عَبْدِكَ، ابْنُ أَمَتِكَ، نَاصِيَتِي بِيَدِكَ، مَاضٍ فِيَّ حُكْمُكَ، عَدْلٌ فِيَّ قَضَاؤُكَ، أَسْأَلُكَ بِكُــــلِّ اسْمٍ هُوَ لَكَ، سَمَّيْتَ بِهِ نَفْسَكَ، أَوْ أَنْزَلْتَهُ فِي كِتَابِكَ، أَوْ عَلَّمْتَهُ أَحَداً مِنْ خَلْقِكَ، أَوِ اسْتَأْثَرْتَ بِهِ فِي عِلْمِ الغَيْبِ عِنْدَكَ، أَنْ تَجْعَلَ القُرْآنَ رَبِيعَ قَلْبِي، وَنُورَ صَدْرِي، وَجَلاَءَ حُزْنِي، وَذَهَابَ هَمِّي",
+  "en": "O Allah, I am Your servant, son of Your servant, son of Your maidservant, my forelock is in Your hand (i.e. You have total mastery over), Your command over me is forever executed and Your decree over me is just. I ask You by every name belonging to You which You named Yourself with, or revealed in Your Book, or You taught to any of Your creation, or You have preserved in the knowledge of the unseen with You, that You make the Quran the life of my heart and the light of my breast, and a departure for my sorrow and a release for my anxiety",
+  "translit": "Allahumma innee AAabduk, ibnu AAabdik, ibnu amatik, nasiyatee biyadik, madin fiyya hukmuk, AAadlun fiyya qada-ok, as-aluka bikulli ismin huwa lak, sammayta bihi nafsak, aw anzaltahu fee kitabik, aw AAallamtahu ahadan min khalqik awis-ta/tharta bihi fee AAilmil-ghaybi AAindak, an tajAAalal-Qurana rabeeAAa qalbee, wanoora sadree, wajalaa huznee wathahaba hammee",
+  "repeat": 1
+ },
+ {
+  "id": 121,
+  "chapter": 34,
+  "title": {
+   "ar": "دعاء الهم والحزن",
+   "en": "Invocations in times of worry and grief"
+  },
+  "ar": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْبُخْلِ وَالْجُبْنِ، وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",
+  "en": "O Allah, I take refuge in You from anxiety and sorrow, weakness and laziness, miserliness and cowardice, the burden of debts and from being over powered by men",
+  "translit": "Allahumma innee aAAoothu bika minal-hammi walhuzn, walAAajzi walkasali walbukhli waljubn, wadalAAid-dayni waghalabatir-rijal",
+  "repeat": 1
+ },
+ {
+  "id": 122,
+  "chapter": 35,
+  "title": {
+   "ar": "دعاء الكرب",
+   "en": "Invocations for anguish"
+  },
+  "ar": "لاَ إِلَهَ إِلاَّ اللَّهُ الْعَظِيمُ الْحَلِيمُ، لاَ إِلَهَ إِلاَّ اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ، لاَ إِلَهَ إِلاَّ اللَّهُ رَبُّ السَّمَوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ",
+  "en": "None has the right to be worshipped except Allah Forbearing. None has the right to be worshipped except Allah, Lord of the magnificent throne. None has the right to be worshipped except Allah, Lord of the heavens, Lord of the Earth and Lord of the noble throne",
+  "translit": "La ilaha illal-lahul-AAatheemul-haleem, la ilaha illal-lahu rabbul-AAarshil-AAatheem, la ilaha illal-lahu rabbus-samawati warabbul-ardi warabbul-AAarshil-kareem",
+  "repeat": 1
+ },
+ {
+  "id": 123,
+  "chapter": 35,
+  "title": {
+   "ar": "دعاء الكرب",
+   "en": "Invocations for anguish"
+  },
+  "ar": "اللَّهُمَّ رَحْمَتَكَ أَرْجُو، فَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ، وَأَصْلِحْ لِي شَأْنِي كُلَّهُ، لاَ إِلَهَ إِلاَّ أَنْتَ",
+  "en": "O Allah, it is Your mercy that I hope for, so do not leave me in charge of my affairs even for a blink of an eye and rectify for me all of my affairs.None has the right to be worshipped except You",
+  "translit": "Allahumma rahmataka arjoo fala takilnee ila nafsee tarfata AAayn, wa-aslih lee sha/nee kullah, la ilaha illa ant",
+  "repeat": 1
+ },
+ {
+  "id": 124,
+  "chapter": 35,
+  "title": {
+   "ar": "دعاء الكرب",
+   "en": "Invocations for anguish"
+  },
+  "ar": "لاَ إِلَهَ إِلاَّ أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظّالِمِينَ",
+  "en": "None has the right to be worshipped except You. How perfect You are, verily I was among the wrong-doers",
+  "translit": "La ilaha illa anta subhanaka innee kuntu minath-thalimeen",
+  "repeat": 1
+ },
+ {
+  "id": 125,
+  "chapter": 35,
+  "title": {
+   "ar": "دعاء الكرب",
+   "en": "Invocations for anguish"
+  },
+  "ar": "اللَّهُ اللَّهُ رَبِّي لاَ أُشْرِكُ بِهِ شَيْئاً",
+  "en": "Allah, Allah is my Lord, I do not associate anything with Him",
+  "translit": "None has the right to be worshipped except You. How perfect You are, verily I was among the wrong-doers",
+  "repeat": 1
+ },
+ {
+  "id": 139,
+  "chapter": 43,
+  "title": {
+   "ar": "دعاء من استصعب عليه أمر",
+   "en": "Invocation for when you find something becoming difficult for you"
+  },
+  "ar": "اللَّهُمَّ لاَ سَهْلَ إِلاَّ مَا جَعَلْتَهُ سَهْلاً، وَأَنْتَ تَجْعَلُ الْحَزْنَ إِذَا شِئْتَ سَهْلاً",
+  "en": "O Allah, there is no ease except in that which You have made easy, and You make the difficulty, if You wish, easy",
+  "translit": "Allahumma la sahla illa ma jaAAaltahu sahla, wa-anta tajAAalul- hazana in shi'ta sahla",
+  "repeat": 1
+ },
+ {
+  "id": 240,
+  "chapter": 122,
+  "title": {
+   "ar": "دعاء التعجب والأمر السار",
+   "en": "What to say when surprised or startled"
+  },
+  "ar": "سُبْحَانَ اللَّهِ!",
+  "en": "How perfect Allah is",
+  "translit": "Subhanal-lah!",
+  "repeat": 1
+ },
+ {
+  "id": 241,
+  "chapter": 122,
+  "title": {
+   "ar": "دعاء التعجب والأمر السار",
+   "en": "What to say when surprised or startled"
+  },
+  "ar": "اللَّهُ أَكْبَرُ!",
+  "en": "Allah is the greatest",
+  "translit": "Allahu akbar",
+  "repeat": 1
+ }
+]

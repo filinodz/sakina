@@ -1,0 +1,17 @@
+node_modules/
+dist/
+dev-dist/
+.cache/
+*.log
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+android/local.properties
+android/.gradle/
+android/app/build/
+android/build/
+*.keystore
+*.jks
+release/

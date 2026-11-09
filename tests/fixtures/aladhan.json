@@ -1,0 +1,3005 @@
+[
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:42",
+   "05:30",
+   "12:46",
+   "16:36",
+   "20:01",
+   "21:43"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:39",
+   "05:29",
+   "12:46",
+   "16:37",
+   "20:04",
+   "21:47"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:37",
+   "05:28",
+   "12:47",
+   "16:39",
+   "20:07",
+   "21:50"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:37",
+   "05:28",
+   "12:49",
+   "16:40",
+   "20:09",
+   "21:53"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:37",
+   "05:29",
+   "12:50",
+   "16:41",
+   "20:10",
+   "21:54"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:39",
+   "05:31",
+   "12:51",
+   "16:42",
+   "20:11",
+   "21:55"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:10",
+   "07:42",
+   "12:37",
+   "15:14",
+   "17:32",
+   "18:58"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:14",
+   "07:46",
+   "12:39",
+   "15:14",
+   "17:31",
+   "18:58"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:17",
+   "07:50",
+   "12:41",
+   "15:14",
+   "17:32",
+   "18:59"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:21",
+   "07:54",
+   "12:43",
+   "15:15",
+   "17:33",
+   "19:01"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:23",
+   "07:56",
+   "12:46",
+   "15:17",
+   "17:35",
+   "19:03"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:26",
+   "07:59",
+   "12:48",
+   "15:20",
+   "17:38",
+   "19:06"
+  ]
+ },
+ {
+  "id": "algiers",
+  "city": "Alger",
+  "lat": 36.7538,
+  "lng": 3.0588,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-31",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:27",
+   "08:00",
+   "12:51",
+   "15:23",
+   "17:41",
+   "19:09"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:30",
+   "05:17",
+   "12:31",
+   "16:21",
+   "19:46",
+   "21:26"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:27",
+   "05:16",
+   "12:32",
+   "16:22",
+   "19:49",
+   "21:31"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:25",
+   "05:15",
+   "12:33",
+   "16:24",
+   "19:51",
+   "21:34"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:25",
+   "05:15",
+   "12:34",
+   "16:25",
+   "19:53",
+   "21:36"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:25",
+   "05:16",
+   "12:35",
+   "16:26",
+   "19:55",
+   "21:38"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:27",
+   "05:17",
+   "12:36",
+   "16:27",
+   "19:55",
+   "21:38"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:55",
+   "07:26",
+   "12:23",
+   "15:01",
+   "17:19",
+   "18:45"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:59",
+   "07:31",
+   "12:25",
+   "15:00",
+   "17:18",
+   "18:45"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:03",
+   "07:35",
+   "12:27",
+   "15:01",
+   "17:19",
+   "18:46"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:06",
+   "07:38",
+   "12:29",
+   "15:02",
+   "17:20",
+   "18:47"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:09",
+   "07:41",
+   "12:32",
+   "15:04",
+   "17:22",
+   "18:49"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:11",
+   "07:43",
+   "12:34",
+   "15:07",
+   "17:25",
+   "18:52"
+  ]
+ },
+ {
+  "id": "constantine",
+  "city": "Constantine",
+  "lat": 36.365,
+  "lng": 6.6147,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-31",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:13",
+   "07:45",
+   "12:37",
+   "15:10",
+   "17:28",
+   "18:55"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "04:27",
+   "05:53",
+   "12:36",
+   "15:53",
+   "19:19",
+   "20:39"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "04:26",
+   "05:52",
+   "12:37",
+   "15:53",
+   "19:21",
+   "20:42"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "04:26",
+   "05:52",
+   "12:38",
+   "15:55",
+   "19:23",
+   "20:44"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "04:26",
+   "05:53",
+   "12:39",
+   "15:57",
+   "19:25",
+   "20:46"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "04:27",
+   "05:54",
+   "12:40",
+   "15:58",
+   "19:26",
+   "20:47"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-06-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "04:28",
+   "05:55",
+   "12:41",
+   "15:59",
+   "19:27",
+   "20:48"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:42",
+   "07:02",
+   "12:27",
+   "15:32",
+   "17:52",
+   "19:07"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:45",
+   "07:05",
+   "12:29",
+   "15:33",
+   "17:53",
+   "19:08"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:48",
+   "07:08",
+   "12:31",
+   "15:34",
+   "17:54",
+   "19:09"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:51",
+   "07:11",
+   "12:34",
+   "15:36",
+   "17:56",
+   "19:11"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:54",
+   "07:14",
+   "12:36",
+   "15:38",
+   "17:58",
+   "19:14"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:56",
+   "07:16",
+   "12:38",
+   "15:40",
+   "18:01",
+   "19:16"
+  ]
+ },
+ {
+  "id": "tamanrasset",
+  "city": "Tamanrasset",
+  "lat": 22.785,
+  "lng": 5.5228,
+  "tz": "Africa/Algiers",
+  "method": "algeria",
+  "date": "2026-12-31",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:58",
+   "07:18",
+   "12:41",
+   "15:43",
+   "18:04",
+   "19:19"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-06-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "03:13",
+   "05:02",
+   "12:17",
+   "16:08",
+   "19:33",
+   "21:22"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-06-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "03:10",
+   "05:00",
+   "12:18",
+   "16:09",
+   "19:36",
+   "21:26"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-06-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "03:09",
+   "05:00",
+   "12:19",
+   "16:10",
+   "19:38",
+   "21:30"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-06-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "03:08",
+   "05:00",
+   "12:20",
+   "16:12",
+   "19:40",
+   "21:32"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-06-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "03:08",
+   "05:01",
+   "12:21",
+   "16:13",
+   "19:42",
+   "21:34"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-06-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "03:10",
+   "05:02",
+   "12:22",
+   "16:14",
+   "19:42",
+   "21:34"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-12-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "05:41",
+   "07:13",
+   "12:08",
+   "14:45",
+   "17:03",
+   "18:35"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-12-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "05:45",
+   "07:18",
+   "12:10",
+   "14:45",
+   "17:03",
+   "18:35"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-12-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "05:49",
+   "07:22",
+   "12:12",
+   "14:46",
+   "17:03",
+   "18:36"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-12-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "05:52",
+   "07:25",
+   "12:15",
+   "14:47",
+   "17:04",
+   "18:37"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-12-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "05:55",
+   "07:28",
+   "12:17",
+   "14:49",
+   "17:07",
+   "18:40"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-12-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "05:57",
+   "07:30",
+   "12:20",
+   "14:51",
+   "17:09",
+   "18:42"
+  ]
+ },
+ {
+  "id": "tunis",
+  "city": "Tunis",
+  "lat": 36.8065,
+  "lng": 10.1815,
+  "tz": "Africa/Tunis",
+  "method": "tunisia",
+  "date": "2026-12-31",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 18
+  },
+  "times": [
+   "05:59",
+   "07:32",
+   "12:22",
+   "14:54",
+   "17:13",
+   "18:46"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-06-01",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "04:11",
+   "05:54",
+   "12:53",
+   "16:29",
+   "19:52",
+   "21:23"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-06-06",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "04:09",
+   "05:54",
+   "12:54",
+   "16:29",
+   "19:54",
+   "21:27"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-06-11",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "04:08",
+   "05:53",
+   "12:55",
+   "16:30",
+   "19:56",
+   "21:29"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-06-16",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "04:08",
+   "05:54",
+   "12:56",
+   "16:31",
+   "19:58",
+   "21:32"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-06-21",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "04:08",
+   "05:54",
+   "12:57",
+   "16:32",
+   "19:59",
+   "21:33"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-06-26",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "04:10",
+   "05:56",
+   "12:58",
+   "16:34",
+   "20:00",
+   "21:34"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-12-01",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "05:01",
+   "06:33",
+   "11:44",
+   "14:36",
+   "16:55",
+   "18:17"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-12-06",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "05:05",
+   "06:37",
+   "11:46",
+   "14:36",
+   "16:55",
+   "18:17"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-12-11",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "05:08",
+   "06:41",
+   "11:48",
+   "14:37",
+   "16:56",
+   "18:19"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-12-16",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "05:11",
+   "06:44",
+   "11:51",
+   "14:39",
+   "16:57",
+   "18:20"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-12-21",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "05:14",
+   "06:47",
+   "11:53",
+   "14:41",
+   "16:59",
+   "18:23"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-12-26",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "05:16",
+   "06:49",
+   "11:56",
+   "14:43",
+   "17:02",
+   "18:25"
+  ]
+ },
+ {
+  "id": "cairo",
+  "city": "Le Caire",
+  "lat": 30.0444,
+  "lng": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "egypt",
+  "date": "2026-12-31",
+  "meta": {
+   "Fajr": 19.5,
+   "Isha": 17.5
+  },
+  "times": [
+   "05:18",
+   "06:51",
+   "11:58",
+   "14:46",
+   "17:05",
+   "18:28"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-06-01",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "04:11",
+   "05:38",
+   "12:19",
+   "15:35",
+   "18:59",
+   "20:29"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-06-06",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "04:11",
+   "05:38",
+   "12:19",
+   "15:37",
+   "19:01",
+   "20:31"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-06-11",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "04:10",
+   "05:38",
+   "12:20",
+   "15:39",
+   "19:03",
+   "20:33"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-06-16",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "04:10",
+   "05:38",
+   "12:21",
+   "15:41",
+   "19:04",
+   "20:34"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-06-21",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "04:11",
+   "05:39",
+   "12:22",
+   "15:42",
+   "19:06",
+   "20:36"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-06-26",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "04:13",
+   "05:41",
+   "12:24",
+   "15:43",
+   "19:07",
+   "20:37"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-12-01",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "05:21",
+   "06:42",
+   "12:10",
+   "15:16",
+   "17:37",
+   "19:07"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-12-06",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "05:24",
+   "06:45",
+   "12:12",
+   "15:17",
+   "17:38",
+   "19:08"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-12-11",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "05:27",
+   "06:48",
+   "12:14",
+   "15:19",
+   "17:40",
+   "19:10"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-12-16",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "05:29",
+   "06:51",
+   "12:16",
+   "15:21",
+   "17:41",
+   "19:11"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-12-21",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "05:32",
+   "06:54",
+   "12:19",
+   "15:23",
+   "17:44",
+   "19:14"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-12-26",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "05:34",
+   "06:56",
+   "12:21",
+   "15:25",
+   "17:46",
+   "19:16"
+  ]
+ },
+ {
+  "id": "makkah",
+  "city": "La Mecque",
+  "lat": 21.4225,
+  "lng": 39.8262,
+  "tz": "Asia/Riyadh",
+  "method": "makkah",
+  "date": "2026-12-31",
+  "meta": {
+   "Fajr": 18.5,
+   "Isha": "90 min"
+  },
+  "times": [
+   "05:37",
+   "06:58",
+   "12:24",
+   "15:28",
+   "17:49",
+   "19:19"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-06-01",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "04:14",
+   "05:52",
+   "13:48",
+   "18:03",
+   "21:46",
+   "23:23"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-06-06",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "04:13",
+   "05:49",
+   "13:49",
+   "18:05",
+   "21:50",
+   "23:26"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-06-11",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "04:12",
+   "05:47",
+   "13:50",
+   "18:07",
+   "21:54",
+   "23:28"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-06-16",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "04:12",
+   "05:46",
+   "13:51",
+   "18:08",
+   "21:56",
+   "23:30"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-06-21",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "04:13",
+   "05:47",
+   "13:52",
+   "18:10",
+   "21:58",
+   "23:32"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-06-26",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "04:15",
+   "05:49",
+   "13:53",
+   "18:11",
+   "21:58",
+   "23:32"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-12-01",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "07:06",
+   "08:22",
+   "12:40",
+   "14:39",
+   "16:56",
+   "18:12"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-12-06",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "07:12",
+   "08:28",
+   "12:42",
+   "14:38",
+   "16:54",
+   "18:11"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-12-11",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "07:16",
+   "08:34",
+   "12:44",
+   "14:37",
+   "16:54",
+   "18:11"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-12-16",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "07:20",
+   "08:38",
+   "12:46",
+   "14:38",
+   "16:54",
+   "18:12"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-12-21",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "07:23",
+   "08:41",
+   "12:49",
+   "14:39",
+   "16:56",
+   "18:14"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-12-26",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "07:26",
+   "08:43",
+   "12:51",
+   "14:42",
+   "16:59",
+   "18:17"
+  ]
+ },
+ {
+  "id": "paris",
+  "city": "Paris",
+  "lat": 48.8566,
+  "lng": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "france12",
+  "date": "2026-12-31",
+  "meta": {
+   "Fajr": 12,
+   "Isha": 12
+  },
+  "times": [
+   "07:27",
+   "08:44",
+   "12:54",
+   "14:45",
+   "17:03",
+   "18:21"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-06-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "02:31",
+   "04:49",
+   "12:58",
+   "17:18",
+   "21:08",
+   "23:19"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-06-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "02:30",
+   "04:46",
+   "12:59",
+   "17:20",
+   "21:13",
+   "23:21"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-06-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "02:30",
+   "04:44",
+   "13:00",
+   "17:22",
+   "21:17",
+   "23:24"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-06-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "02:30",
+   "04:43",
+   "13:01",
+   "17:24",
+   "21:20",
+   "23:25"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-06-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "02:31",
+   "04:43",
+   "13:02",
+   "17:25",
+   "21:22",
+   "23:27"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-06-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "02:32",
+   "04:45",
+   "13:03",
+   "17:26",
+   "21:22",
+   "23:27"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-12-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:42",
+   "07:44",
+   "11:50",
+   "13:39",
+   "15:55",
+   "17:50"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-12-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:48",
+   "07:50",
+   "11:52",
+   "13:37",
+   "15:52",
+   "17:49"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-12-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:52",
+   "07:56",
+   "11:54",
+   "13:36",
+   "15:51",
+   "17:48"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-12-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:56",
+   "08:00",
+   "11:56",
+   "13:36",
+   "15:52",
+   "17:49"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-12-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "05:59",
+   "08:04",
+   "11:59",
+   "13:38",
+   "15:53",
+   "17:51"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-12-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:01",
+   "08:06",
+   "12:01",
+   "13:40",
+   "15:57",
+   "17:54"
+  ]
+ },
+ {
+  "id": "london",
+  "city": "Londres",
+  "lat": 51.5074,
+  "lng": -0.1278,
+  "tz": "Europe/London",
+  "method": "mwl",
+  "date": "2026-12-31",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:03",
+   "08:06",
+   "12:03",
+   "13:43",
+   "16:01",
+   "17:58"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-06-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:32",
+   "05:27",
+   "13:07",
+   "17:05",
+   "20:37",
+   "22:24"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-06-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:28",
+   "05:26",
+   "13:08",
+   "17:07",
+   "20:40",
+   "22:29"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-06-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:25",
+   "05:25",
+   "13:09",
+   "17:08",
+   "20:43",
+   "22:33"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-06-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:24",
+   "05:24",
+   "13:10",
+   "17:10",
+   "20:45",
+   "22:36"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-06-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:24",
+   "05:25",
+   "13:11",
+   "17:11",
+   "20:47",
+   "22:38"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-06-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "03:26",
+   "05:26",
+   "13:12",
+   "17:12",
+   "20:47",
+   "22:38"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-12-01",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:32",
+   "08:02",
+   "12:58",
+   "15:23",
+   "17:44",
+   "19:09"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-12-06",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:36",
+   "08:07",
+   "13:00",
+   "15:22",
+   "17:43",
+   "19:09"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-12-11",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:40",
+   "08:12",
+   "13:02",
+   "15:22",
+   "17:43",
+   "19:09"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-12-16",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:43",
+   "08:15",
+   "13:05",
+   "15:23",
+   "17:44",
+   "19:11"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-12-21",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:46",
+   "08:18",
+   "13:07",
+   "15:25",
+   "17:46",
+   "19:13"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-12-26",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:48",
+   "08:21",
+   "13:10",
+   "15:28",
+   "17:49",
+   "19:15"
+  ]
+ },
+ {
+  "id": "istanbul",
+  "city": "Istanbul",
+  "lat": 41.0082,
+  "lng": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "turkey",
+  "date": "2026-12-31",
+  "meta": {
+   "Fajr": 18,
+   "Isha": 17
+  },
+  "times": [
+   "06:50",
+   "08:22",
+   "13:12",
+   "15:31",
+   "17:52",
+   "19:19"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-06-01",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "03:15",
+   "05:09",
+   "12:52",
+   "17:00",
+   "20:36",
+   "22:30"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-06-06",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "03:10",
+   "05:07",
+   "12:53",
+   "17:02",
+   "20:40",
+   "22:36"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-06-11",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "03:07",
+   "05:05",
+   "12:54",
+   "17:04",
+   "20:43",
+   "22:41"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-06-16",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "03:06",
+   "05:05",
+   "12:55",
+   "17:05",
+   "20:45",
+   "22:45"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-06-21",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "03:06",
+   "05:06",
+   "12:56",
+   "17:07",
+   "20:47",
+   "22:46"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-06-26",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "03:08",
+   "05:07",
+   "12:57",
+   "17:08",
+   "20:47",
+   "22:46"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-12-01",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "05:46",
+   "07:14",
+   "11:43",
+   "13:55",
+   "16:12",
+   "17:41"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-12-06",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "05:50",
+   "07:19",
+   "11:45",
+   "13:54",
+   "16:11",
+   "17:40"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-12-11",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "05:55",
+   "07:24",
+   "11:48",
+   "13:54",
+   "16:11",
+   "17:40"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-12-16",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "05:58",
+   "07:28",
+   "11:50",
+   "13:54",
+   "16:12",
+   "17:42"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-12-21",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "06:01",
+   "07:31",
+   "11:52",
+   "13:56",
+   "16:14",
+   "17:44"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-12-26",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "06:03",
+   "07:33",
+   "11:55",
+   "13:59",
+   "16:17",
+   "17:47"
+  ]
+ },
+ {
+  "id": "montreal",
+  "city": "Montréal",
+  "lat": 45.5019,
+  "lng": -73.5674,
+  "tz": "America/Toronto",
+  "method": "isna",
+  "date": "2026-12-31",
+  "meta": {
+   "Fajr": 15,
+   "Isha": 15
+  },
+  "times": [
+   "06:05",
+   "07:34",
+   "11:57",
+   "14:02",
+   "16:21",
+   "17:50"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-06-01",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:39",
+   "07:02",
+   "13:11",
+   "16:37",
+   "19:20",
+   "20:35"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-06-06",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:39",
+   "07:03",
+   "13:12",
+   "16:38",
+   "19:21",
+   "20:36"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-06-11",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:40",
+   "07:04",
+   "13:13",
+   "16:40",
+   "19:22",
+   "20:37"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-06-16",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:40",
+   "07:05",
+   "13:14",
+   "16:41",
+   "19:23",
+   "20:39"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-06-21",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:41",
+   "07:06",
+   "13:15",
+   "16:42",
+   "19:24",
+   "20:40"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-06-26",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:43",
+   "07:07",
+   "13:16",
+   "16:43",
+   "19:25",
+   "20:41"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-12-01",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:41",
+   "07:03",
+   "13:02",
+   "16:26",
+   "19:01",
+   "20:15"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-12-06",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:43",
+   "07:06",
+   "13:04",
+   "16:28",
+   "19:03",
+   "20:17"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-12-11",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:45",
+   "07:08",
+   "13:06",
+   "16:31",
+   "19:05",
+   "20:19"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-12-16",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:47",
+   "07:10",
+   "13:09",
+   "16:33",
+   "19:07",
+   "20:22"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-12-21",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:49",
+   "07:13",
+   "13:11",
+   "16:35",
+   "19:09",
+   "20:24"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-12-26",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:52",
+   "07:15",
+   "13:14",
+   "16:38",
+   "19:12",
+   "20:27"
+  ]
+ },
+ {
+  "id": "kualalumpur",
+  "city": "Kuala Lumpur",
+  "lat": 3.139,
+  "lng": 101.6869,
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "singapore",
+  "date": "2026-12-31",
+  "meta": {
+   "Fajr": 20,
+   "Isha": 18
+  },
+  "times": [
+   "05:54",
+   "07:18",
+   "13:16",
+   "16:40",
+   "19:14",
+   "20:29"
+  ]
+ }
+]

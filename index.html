@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#04110d" />
+    <meta name="description" content="Sakina — écran de prière open source pour mosquées et foyers : horaires précis, iqama, adhan, versets et adhkar. Optimisé pour Smart TV." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="icon" type="image/svg+xml" href="icons/icon.svg" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <title>Sakina — Écran de prière</title>
+    <!-- Critical splash styles inline: the page never shows unstyled content, even before the CSS bundle loads. -->
+    <style>
+      html, body { margin: 0; height: 100%; background: #04110d; overflow: hidden; }
+      #splash { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px; background: #04110d; color: #e8c77d; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; text-align: center; padding: 24px; box-sizing: border-box; }
+      #splash .star8 { width: 96px; height: 96px; }
+      #boot-error { display: none; max-width: 560px; color: #f6f1e4; font-size: 16px; line-height: 1.6; }
+      #boot-error b { color: #e8c77d; font-size: 20px; }
+      #boot-error code { display: inline-block; margin-top: 6px; padding: 4px 10px; border-radius: 6px; background: rgba(232, 199, 125, 0.14); color: #e8c77d; }
+    </style>
+  </head>
+  <body>
+    <div id="splash">
+      <svg class="star8" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.2"><rect x="21" y="21" width="58" height="58"/><rect x="21" y="21" width="58" height="58" transform="rotate(45 50 50)"/><circle cx="50" cy="50" r="13"/></g></svg>
+      <div id="boot-error">
+        <b>Sakina n’a pas pu démarrer</b><br />
+        Le fichier a sans doute été ouvert directement (<code>file://</code>) : les navigateurs bloquent alors l’application.<br /><br />
+        Double-cliquez sur <code>Lancer-Sakina.bat</code> dans le dossier du projet,<br />ou lancez <code>npm start</code> puis ouvrez <code>http://localhost:4173</code>.
+      </div>
+    </div>
+    <div id="viewport" tabindex="-1"></div>
+    <script>
+      // If the app bundle could not run (opened from disk, very old browser…), explain instead of spinning forever.
+      setTimeout(function () {
+        if (!window.__sakinaBooted) { var e = document.getElementById('boot-error'); if (e) e.style.display = 'block'; }
+      }, 4000);
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

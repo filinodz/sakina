@@ -1,6 +1,8 @@
 import '@fontsource/amiri-quran/arabic-400.css';
 import '@fontsource/amiri/arabic-400.css';
 import '@fontsource/amiri/arabic-700.css';
+import '@fontsource/amiri/latin-400.css'; // punctuation such as ( ) — without it a fallback font mirrors them wrongly
+import '@fontsource/amiri/latin-700.css';
 import '@fontsource/reem-kufi/arabic-500.css';
 import '@fontsource/reem-kufi/arabic-600.css';
 import '@fontsource-variable/manrope/wght.css';
@@ -23,8 +25,28 @@ import { SettingsPanel, askPin } from './ui/settings-panel';
 import { h, svg } from './ui/dom';
 import { icons } from './ui/icons';
 
+const params = new URLSearchParams(location.search);
+
+// Showcase mode (screenshots, kiosk demos): ?demo&theme=night&lang=ar&orient=portrait&settings=athan
+const demo = params.has('demo');
+if (demo) {
+  document.documentElement.classList.add('demo');
+  settings.set((s) => {
+    s.location.configured = true;
+    if (s.mosque.name === 'Mosquée') { s.mosque.name = 'Mosquée An-Nour'; s.mosque.nameAr = 'مسجد النور'; }
+    const theme = params.get('theme');
+    if (theme === 'emerald' || theme === 'night' || theme === 'sand' || theme === 'royal') s.display.theme = theme;
+    const lang = params.get('lang');
+    if (lang === 'fr' || lang === 'en' || lang === 'ar') s.lang = lang;
+    const o = params.get('orient');
+    if (o === 'portrait' || o === 'landscape' || o === 'auto') s.display.orientation = o;
+    const bg = params.get('bg');
+    if (bg) s.display.backgrounds = [bg];
+  });
+}
+
 // Preview helper: ?at=HH:MM[:SS] shifts the display clock to that time today (mosque time zone).
-const at = new URLSearchParams(location.search).get('at');
+const at = params.get('at');
 if (at) {
   const m = /^(\d{1,2}):(\d{2})(?::(\d{2}))?$/.exec(at);
   if (m) {
@@ -133,7 +155,9 @@ setTimeout(() => {
   document.getElementById('splash')?.classList.add('gone');
   setTimeout(() => document.getElementById('splash')?.remove(), 1000);
   const s = settings.get();
-  if (!s.location.configured) {
+  const section = params.get('settings');
+  if (demo && section) void openSettings(section as Parameters<SettingsPanel['open']>[0]);
+  else if (!s.location.configured) {
     const lang = s.lang;
     void openSettings('location', lang === 'ar'
       ? 'السلام عليكم! حدّد موقع المسجد للحصول على مواقيت دقيقة.'

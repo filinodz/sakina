@@ -1,11 +1,15 @@
 <div align="center">
 
+<img src="landing/assets/dashboard.webp" alt="Sakina" width="820" />
+
 # Sakina · سكينة
 
 **Écran de prière premium et open source pour mosquées, foyers et Smart TV.**
 Horaires précis · iqama · adhan · versets · adhkar — fonctionne hors-ligne, même sur une TV d’entrée de gamme.
 
 `Web / PWA` · `Android TV / Google TV` · `Navigateur de Smart TV` · `Mobile & tablette`
+
+**[Site du projet](https://mataa.me/apps/sakina/)** · **[Version web](https://filinodz.github.io/sakina/)** · **[Télécharger l’APK](https://github.com/filinodz/sakina/releases/latest/download/sakina-android-tv.apk)**
 
 </div>
 
@@ -68,7 +72,7 @@ Ouvrez la version web, puis *Installer l’application* / *Ajouter à l’écran
 > Les navigateurs bloquent le son tant que personne n’a touché l’écran : touchez-le (ou appuyez sur une touche) **une fois** après chaque démarrage. L’APK Android TV n’a pas cette limite.
 
 ### Android TV / Google TV / box Android (recommandé pour les mosquées)
-1. Téléchargez `sakina-vX.Y.Z.apk` depuis les [Releases](https://github.com/filinodz/sakina/releases).
+1. Téléchargez [`sakina-android-tv.apk`](https://github.com/filinodz/sakina/releases/latest/download/sakina-android-tv.apk) (dernière version) depuis les [Releases](https://github.com/filinodz/sakina/releases).
 2. Installez-le (clé USB + gestionnaire de fichiers, ou *Downloader*, ou `adb install sakina.apk`).
 3. L’app apparaît sur l’écran d’accueil de la TV. Elle :
    - garde l’écran allumé, en plein écran,

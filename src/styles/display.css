@@ -293,3 +293,6 @@
 .lite .ov-star, .lite #splash .star8, .lite .sound-prompt { animation: none; }
 .lite .feature-body { transition-duration: 0.4s; }
 .lite .ticker-text { animation-duration: calc(var(--dur, 60s) * 1.2); }
+
+/* Showcase mode */
+.demo .sound-prompt, .demo .toolbar { display: none !important; }

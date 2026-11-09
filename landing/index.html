@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Sakina · سكينة — Écran de prière open source pour mosquées et Android TV</title>
+  <meta name="description" content="Sakina est un écran de prière gratuit et open source pour mosquées, foyers et Smart TV : horaires précis, iqama, adhan, versets et adhkar. Fonctionne hors-ligne, même sur une TV modeste." />
+  <meta name="theme-color" content="#04110d" />
+  <link rel="canonical" href="https://mataa.me/apps/sakina/" />
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+  <link rel="apple-touch-icon" href="assets/icon-192.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sakina · سكينة — Écran de prière open source" />
+  <meta property="og:description" content="Horaires précis, iqama, adhan, versets et adhkar pour mosquées, foyers et Android TV. Gratuit, hors-ligne, open source." />
+  <meta property="og:image" content="https://mataa.me/apps/sakina/assets/og.jpg" />
+  <meta property="og:url" content="https://mataa.me/apps/sakina/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@300;400;500;600;700;800&family=Reem+Kufi:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Sakina","alternateName":"سكينة","applicationCategory":"LifestyleApplication","operatingSystem":"Android TV, Android, Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"license":"https://opensource.org/licenses/MIT","url":"https://mataa.me/apps/sakina/","author":{"@type":"Person","name":"filinodz","url":"https://github.com/filinodz"}}
+  </script>
+  <style>
+    :root {
+      --bg: #04110d; --bg-2: #0a2219; --bg-3: #0e2c21;
+      --gold: #e8c77d; --gold-2: #b98d3f; --gold-soft: rgba(232, 199, 125, .14);
+      --ink: #f6f1e4; --ink-2: rgba(246, 241, 228, .74); --ink-3: rgba(246, 241, 228, .5);
+      --line: rgba(232, 199, 125, .22); --line-soft: rgba(255, 255, 255, .08);
+      --accent: #3fb68b;
+      --f-ui: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+      --f-serif: 'Cormorant Garamond', Georgia, serif;
+      --f-ar: 'Reem Kufi', 'Amiri', sans-serif;
+      --f-naskh: 'Amiri', serif;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --r: 22px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--f-ui);
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    [dir='rtl'] body { font-family: 'Reem Kufi', 'Amiri', var(--f-ui); }
+    [dir='rtl'] p, [dir='rtl'] li, [dir='rtl'] .lead, [dir='rtl'] summary, [dir='rtl'] .faq p { font-family: 'Amiri', serif; font-size: 1.08em; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1200px, 100% - 32px); margin-inline: auto; }
+    .ar { font-family: var(--f-ar); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); }
+    [dir='rtl'] .eyebrow { letter-spacing: 0; font-size: 16px; }
+    .eyebrow svg { width: 18px; height: 18px; }
+    h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.12; }
+    h2 { font-family: var(--f-serif); font-size: clamp(34px, 4.6vw, 56px); letter-spacing: -.01em; }
+    [dir='rtl'] h2 { font-family: var(--f-ar); font-size: clamp(30px, 4vw, 48px); line-height: 1.35; }
+    .lead { color: var(--ink-2); font-size: clamp(17px, 1.6vw, 20px); max-width: 720px; }
+    section { position: relative; padding: clamp(72px, 10vw, 128px) 0; }
+    .sec-head { display: grid; gap: 16px; margin-bottom: clamp(36px, 5vw, 60px); }
+    .sec-head.center { text-align: center; justify-items: center; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px;
+      border-radius: 14px; font-weight: 700; font-size: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.04);
+      transition: transform .3s var(--ease), background .3s, border-color .3s, box-shadow .3s; white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.08); border-color: rgba(232,199,125,.45); }
+    .btn svg { width: 20px; height: 20px; flex: none; }
+    .btn.primary { background: linear-gradient(135deg, #f3d99b, var(--gold) 40%, var(--gold-2)); color: #1a1205; border-color: transparent; box-shadow: 0 18px 40px -16px rgba(232,199,125,.55); }
+    .btn.primary:hover { box-shadow: 0 22px 50px -14px rgba(232,199,125,.7); }
+    .btn small { font-weight: 600; opacity: .7; font-size: 13px; }
+    .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* Nav */
+    .nav { position: fixed; inset: 0 0 auto; z-index: 50; transition: background .4s, border-color .4s, backdrop-filter .4s; border-bottom: 1px solid transparent; }
+    .nav.solid { background: rgba(4, 17, 13, .82); backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%); border-color: var(--line-soft); }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-family: var(--f-serif); font-size: 26px; font-weight: 600; }
+    .brand img { width: 38px; height: 38px; border-radius: 11px; }
+    .brand .ar { font-size: 20px; color: var(--gold); font-weight: 500; }
+    .nav-links { display: flex; gap: 28px; font-size: 15px; font-weight: 600; color: var(--ink-2); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .lang { display: flex; padding: 4px; border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid var(--line-soft); }
+    .lang button { border: 0; background: none; color: var(--ink-2); font: 700 13px var(--f-ui); padding: 7px 10px; border-radius: 9px; cursor: pointer; }
+    .lang button.on { background: var(--gold); color: #1a1205; }
+    .nav .btn { min-height: 42px; padding: 0 16px; font-size: 14px; }
+    @media (max-width: 980px) { .nav-links { display: none; } }
+    @media (max-width: 560px) { .nav .gh-btn span { display: none; } .brand .ar { display: none; } }
+
+    /* Hero */
+    .hero { padding: 150px 0 90px; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; z-index: -2;
+      background: radial-gradient(ellipse 80% 60% at 70% 30%, rgba(63,182,139,.16), transparent 60%), radial-gradient(ellipse 60% 50% at 10% 10%, rgba(232,199,125,.12), transparent 60%), linear-gradient(180deg, var(--bg-2), var(--bg) 80%);
+    }
+    .pattern { position: absolute; inset: 0; z-index: -1; opacity: .5; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23e8c77d' stroke-opacity='.07' stroke-width='1.1'%3E%3Cpath d='M60 14 73 47 106 60 73 73 60 106 47 73 14 60 47 47Z'/%3E%3Cpath d='M27.5 27.5 60 41 92.5 27.5 79 60 92.5 92.5 60 79 27.5 92.5 41 60Z'/%3E%3Ccircle cx='60' cy='60' r='12'/%3E%3C/g%3E%3C/svg%3E");
+      -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%); }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 56px; align-items: center; text-align: center; justify-items: center; }
+    .hero h1 { font-family: var(--f-serif); font-size: clamp(48px, 8vw, 104px); letter-spacing: -.02em; line-height: 1; }
+    .hero h1 .ar { display: block; font-size: .55em; color: var(--gold); margin-top: 14px; font-weight: 600; letter-spacing: 0; }
+    [dir='rtl'] .hero h1 { font-family: var(--f-ar); line-height: 1.2; }
+    .hero .lead { margin: 22px auto 0; font-size: clamp(18px, 2vw, 22px); }
+    .hero .btns { justify-content: center; margin-top: 36px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 26px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--ink-2); background: rgba(255,255,255,.04); border: 1px solid var(--line-soft); }
+    .badge i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(63,182,139,.18); }
+
+    /* Device mockups */
+    .devices { position: relative; width: min(1100px, 100%); margin-top: 10px; }
+    .tv { position: relative; border-radius: 22px; padding: 12px; background: linear-gradient(160deg, #262a29, #0b0d0c 55%); box-shadow: 0 60px 120px -40px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.06), 0 40px 160px -60px rgba(232,199,125,.35); }
+    .tv img { border-radius: 12px; aspect-ratio: 16/9; width: 100%; object-fit: cover; }
+    .tv::after { content: ''; position: absolute; left: 50%; bottom: -34px; width: 30%; height: 34px; transform: translateX(-50%); background: linear-gradient(180deg, #1a1d1c, #0b0d0c); clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%); }
+    .phone { position: absolute; width: 21%; right: -3%; bottom: -12%; border-radius: 28px; padding: 8px; background: linear-gradient(160deg, #2a2e2d, #0b0d0c); box-shadow: 0 40px 80px -30px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.08); }
+    .phone img { border-radius: 21px; aspect-ratio: 9/16; width: 100%; object-fit: cover; }
+    [dir='rtl'] .phone { right: auto; left: -3%; }
+    @media (max-width: 700px) { .phone { width: 30%; right: -2%; bottom: -16%; } }
+    .glow { position: absolute; inset: 10% 5% -10%; z-index: -1; background: radial-gradient(ellipse at center, rgba(232,199,125,.22), transparent 65%); filter: blur(40px); }
+
+    /* Stats */
+    .stats { padding: 40px 0 0; }
+    .stats .wrap { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line-soft); border-radius: var(--r); background: rgba(255,255,255,.02); }
+    .stat { padding: 26px 20px; text-align: center; }
+    .stat + .stat { border-inline-start: 1px solid var(--line-soft); }
+    .stat b { direction: ltr; unicode-bidi: isolate; display: block; font-family: var(--f-serif); font-size: 42px; font-weight: 600; color: var(--gold); line-height: 1.1; }
+    .stat span { font-size: 14px; color: var(--ink-3); font-weight: 600; }
+    @media (max-width: 860px) { .stats .wrap { grid-template-columns: repeat(2, 1fr); } .stat + .stat { border-inline-start: 0; } .stat { border-top: 1px solid var(--line-soft); } .stat:first-child, .stat:nth-child(2) { border-top: 0; } .stat:last-child { grid-column: 1 / -1; } }
+
+    /* Features */
+    .features { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 18px; }
+    .feat { position: relative; padding: 28px; border-radius: var(--r); background: linear-gradient(160deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); border: 1px solid var(--line-soft); overflow: hidden; transition: transform .4s var(--ease), border-color .4s; }
+    .feat:hover { transform: translateY(-4px); border-color: var(--line); }
+    .feat::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 100% 0%, var(--gold-soft), transparent 50%); opacity: 0; transition: opacity .4s; }
+    .feat:hover::before { opacity: 1; }
+    .feat .ic { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; color: var(--gold); background: var(--gold-soft); border: 1px solid var(--line); margin-bottom: 18px; }
+    .feat .ic svg { width: 24px; height: 24px; }
+    .feat h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+    .feat p { margin: 0; color: var(--ink-2); font-size: 15.5px; }
+
+    /* Flow (screens of a prayer) */
+    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: step; }
+    .step { counter-increment: step; }
+    .step figure { margin: 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--line-soft); box-shadow: 0 30px 60px -30px rgba(0,0,0,.8); }
+    .step img { aspect-ratio: 16/9; object-fit: cover; width: 100%; }
+    .step h3 { margin-top: 18px; font-size: 18px; display: flex; align-items: center; gap: 10px; }
+    .step h3::before { content: counter(step); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font-size: 13px; background: var(--gold); color: #1a1205; flex: none; }
+    .step p { margin: 6px 0 0; color: var(--ink-2); font-size: 15px; }
+    @media (max-width: 980px) { .flow { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .flow { grid-template-columns: 1fr; } }
+
+    /* Themes gallery */
+    .gallery { display: grid; gap: 18px; }
+    .gallery-main { border-radius: 20px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 50px 100px -40px rgba(0,0,0,.9); background: #000; }
+    .gallery-main img { aspect-ratio: 16/9; width: 100%; object-fit: cover; transition: opacity .5s; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .tab { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line-soft); background: rgba(255,255,255,.03); color: var(--ink-2); font: 700 14px var(--f-ui); cursor: pointer; transition: all .3s; }
+    [dir='rtl'] .tab { font-family: var(--f-ar); }
+    .tab i { width: 16px; height: 16px; border-radius: 50%; }
+    .tab.on { border-color: var(--gold); color: var(--gold); background: var(--gold-soft); }
+
+    /* Accuracy */
+    .acc-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: start; }
+    @media (max-width: 900px) { .acc-grid { grid-template-columns: 1fr; } }
+    .sources { display: grid; gap: 14px; }
+    .source { display: grid; grid-template-columns: auto 1fr; gap: 18px; padding: 22px; border-radius: 18px; border: 1px solid var(--line-soft); background: rgba(255,255,255,.025); }
+    .source .num { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; background: var(--gold-soft); color: var(--gold); border: 1px solid var(--line); }
+    .source h3 { font-size: 18px; margin-bottom: 4px; }
+    .source p { margin: 0; color: var(--ink-2); font-size: 15px; }
+    .tests { border-radius: 20px; padding: 26px; background: linear-gradient(160deg, rgba(63,182,139,.1), rgba(255,255,255,.02)); border: 1px solid rgba(63,182,139,.28); }
+    .tests h3 { font-size: 18px; display: flex; align-items: center; gap: 10px; }
+    .tests h3 svg { width: 22px; height: 22px; color: var(--accent); }
+    .tests table { width: 100%; border-collapse: collapse; margin: 16px 0 10px; font-size: 14.5px; }
+    .tests th, .tests td { padding: 9px 8px; border-bottom: 1px solid var(--line-soft); text-align: start; }
+    .tests th { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+    .tests td:last-child { color: var(--accent); font-weight: 700; text-align: end; font-variant-numeric: tabular-nums; }
+    .tests small { color: var(--ink-3); font-size: 13.5px; display: block; line-height: 1.55; }
+    .note { margin-top: 18px; padding: 18px 20px; border-radius: 16px; background: var(--gold-soft); border: 1px solid var(--line); color: var(--ink-2); font-size: 15px; }
+    .note b { color: var(--gold); }
+
+    /* Config split */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+    .checks { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 12px; }
+    .checks li { display: flex; gap: 12px; color: var(--ink-2); }
+    .checks li svg { width: 22px; height: 22px; color: var(--gold); flex: none; margin-top: 3px; }
+    .stack { position: relative; }
+    .stack img { border-radius: 16px; border: 1px solid var(--line-soft); box-shadow: 0 40px 80px -30px rgba(0,0,0,.9); }
+    .stack img:last-child { position: absolute; width: 70%; right: -4%; bottom: -14%; border-color: var(--line); }
+    [dir='rtl'] .stack img:last-child { right: auto; left: -4%; }
+    @media (max-width: 900px) { .stack { margin-bottom: 60px; } }
+
+    /* Download */
+    .dl { background: linear-gradient(180deg, transparent, rgba(232,199,125,.04) 40%, transparent); }
+    .platforms { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 18px; }
+    .plat { display: flex; flex-direction: column; gap: 14px; padding: 28px; border-radius: var(--r); border: 1px solid var(--line-soft); background: rgba(255,255,255,.03); }
+    .plat.best { border-color: var(--gold); background: linear-gradient(160deg, rgba(232,199,125,.14), rgba(255,255,255,.02)); position: relative; }
+    .plat.best::after { content: attr(data-tag); position: absolute; top: -12px; inset-inline-start: 24px; padding: 4px 12px; border-radius: 999px; background: var(--gold); color: #1a1205; font-size: 12px; font-weight: 800; letter-spacing: .06em; }
+    .plat .ic { width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center; color: var(--gold); background: var(--gold-soft); border: 1px solid var(--line); }
+    .plat .ic svg { width: 26px; height: 26px; }
+    .plat h3 { font-size: 21px; }
+    .plat p { margin: 0; color: var(--ink-2); font-size: 15px; flex: 1; }
+    .plat ol { margin: 0; padding-inline-start: 20px; color: var(--ink-2); font-size: 14.5px; display: grid; gap: 4px; }
+    .plat .btn { width: 100%; }
+
+    /* Open source */
+    .oss { border-radius: 28px; padding: clamp(32px, 5vw, 64px); background: radial-gradient(ellipse at 100% 0%, rgba(63,182,139,.16), transparent 50%), linear-gradient(160deg, var(--bg-3), var(--bg-2)); border: 1px solid var(--line); display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; }
+    @media (max-width: 900px) { .oss { grid-template-columns: 1fr; } }
+    .code { font: 500 14px/1.8 ui-monospace, 'Cascadia Code', Consolas, monospace; background: rgba(0,0,0,.4); border: 1px solid var(--line-soft); border-radius: 16px; padding: 20px 22px; color: var(--ink-2); direction: ltr; text-align: left; overflow-x: auto; }
+    .code .c { color: var(--ink-3); } .code .g { color: var(--gold); }
+    .credits { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .credits span { padding: 6px 12px; border-radius: 999px; font-size: 13px; color: var(--ink-2); border: 1px solid var(--line-soft); background: rgba(255,255,255,.03); }
+
+    /* FAQ */
+    .faq { display: grid; gap: 12px; max-width: 860px; margin-inline: auto; }
+    .faq details { border: 1px solid var(--line-soft); border-radius: 16px; background: rgba(255,255,255,.025); transition: border-color .3s; }
+    .faq details[open] { border-color: var(--line); }
+    .faq summary { list-style: none; cursor: pointer; padding: 20px 22px; font-weight: 700; display: flex; justify-content: space-between; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; color: var(--gold); font-size: 22px; line-height: 1; transition: transform .3s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq p { margin: 0; padding: 0 22px 20px; color: var(--ink-2); }
+
+    /* Footer */
+    footer { padding: 64px 0 40px; border-top: 1px solid var(--line-soft); }
+    .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px; align-items: flex-start; }
+    .foot p { color: var(--ink-3); margin: 10px 0 0; max-width: 420px; font-size: 14.5px; }
+    .foot-links { display: flex; flex-wrap: wrap; gap: 20px; font-weight: 600; font-size: 15px; color: var(--ink-2); }
+    .foot-links a:hover { color: var(--gold); }
+    .dua { text-align: center; margin-top: 48px; font-family: var(--f-naskh); font-size: 22px; color: var(--gold); }
+    .dua small { display: block; font-family: var(--f-ui); font-size: 13px; color: var(--ink-3); margin-top: 6px; }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+  <!-- ============================== NAV ============================== -->
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="assets/icon.svg" alt="" width="38" height="38" /> Sakina <span class="ar">سكينة</span></a>
+      <nav class="nav-links">
+        <a href="#features" data-i18n="nav.features">Fonctionnalités</a>
+        <a href="#screens" data-i18n="nav.screens">Écrans</a>
+        <a href="#accuracy" data-i18n="nav.accuracy">Précision</a>
+        <a href="#download" data-i18n="nav.download">Télécharger</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+      <div class="nav-right">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="fr">FR</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="ar">ع</button>
+        </div>
+        <a class="btn gh-btn" data-link="github" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============================== HERO ============================== -->
+    <section class="hero">
+      <div class="pattern"></div>
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow reveal"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6"><rect x="21" y="21" width="58" height="58"/><rect x="21" y="21" width="58" height="58" transform="rotate(45 50 50)"/></svg><span data-i18n="hero.eyebrow">Open source · Gratuit · Hors-ligne</span></span>
+          <h1 class="reveal" style="margin-top:22px">Sakina<span class="ar">سكينة</span></h1>
+          <p class="lead reveal" data-i18n="hero.lead">L’écran de prière premium pour votre mosquée, votre salon et votre Android TV. Horaires précis à la minute, iqama, adhan, versets et adhkar — beau, fiable et léger, même sur une TV modeste.</p>
+          <div class="btns reveal">
+            <a class="btn primary" data-link="apk" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></svg>
+              <span data-i18n="hero.ctaApk">Télécharger pour Android TV</span>
+            </a>
+            <a class="btn" data-link="web" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 2.6 15.2 0 18M12 3c-2.6 2.8-2.6 15.2 0 18"/></svg>
+              <span data-i18n="hero.ctaWeb">Ouvrir la version web</span>
+            </a>
+          </div>
+          <div class="badges reveal">
+            <span class="badge"><i></i><span data-i18n="badge.mit">Licence MIT</span></span>
+            <span class="badge"><i></i><span data-i18n="badge.offline">Fonctionne sans internet</span></span>
+            <span class="badge"><i></i><span data-i18n="badge.noads">Sans pub ni compte</span></span>
+            <span class="badge"><i></i><span data-i18n="badge.langs">Français · English · العربية</span></span>
+          </div>
+        </div>
+        <div class="devices reveal">
+          <div class="glow"></div>
+          <div class="tv"><img src="assets/dashboard.webp" width="1600" height="900" alt="Sakina — tableau de bord sur une TV" data-i18n-alt="alt.dashboard" fetchpriority="high" /></div>
+          <div class="phone"><img src="assets/portrait.webp" width="900" height="1600" alt="Sakina — écran vertical" data-i18n-alt="alt.portrait" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== STATS ============================== -->
+    <div class="stats">
+      <div class="wrap reveal">
+        <div class="stat"><b>±1 min</b><span data-i18n="stat.acc">précision vérifiée</span></div>
+        <div class="stat"><b>20</b><span data-i18n="stat.methods">méthodes de calcul</span></div>
+        <div class="stat"><b>20</b><span data-i18n="stat.voices">voix d’adhan</span></div>
+        <div class="stat"><b>3</b><span data-i18n="stat.langs">langues</span></div>
+        <div class="stat"><b>65 Ko</b><span data-i18n="stat.size">de code, idéal pour TV modestes</span></div>
+      </div>
+    </div>
+
+    <!-- ============================== FEATURES ============================== -->
+    <section id="features">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow" data-i18n="feat.eyebrow">Tout ce dont une mosquée a besoin</span>
+          <h2 data-i18n="feat.title">Pensé pour la salle de prière, soigné dans les moindres détails.</h2>
+        </div>
+        <div class="features">
+          <article class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3 data-i18n="f1.t">Horaires exacts</h3><p data-i18n="f1.d">Calcul astronomique précis selon la position exacte de la mosquée, 20 conventions nationales et ajustements à la minute près.</p></article>
+          <article class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></div><h3 data-i18n="f2.t">Adhan automatique</h3><p data-i18n="f2.d">20 voix (La Mecque, Médine, Mishary Alafasy…), un adhan distinct pour Fajr, ou le MP3 de votre propre muezzin.</p></article>
+          <article class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M9 2.5h6"/></svg></div><h3 data-i18n="f3.t">Iqama & compte à rebours</h3><p data-i18n="f3.d">Délai après l’adhan ou heure fixe, par prière. Compte à rebours plein écran, rappel d’éteindre les téléphones.</p></article>
+          <article class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/></svg></div><h3 data-i18n="f4.t">Versets & adhkar</h3><p data-i18n="f4.d">Coran en écriture Uthmani avec traduction, adhkar authentiques de Hisn al-Muslim, et adhkar après chaque prière.</p></article>
+          <article class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 21h18M5 21V10l7-6 7 6v11"/><path d="M10 21v-5a2 2 0 0 1 4 0v5"/></svg></div><h3 data-i18n="f5.t">Votre mosquée</h3><p data-i18n="f5.d">Nom, logo, photo de la mosquée en fond d’écran, annonces et bandeau défilant, horaire de la Joumou‘a.</p></article>
+          <article class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></div><h3 data-i18n="f6.t">Hégire & Ramadan</h3><p data-i18n="f6.d">Calendrier Umm al-Qura avec correction locale, changement de jour au Maghrib, Imsak et Iftar affichés pendant Ramadan.</p></article>
+          <article class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3 data-i18n="f7.t">Léger pour toutes les TV</h3><p data-i18n="f7.d">Aucun framework, mode léger automatique, s’adapte au paysage comme au portrait. Fluide sur une box Android d’entrée de gamme.</p></article>
+          <article class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="5" y="2.5" width="14" height="19" rx="3"/><path d="M12 7v4M10 9h4M9.5 15.5h.01M14.5 15.5h.01M12 17.5h.01" stroke-width="2.2"/></svg></div><h3 data-i18n="f8.t">Réglable à la télécommande</h3><p data-i18n="f8.d">Toute la configuration au pavé directionnel, code PIN, export/import pour cloner la config sur plusieurs écrans.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== SCREENS ============================== -->
+    <section id="screens" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow" data-i18n="flow.eyebrow">Automatique, à chaque prière</span>
+          <h2 data-i18n="flow.title">L’écran accompagne toute la prière, sans que personne n’y touche.</h2>
+        </div>
+        <div class="flow">
+          <div class="step reveal"><figure><img src="assets/adhan.webp" width="1600" height="900" loading="lazy" alt="" /></figure><h3 data-i18n="s1.t">L’adhan</h3><p data-i18n="s1.d">L’appel retentit à l’heure exacte, avec l’invocation qui suit l’adhan.</p></div>
+          <div class="step reveal"><figure><img src="assets/iqama.webp" width="1600" height="900" loading="lazy" alt="" /></figure><h3 data-i18n="s2.t">Avant l’iqama</h3><p data-i18n="s2.d">Grand compte à rebours, rappel des téléphones, puis « alignez les rangs ».</p></div>
+          <div class="step reveal"><figure><img src="assets/prayer.webp" width="1600" height="900" loading="lazy" alt="" /></figure><h3 data-i18n="s3.t">Pendant la prière</h3><p data-i18n="s3.d">L’écran s’assombrit pour ne pas distraire. Durée spéciale pour la Joumou‘a.</p></div>
+          <div class="step reveal"><figure><img src="assets/adhkar.webp" width="1600" height="900" loading="lazy" alt="" /></figure><h3 data-i18n="s4.t">Après la prière</h3><p data-i18n="s4.d">Les adhkar après la salat défilent, puis retour au tableau de bord.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== THEMES ============================== -->
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <span class="eyebrow" data-i18n="theme.eyebrow">4 thèmes · 15 photos · 3 langues</span>
+          <h2 data-i18n="theme.title">Un écran à l’image de votre mosquée.</h2>
+          <p class="lead" data-i18n="theme.lead">Photos de mosquées du monde entier sous licence libre — de Djamaâ El-Djazaïr à Ispahan — ou la photo de votre propre mosquée.</p>
+        </div>
+        <div class="gallery reveal">
+          <div class="tabs" id="themeTabs">
+            <button class="tab on" type="button" data-img="dashboard"><i style="background:linear-gradient(135deg,#0a2219,#e8c77d)"></i><span data-i18n="th.emerald">Émeraude</span></button>
+            <button class="tab" type="button" data-img="night-ar"><i style="background:linear-gradient(135deg,#0c1330,#e6d3a3)"></i><span data-i18n="th.night">Nuit · arabe</span></button>
+            <button class="tab" type="button" data-img="sand-en"><i style="background:linear-gradient(135deg,#2a1c0e,#f0c27a)"></i><span data-i18n="th.sand">Sable · anglais</span></button>
+            <button class="tab" type="button" data-img="royal"><i style="background:linear-gradient(135deg,#2a0d22,#eccb84)"></i><span data-i18n="th.royal">Royal</span></button>
+          </div>
+          <div class="gallery-main"><img id="themeImg" src="assets/dashboard.webp" width="1600" height="900" loading="lazy" alt="" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== ACCURACY ============================== -->
+    <section id="accuracy" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow" data-i18n="acc.eyebrow">La précision avant tout</span>
+          <h2 data-i18n="acc.title">Des horaires vérifiés, pas approximatifs.</h2>
+          <p class="lead" data-i18n="acc.lead">Trois sources au choix, et des tests automatiques qui comparent chaque version à des horaires de référence.</p>
+        </div>
+        <div class="acc-grid">
+          <div class="sources">
+            <div class="source reveal"><span class="num">1</span><div><h3 data-i18n="src1.t">Calcul astronomique — hors-ligne</h3><p data-i18n="src1.d">Algorithmes de Jean Meeus (adhan-js). Fonctionne pour toujours, même sans internet. Choix par défaut.</p></div></div>
+            <div class="source reveal"><span class="num">2</span><div><h3 data-i18n="src2.t">API Aladhan</h3><p data-i18n="src2.d">Calendrier mensuel synchronisé et mis en cache pour deux mois : l’écran continue en cas de coupure.</p></div></div>
+            <div class="source reveal"><span class="num">3</span><div><h3 data-i18n="src3.t">Calendrier officiel (CSV)</h3><p data-i18n="src3.d">Importez le calendrier de votre ministère, fédération ou mosquée pour l’appliquer à la lettre.</p></div></div>
+            <div class="note reveal" data-i18n-html="acc.note"><b>En toute honnêteté :</b> chaque autorité choisit ses angles et ses marges de précaution (ihtiyat). Sakina propose la convention de votre pays, un bouton de comparaison avec Aladhan et des ajustements par prière pour coller exactement au calendrier affiché dans votre mosquée.</div>
+          </div>
+          <div class="tests reveal">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span data-i18n="tests.t">143 journées de référence testées</span></h3>
+            <table>
+              <thead><tr><th data-i18n="tests.city">Ville</th><th data-i18n="tests.method">Méthode</th><th data-i18n="tests.gap">Écart</th></tr></thead>
+              <tbody>
+                <tr><td data-i18n="c.alg">Alger · Constantine · Tamanrasset</td><td data-i18n="m.alg">Algérie</td><td>≤ 1 min</td></tr>
+                <tr><td data-i18n="c.tun">Tunis</td><td data-i18n="m.tun">Tunisie</td><td>≤ 1 min</td></tr>
+                <tr><td data-i18n="c.mak">La Mecque</td><td>Umm al-Qura</td><td>≤ 1 min</td></tr>
+                <tr><td data-i18n="c.cai">Le Caire</td><td data-i18n="m.egy">Égypte</td><td>≤ 1 min</td></tr>
+                <tr><td>Istanbul</td><td>Diyanet</td><td>≤ 1 min</td></tr>
+                <tr><td data-i18n="c.eu">Paris · Londres · Montréal</td><td>UOIF · MWL · ISNA</td><td>≤ 1 min*</td></tr>
+                <tr><td>Kuala Lumpur</td><td>JAKIM / MUIS</td><td>≤ 1 min*</td></tr>
+              </tbody>
+            </table>
+            <small data-i18n="tests.foot">Été et hiver 2026, comparé à api.aladhan.com. * Asr d’hiver au-delà de 45° et Dhohr MUIS : jusqu’à 3 min (arrondis officiels différents).</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CONFIG ============================== -->
+    <section style="padding-top:0">
+      <div class="wrap split">
+        <div class="stack reveal">
+          <img src="assets/settings-calc.webp" width="1600" height="1000" loading="lazy" alt="" />
+          <img src="assets/settings-athan.webp" width="1600" height="1000" loading="lazy" alt="" />
+        </div>
+        <div class="reveal">
+          <span class="eyebrow" data-i18n="cfg.eyebrow">Configuration</span>
+          <h2 style="margin-top:14px" data-i18n="cfg.title">Installé et réglé en cinq minutes.</h2>
+          <ul class="checks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span data-i18n="cfg.1">Recherchez votre ville ou utilisez le GPS — la méthode de votre pays est proposée automatiquement.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span data-i18n="cfg.2">Réglez les délais d’iqama et l’heure de la Joumou‘a.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span data-i18n="cfg.3">Choisissez la voix de l’adhan, téléchargez-la pour l’écouter hors-ligne.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span data-i18n="cfg.4">Ajoutez le nom, le logo, la photo et les annonces de votre mosquée.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span data-i18n="cfg.5">Protégez les réglages par un code PIN et exportez-les vers vos autres écrans.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== DOWNLOAD ============================== -->
+    <section id="download" class="dl">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <span class="eyebrow" data-i18n="dl.eyebrow">Télécharger</span>
+          <h2 data-i18n="dl.title">Gratuit, pour toujours. Choisissez votre écran.</h2>
+        </div>
+        <div class="platforms">
+          <div class="plat best reveal" data-i18n-tag="dl.best" data-tag="RECOMMANDÉ">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <h3 data-i18n="p1.t">Android TV & box Android</h3>
+            <p data-i18n="p1.d">L’expérience complète pour les mosquées : écran toujours allumé, adhan sans aucune intervention, redémarrage automatique après une coupure de courant.</p>
+            <ol><li data-i18n="p1.s1">Téléchargez l’APK sur une clé USB (ou via l’app Downloader).</li><li data-i18n="p1.s2">Installez-le avec un gestionnaire de fichiers.</li><li data-i18n="p1.s3">Lancez Sakina depuis l’accueil de la TV, appuyez sur OK pour régler.</li></ol>
+            <a class="btn primary" data-link="apk" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></svg><span data-i18n="p1.btn">Télécharger l’APK</span></a>
+          </div>
+          <div class="plat reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 2.6 15.2 0 18M12 3c-2.6 2.8-2.6 15.2 0 18"/></svg></div>
+            <h3 data-i18n="p2.t">Version web (PWA)</h3>
+            <p data-i18n="p2.d">Sur un PC relié à un écran, une tablette ou un téléphone. Installable comme une application, fonctionne ensuite sans internet.</p>
+            <ol><li data-i18n="p2.s1">Ouvrez la version web.</li><li data-i18n="p2.s2">Menu du navigateur → « Installer l’application ».</li><li data-i18n="p2.s3">Touchez l’écran une fois au démarrage pour autoriser le son.</li></ol>
+            <a class="btn" data-link="web" href="#" target="_blank" rel="noopener"><span data-i18n="p2.btn">Ouvrir la version web</span></a>
+          </div>
+          <div class="plat reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M7 21h10"/><path d="m10 8.5 4 2.5-4 2.5z" fill="currentColor"/></svg></div>
+            <h3 data-i18n="p3.t">Smart TV (Tizen, webOS…)</h3>
+            <p data-i18n="p3.d">Sans Android ? Ouvrez la version web dans le navigateur de la TV et ajoutez-la aux favoris. Le mode léger s’active automatiquement.</p>
+            <ol><li data-i18n="p3.s1">Navigateur de la TV → adresse de la version web.</li><li data-i18n="p3.s2">Ajoutez-la aux favoris / à l’accueil.</li></ol>
+            <a class="btn" data-link="web" href="#" target="_blank" rel="noopener"><span data-i18n="p3.btn">Adresse de la version web</span></a>
+          </div>
+          <div class="plat reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></div>
+            <h3 data-i18n="p4.t">Code source</h3>
+            <p data-i18n="p4.d">Hébergez votre propre version, adaptez-la à votre fédération ou contribuez au projet.</p>
+            <ol><li data-i18n="p4.s1">Toutes les versions et l’historique sur GitHub.</li><li data-i18n="p4.s2">Licence MIT : libre d’usage, de modification et de partage.</li></ol>
+            <a class="btn" data-link="releases" href="#" target="_blank" rel="noopener"><span data-i18n="p4.btn">Toutes les versions</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== OPEN SOURCE ============================== -->
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="oss reveal">
+          <div>
+            <span class="eyebrow" data-i18n="oss.eyebrow">Open source · Sadaqa jariya</span>
+            <h2 style="margin-top:14px" data-i18n="oss.title">Un projet libre, fait fi sabilillah.</h2>
+            <p class="lead" style="margin-top:16px" data-i18n="oss.lead">Le code est public et le restera. Traductions, conventions nationales, calendriers officiels, voix d’adhan libres de droits : chaque contribution compte.</p>
+            <div class="btns" style="margin-top:26px">
+              <a class="btn primary" data-link="github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><span data-i18n="oss.star">Mettre une étoile sur GitHub</span></a>
+              <a class="btn" data-link="issues" href="#" target="_blank" rel="noopener"><span data-i18n="oss.issue">Signaler un problème</span></a>
+            </div>
+            <div class="credits"><span>adhan-js</span><span>Tanzil</span><span>Hisn al-Muslim</span><span>Aladhan</span><span>Wikimedia Commons</span><span>Capacitor</span></div>
+          </div>
+          <div class="code"><span class="c"># </span><span class="c" data-i18n="code.c1">Lancer Sakina en local</span><br><span class="g">git clone</span> <span data-link-text="gitclone">https://github.com/filinodz/sakina</span><br><span class="g">cd</span> sakina<br><span class="g">npm</span> install<br><span class="g">npm</span> start<br><br><span class="c"># </span><span class="c" data-i18n="code.c2">Tests de précision</span><br><span class="g">npm</span> test</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FAQ ============================== -->
+    <section id="faq" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2 data-i18n="faq.title">Questions fréquentes</h2>
+        </div>
+        <div class="faq">
+          <details class="reveal"><summary data-i18n="q1">Sakina est-il vraiment gratuit ?</summary><p data-i18n="a1">Oui, entièrement : pas de publicité, pas d’abonnement, pas de compte. Le code est sous licence MIT.</p></details>
+          <details class="reveal"><summary data-i18n="q2">Faut-il une connexion internet ?</summary><p data-i18n="a2">Non. Les horaires sont calculés sur l’appareil. Internet sert uniquement à la météo, à la synchronisation Aladhan (optionnelle) et à télécharger les voix d’adhan une première fois.</p></details>
+          <details class="reveal"><summary data-i18n="q3">Les horaires correspondront-ils à ceux de ma mosquée ?</summary><p data-i18n="a3">Choisissez la convention de votre pays, puis ajustez chaque prière à la minute près si votre mosquée applique une marge de précaution. Vous pouvez aussi importer le calendrier officiel en CSV.</p></details>
+          <details class="reveal"><summary data-i18n="q4">Quelle TV ou box acheter pour une mosquée ?</summary><p data-i18n="a4">N’importe quelle box Android TV / Google TV récente (même d’entrée de gamme) branchée en HDMI convient. Sakina démarre seul avec la box et garde l’écran allumé.</p></details>
+          <details class="reveal"><summary data-i18n="q5">Peut-on utiliser la voix de notre muezzin ?</summary><p data-i18n="a5">Oui : importez son enregistrement MP3 dans Réglages → Adhan. Il est stocké sur l’appareil et fonctionne sans internet.</p></details>
+          <details class="reveal"><summary data-i18n="q6">Plusieurs écrans dans la même mosquée ?</summary><p data-i18n="a6">Configurez un écran, exportez la configuration (.json) puis importez-la sur les autres. L’écran vertical de l’entrée est géré automatiquement.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <a class="brand" href="#top"><img src="assets/icon.svg" alt="" width="38" height="38" /> Sakina <span class="ar">سكينة</span></a>
+          <p data-i18n="foot.d">Écran de prière open source pour mosquées, foyers et Android TV.</p>
+        </div>
+        <div class="foot-links">
+          <a data-link="github" href="#" target="_blank" rel="noopener">GitHub</a>
+          <a data-link="releases" href="#" target="_blank" rel="noopener" data-i18n="foot.rel">Versions</a>
+          <a data-link="issues" href="#" target="_blank" rel="noopener" data-i18n="foot.issues">Signaler un bug</a>
+          <a data-link="credits" href="#" target="_blank" rel="noopener" data-i18n="foot.credits">Crédits</a>
+          <a href="https://mataa.me" data-i18n="foot.site">mataa.me</a>
+        </div>
+      </div>
+      <div class="dua">رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنْتَ السَّمِيعُ الْعَلِيمُ<small data-i18n="foot.dua">« Notre Seigneur, accepte ceci de notre part. » — Al-Baqara 2:127</small></div>
+    </div>
+  </footer>
+
+  <script>
+    /* ------------------------------------------------------------------
+       Links — edit here once the GitHub repository / web app are online.
+       ------------------------------------------------------------------ */
+    var REPO = 'https://github.com/filinodz/sakina';
+    var LINKS = {
+      github: REPO,
+      releases: REPO + '/releases',
+      issues: REPO + '/issues',
+      credits: REPO + '/blob/main/CREDITS.md',
+      apk: REPO + '/releases/latest/download/sakina-android-tv.apk',
+      web: 'https://filinodz.github.io/sakina/'
+    };
+    document.querySelectorAll('[data-link]').forEach(function (a) { a.href = LINKS[a.getAttribute('data-link')]; });
+
+    /* ------------------------------------------------------------------ i18n */
+    var I18N = {
+      en: {
+        'nav.features': 'Features', 'nav.screens': 'Screens', 'nav.accuracy': 'Accuracy', 'nav.download': 'Download', 'nav.faq': 'FAQ',
+        'hero.eyebrow': 'Open source · Free · Offline',
+        'hero.lead': 'The premium prayer display for your mosque, your living room and your Android TV. Minute-accurate prayer times, iqamah, adhan, verses and adhkar — beautiful, reliable and light, even on a modest TV.',
+        'hero.ctaApk': 'Download for Android TV', 'hero.ctaWeb': 'Open the web app',
+        'badge.mit': 'MIT licence', 'badge.offline': 'Works offline', 'badge.noads': 'No ads, no account', 'badge.langs': 'Français · English · العربية',
+        'alt.dashboard': 'Sakina dashboard on a TV', 'alt.portrait': 'Sakina portrait screen',
+        'stat.acc': 'verified accuracy', 'stat.methods': 'calculation methods', 'stat.voices': 'adhan voices', 'stat.langs': 'languages', 'stat.size': 'of code, made for modest TVs',
+        'feat.eyebrow': 'Everything a mosque needs', 'feat.title': 'Designed for the prayer hall, crafted down to the last detail.',
+        'f1.t': 'Exact prayer times', 'f1.d': 'Precise astronomical calculation from the mosque’s exact position, 20 national conventions and minute-level adjustments.',
+        'f2.t': 'Automatic adhan', 'f2.d': '20 voices (Makkah, Madinah, Mishary Alafasy…), a separate Fajr adhan, or your own muezzin’s MP3.',
+        'f3.t': 'Iqamah & countdown', 'f3.d': 'Delay after the adhan or fixed time, per prayer. Full-screen countdown and a reminder to silence phones.',
+        'f4.t': 'Verses & adhkar', 'f4.d': 'Qur’an in Uthmani script with translation, authentic adhkar from Hisn al-Muslim, and remembrance after each prayer.',
+        'f5.t': 'Your mosque', 'f5.d': 'Name, logo, the mosque’s photo as background, notices and a scrolling ticker, Jumu‘ah time.',
+        'f6.t': 'Hijri & Ramadan', 'f6.d': 'Umm al-Qura calendar with local correction, new day at Maghrib, Imsak and Iftar shown during Ramadan.',
+        'f7.t': 'Light on every TV', 'f7.d': 'No framework, automatic lite mode, landscape or portrait. Smooth on an entry-level Android box.',
+        'f8.t': 'Remote-control friendly', 'f8.d': 'Configure everything with the D-pad, PIN lock, export/import to clone settings across screens.',
+        'flow.eyebrow': 'Automatic, at every prayer', 'flow.title': 'The screen follows the whole prayer — nobody needs to touch it.',
+        's1.t': 'The adhan', 's1.d': 'The call rings out at the exact time, followed by the supplication after the adhan.',
+        's2.t': 'Before the iqamah', 's2.d': 'Large countdown, phone reminder, then “straighten the rows”.',
+        's3.t': 'During the prayer', 's3.d': 'The screen dims so it never distracts. Longer duration for Jumu‘ah.',
+        's4.t': 'After the prayer', 's4.d': 'Post-prayer adhkar scroll by, then back to the dashboard.',
+        'theme.eyebrow': '4 themes · 15 photos · 3 languages', 'theme.title': 'A screen that looks like your mosque.',
+        'theme.lead': 'Freely licensed photos of mosques around the world — from Djamaâ El-Djazaïr to Isfahan — or a photo of your own mosque.',
+        'th.emerald': 'Emerald', 'th.night': 'Night · Arabic', 'th.sand': 'Sand · English', 'th.royal': 'Royal',
+        'acc.eyebrow': 'Accuracy first', 'acc.title': 'Verified prayer times, not approximations.',
+        'acc.lead': 'Three sources to choose from, and automated tests comparing every release with reference timetables.',
+        'src1.t': 'Astronomical calculation — offline', 'src1.d': 'Jean Meeus algorithms (adhan-js). Works forever, even without internet. The default.',
+        'src2.t': 'Aladhan API', 'src2.d': 'Monthly timetable synced and cached for two months: the screen keeps running during outages.',
+        'src3.t': 'Official timetable (CSV)', 'src3.d': 'Import your ministry’s, federation’s or mosque’s timetable to follow it to the letter.',
+        'acc.note': '<b>In all honesty:</b> every authority chooses its own angles and precautionary margins (ihtiyat). Sakina suggests your country’s convention, a one-click comparison with Aladhan and per-prayer adjustments to match the timetable on your mosque’s wall exactly.',
+        'tests.t': '143 reference days tested', 'tests.city': 'City', 'tests.method': 'Method', 'tests.gap': 'Gap',
+        'c.alg': 'Algiers · Constantine · Tamanrasset', 'm.alg': 'Algeria', 'c.tun': 'Tunis', 'm.tun': 'Tunisia', 'c.mak': 'Makkah', 'c.cai': 'Cairo', 'm.egy': 'Egypt', 'c.eu': 'Paris · London · Montreal',
+        'tests.foot': 'Summer and winter 2026, compared with api.aladhan.com. * Winter Asr above 45° latitude and MUIS Dhuhr: up to 3 min (different official rounding).',
+        'cfg.eyebrow': 'Setup', 'cfg.title': 'Installed and configured in five minutes.',
+        'cfg.1': 'Search your city or use GPS — your country’s method is suggested automatically.',
+        'cfg.2': 'Set the iqamah delays and the Jumu‘ah time.',
+        'cfg.3': 'Pick the adhan voice and download it for offline use.',
+        'cfg.4': 'Add your mosque’s name, logo, photo and notices.',
+        'cfg.5': 'Lock the settings with a PIN and export them to your other screens.',
+        'dl.eyebrow': 'Download', 'dl.title': 'Free, forever. Choose your screen.', 'dl.best': 'RECOMMENDED',
+        'p1.t': 'Android TV & Android boxes', 'p1.d': 'The full experience for mosques: always-on screen, adhan with no human intervention, automatic restart after a power cut.',
+        'p1.s1': 'Copy the APK to a USB stick (or use the Downloader app).', 'p1.s2': 'Install it with a file manager.', 'p1.s3': 'Launch Sakina from the TV home screen, press OK to configure.', 'p1.btn': 'Download the APK',
+        'p2.t': 'Web app (PWA)', 'p2.d': 'On a PC connected to a screen, a tablet or a phone. Installable like an app, then works offline.',
+        'p2.s1': 'Open the web app.', 'p2.s2': 'Browser menu → “Install app”.', 'p2.s3': 'Tap the screen once at start-up to allow sound.', 'p2.btn': 'Open the web app',
+        'p3.t': 'Smart TV (Tizen, webOS…)', 'p3.d': 'No Android? Open the web app in the TV’s browser and bookmark it. Lite mode switches on automatically.',
+        'p3.s1': 'TV browser → web app address.', 'p3.s2': 'Add it to bookmarks / the home screen.', 'p3.btn': 'Web app address',
+        'p4.t': 'Source code', 'p4.d': 'Host your own version, adapt it to your federation or contribute to the project.',
+        'p4.s1': 'Every release and the full history on GitHub.', 'p4.s2': 'MIT licence: free to use, modify and share.', 'p4.btn': 'All releases',
+        'oss.eyebrow': 'Open source · Sadaqah jariyah', 'oss.title': 'A free project, made fi sabilillah.',
+        'oss.lead': 'The code is public and will stay that way. Translations, national conventions, official timetables, royalty-free adhan recordings: every contribution counts.',
+        'oss.star': 'Star it on GitHub', 'oss.issue': 'Report an issue', 'code.c1': 'Run Sakina locally', 'code.c2': 'Accuracy tests',
+        'faq.title': 'Frequently asked questions',
+        'q1': 'Is Sakina really free?', 'a1': 'Yes, completely: no ads, no subscription, no account. The code is MIT-licensed.',
+        'q2': 'Does it need an internet connection?', 'a2': 'No. Prayer times are computed on the device. Internet is only used for the weather, the optional Aladhan sync and to download adhan voices once.',
+        'q3': 'Will the times match my mosque’s?', 'a3': 'Pick your country’s convention, then adjust each prayer to the minute if your mosque applies a precautionary margin. You can also import the official timetable as CSV.',
+        'q4': 'Which TV or box should a mosque buy?', 'a4': 'Any recent Android TV / Google TV box (even entry-level) on HDMI works. Sakina starts with the box and keeps the screen on.',
+        'q5': 'Can we use our muezzin’s voice?', 'a5': 'Yes: upload his MP3 recording in Settings → Adhan. It is stored on the device and works offline.',
+        'q6': 'Several screens in the same mosque?', 'a6': 'Configure one screen, export the settings (.json) and import them on the others. Portrait entrance screens are handled automatically.',
+        'foot.d': 'Open-source prayer display for mosques, homes and Android TV.', 'foot.rel': 'Releases', 'foot.issues': 'Report a bug', 'foot.credits': 'Credits', 'foot.site': 'mataa.me',
+        'foot.dua': '“Our Lord, accept this from us.” — Al-Baqarah 2:127'
+      },
+      ar: {
+        'nav.features': 'المميزات', 'nav.screens': 'الشاشات', 'nav.accuracy': 'الدقة', 'nav.download': 'التحميل', 'nav.faq': 'الأسئلة',
+        'hero.eyebrow': 'مفتوح المصدر · مجاني · يعمل دون إنترنت',
+        'hero.lead': 'شاشة مواقيت الصلاة الفاخرة لمسجدك وبيتك وتلفازك بنظام Android TV. مواقيت دقيقة بالدقيقة، الإقامة، الأذان، الآيات والأذكار — جميلة وموثوقة وخفيفة، حتى على تلفاز متواضع.',
+        'hero.ctaApk': 'تحميل لأجهزة Android TV', 'hero.ctaWeb': 'فتح نسخة الويب',
+        'badge.mit': 'رخصة MIT', 'badge.offline': 'يعمل دون إنترنت', 'badge.noads': 'بلا إعلانات ولا حساب', 'badge.langs': 'Français · English · العربية',
+        'alt.dashboard': 'لوحة سكينة على التلفاز', 'alt.portrait': 'شاشة سكينة العمودية',
+        'stat.acc': 'دقة مُتحقَّق منها', 'stat.methods': 'طريقة حساب', 'stat.voices': 'صوت أذان', 'stat.langs': 'لغات', 'stat.size': 'حجم الكود، مثالي للأجهزة البسيطة',
+        'feat.eyebrow': 'كل ما يحتاجه المسجد', 'feat.title': 'صُمّم لقاعة الصلاة، بعناية في أدق التفاصيل.',
+        'f1.t': 'مواقيت دقيقة', 'f1.d': 'حساب فلكي دقيق حسب موقع المسجد بالضبط، 20 طريقة حساب رسمية، وتعديل يدوي بالدقيقة.',
+        'f2.t': 'أذان تلقائي', 'f2.d': '20 صوتاً (الحرم المكي، المسجد النبوي، مشاري العفاسي…)، أذان خاص للفجر، أو تسجيل مؤذن مسجدكم.',
+        'f3.t': 'الإقامة والعد التنازلي', 'f3.d': 'مدة بعد الأذان أو وقت ثابت لكل صلاة. عدّ تنازلي بملء الشاشة وتذكير بإغلاق الهواتف.',
+        'f4.t': 'آيات وأذكار', 'f4.d': 'القرآن بالرسم العثماني مع الترجمة، أذكار صحيحة من حصن المسلم، وأذكار بعد كل صلاة.',
+        'f5.t': 'مسجدكم', 'f5.d': 'الاسم والشعار وصورة المسجد كخلفية، الإعلانات وشريط متحرك، ووقت صلاة الجمعة.',
+        'f6.t': 'الهجري ورمضان', 'f6.d': 'تقويم أم القرى مع تصحيح محلي، يبدأ اليوم الهجري عند المغرب، وإظهار الإمساك والإفطار في رمضان.',
+        'f7.t': 'خفيف على كل الأجهزة', 'f7.d': 'دون أطر عمل ثقيلة، وضع خفيف تلقائي، أفقي أو عمودي. سلس حتى على أبسط أجهزة Android.',
+        'f8.t': 'يُضبط بجهاز التحكم', 'f8.d': 'كل الإعدادات بأزرار الاتجاه، قفل برمز سري، وتصدير الإعدادات لنسخها إلى شاشات أخرى.',
+        'flow.eyebrow': 'تلقائياً في كل صلاة', 'flow.title': 'الشاشة ترافق الصلاة كاملة، دون أن يلمسها أحد.',
+        's1.t': 'الأذان', 's1.d': 'يُرفع الأذان في وقته بالضبط، مع الدعاء بعد الأذان.',
+        's2.t': 'قبل الإقامة', 's2.d': 'عدّ تنازلي كبير، تذكير بالهواتف، ثم «استووا واعتدلوا».',
+        's3.t': 'أثناء الصلاة', 's3.d': 'تُعتَّم الشاشة حتى لا تشغل المصلين، مع مدة أطول للجمعة.',
+        's4.t': 'بعد الصلاة', 's4.d': 'تُعرض أذكار ما بعد الصلاة، ثم العودة إلى اللوحة الرئيسية.',
+        'theme.eyebrow': '4 سمات · 15 صورة · 3 لغات', 'theme.title': 'شاشة تُشبه مسجدكم.',
+        'theme.lead': 'صور مساجد من حول العالم بترخيص حر — من جامع الجزائر إلى أصفهان — أو صورة مسجدكم.',
+        'th.emerald': 'زمردي', 'th.night': 'ليلي · عربي', 'th.sand': 'رملي · إنجليزي', 'th.royal': 'ملكي',
+        'acc.eyebrow': 'الدقة أولاً', 'acc.title': 'مواقيت مُتحقَّق منها، لا تقريبية.',
+        'acc.lead': 'ثلاثة مصادر للاختيار، واختبارات آلية تقارن كل إصدار بمواقيت مرجعية.',
+        'src1.t': 'حساب فلكي — دون إنترنت', 'src1.d': 'خوارزميات جان ميوس (adhan-js). يعمل دائماً حتى دون إنترنت. الخيار الافتراضي.',
+        'src2.t': 'خدمة Aladhan', 'src2.d': 'تقويم شهري متزامن ومحفوظ لشهرين: تستمر الشاشة في العمل عند انقطاع الاتصال.',
+        'src3.t': 'التقويم الرسمي (CSV)', 'src3.d': 'استورد تقويم وزارتكم أو اتحادكم أو مسجدكم لاتباعه حرفياً.',
+        'acc.note': '<b>بكل أمانة:</b> كل جهة تختار زواياها وهوامش الاحتياط الخاصة بها. لذلك يقترح سكينة طريقة بلدك، ومقارنة بنقرة مع Aladhan، وتعديلاً لكل صلاة لمطابقة تقويم مسجدك تماماً.',
+        'tests.t': '143 يوماً مرجعياً مُختبَراً', 'tests.city': 'المدينة', 'tests.method': 'الطريقة', 'tests.gap': 'الفارق',
+        'c.alg': 'الجزائر · قسنطينة · تمنراست', 'm.alg': 'الجزائر', 'c.tun': 'تونس', 'm.tun': 'تونس', 'c.mak': 'مكة المكرمة', 'c.cai': 'القاهرة', 'm.egy': 'مصر', 'c.eu': 'باريس · لندن · مونتريال',
+        'tests.foot': 'صيف وشتاء 2026، مقارنةً بـ api.aladhan.com. * العصر شتاءً فوق خط العرض 45° وظهر سنغافورة: حتى 3 دقائق (اختلاف التقريب الرسمي).',
+        'cfg.eyebrow': 'الإعداد', 'cfg.title': 'التثبيت والضبط في خمس دقائق.',
+        'cfg.1': 'ابحث عن مدينتك أو استخدم GPS — تُقترح طريقة بلدك تلقائياً.',
+        'cfg.2': 'اضبط مدة الإقامة ووقت صلاة الجمعة.',
+        'cfg.3': 'اختر صوت الأذان واحفظه للاستماع دون إنترنت.',
+        'cfg.4': 'أضف اسم مسجدك وشعاره وصورته وإعلاناته.',
+        'cfg.5': 'احمِ الإعدادات برمز سري وصدّرها إلى شاشاتك الأخرى.',
+        'dl.eyebrow': 'التحميل', 'dl.title': 'مجاني، وإلى الأبد. اختر شاشتك.', 'dl.best': 'موصى به',
+        'p1.t': 'Android TV وأجهزة Android', 'p1.d': 'التجربة الكاملة للمساجد: شاشة مضاءة دائماً، أذان دون أي تدخل، وإعادة تشغيل تلقائية بعد انقطاع الكهرباء.',
+        'p1.s1': 'انسخ ملف APK إلى مفتاح USB (أو عبر تطبيق Downloader).', 'p1.s2': 'ثبّته بواسطة مدير الملفات.', 'p1.s3': 'شغّل سكينة من واجهة التلفاز واضغط OK للإعداد.', 'p1.btn': 'تحميل ملف APK',
+        'p2.t': 'نسخة الويب (PWA)', 'p2.d': 'على حاسوب موصول بشاشة، أو لوحي أو هاتف. قابلة للتثبيت كتطبيق وتعمل بعدها دون إنترنت.',
+        'p2.s1': 'افتح نسخة الويب.', 'p2.s2': 'قائمة المتصفح ← «تثبيت التطبيق».', 'p2.s3': 'المس الشاشة مرة عند التشغيل للسماح بالصوت.', 'p2.btn': 'فتح نسخة الويب',
+        'p3.t': 'تلفاز ذكي (Tizen، webOS…)', 'p3.d': 'لا يوجد Android؟ افتح نسخة الويب في متصفح التلفاز وأضفها إلى المفضلة. يتفعّل الوضع الخفيف تلقائياً.',
+        'p3.s1': 'متصفح التلفاز ← عنوان نسخة الويب.', 'p3.s2': 'أضفها إلى المفضلة أو الشاشة الرئيسية.', 'p3.btn': 'عنوان نسخة الويب',
+        'p4.t': 'الكود المصدري', 'p4.d': 'استضف نسختك الخاصة، أو كيّفها لاتحادكم، أو ساهم في المشروع.',
+        'p4.s1': 'كل الإصدارات والسجل الكامل على GitHub.', 'p4.s2': 'رخصة MIT: حرية الاستخدام والتعديل والنشر.', 'p4.btn': 'كل الإصدارات',
+        'oss.eyebrow': 'مفتوح المصدر · صدقة جارية', 'oss.title': 'مشروع حر، في سبيل الله.',
+        'oss.lead': 'الكود منشور للجميع وسيبقى كذلك. الترجمات، طرق الحساب الوطنية، التقاويم الرسمية، تسجيلات الأذان الحرة: كل مساهمة لها أجرها.',
+        'oss.star': 'أضف نجمة على GitHub', 'oss.issue': 'الإبلاغ عن مشكلة', 'code.c1': 'تشغيل سكينة محلياً', 'code.c2': 'اختبارات الدقة',
+        'faq.title': 'الأسئلة الشائعة',
+        'q1': 'هل سكينة مجاني فعلاً؟', 'a1': 'نعم، بالكامل: بلا إعلانات ولا اشتراك ولا حساب. الكود مرخّص بـ MIT.',
+        'q2': 'هل يحتاج إلى اتصال بالإنترنت؟', 'a2': 'لا. تُحسب المواقيت على الجهاز نفسه. يُستخدم الإنترنت فقط للطقس، والمزامنة الاختيارية مع Aladhan، وتحميل أصوات الأذان مرة واحدة.',
+        'q3': 'هل ستطابق المواقيت مواقيت مسجدي؟', 'a3': 'اختر طريقة بلدك، ثم عدّل كل صلاة بالدقيقة إن كان مسجدك يطبّق احتياطاً. ويمكنك أيضاً استيراد التقويم الرسمي بصيغة CSV.',
+        'q4': 'أي تلفاز أو جهاز يشتري المسجد؟', 'a4': 'أي جهاز Android TV أو Google TV حديث (حتى البسيط منها) موصول عبر HDMI. يبدأ سكينة مع تشغيل الجهاز ويُبقي الشاشة مضاءة.',
+        'q5': 'هل يمكن استخدام صوت مؤذن مسجدنا؟', 'a5': 'نعم: ارفع تسجيله بصيغة MP3 من الإعدادات ← الأذان. يُحفظ على الجهاز ويعمل دون إنترنت.',
+        'q6': 'عدة شاشات في المسجد نفسه؟', 'a6': 'اضبط شاشة واحدة، صدّر الإعدادات (‎.json) ثم استوردها في الشاشات الأخرى. الشاشة العمودية عند المدخل تُدار تلقائياً.',
+        'foot.d': 'شاشة مواقيت صلاة مفتوحة المصدر للمساجد والبيوت وأجهزة Android TV.', 'foot.rel': 'الإصدارات', 'foot.issues': 'الإبلاغ عن خطأ', 'foot.credits': 'المصادر', 'foot.site': 'mataa.me',
+        'foot.dua': 'البقرة ١٢٧'
+      }
+    };
+
+    // French is the HTML itself: snapshot it so switching back restores the originals.
+    var FR = {};
+    document.querySelectorAll('[data-i18n]').forEach(function (el) { FR[el.getAttribute('data-i18n')] = el.textContent; });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) { FR[el.getAttribute('data-i18n-html')] = el.innerHTML; });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function (el) { FR[el.getAttribute('data-i18n-alt')] = el.alt; });
+    FR['dl.best'] = 'RECOMMANDÉ';
+
+    function setLang(lang) {
+      var d = lang === 'fr' ? FR : I18N[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function (el) { var v = d[el.getAttribute('data-i18n')]; if (v != null) el.textContent = v; });
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) { var v = d[el.getAttribute('data-i18n-html')]; if (v != null) el.innerHTML = v; });
+      document.querySelectorAll('[data-i18n-alt]').forEach(function (el) { var v = d[el.getAttribute('data-i18n-alt')]; if (v != null) el.alt = v; });
+      document.querySelectorAll('[data-i18n-tag]').forEach(function (el) { el.setAttribute('data-tag', d[el.getAttribute('data-i18n-tag')] || ''); });
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.querySelectorAll('.lang button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-lang') === lang); });
+      try { localStorage.setItem('sakina-landing-lang', lang); } catch (e) {}
+    }
+    document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); }); });
+    var saved = null;
+    try { saved = localStorage.getItem('sakina-landing-lang'); } catch (e) {}
+    var param = new URLSearchParams(location.search).get('lang');
+    var nav = (navigator.language || 'fr').slice(0, 2);
+    setLang(param || saved || (nav === 'ar' ? 'ar' : nav === 'en' ? 'en' : 'fr'));
+
+    /* ------------------------------------------------------------------ UI */
+    var navEl = document.getElementById('nav');
+    function onScroll() { navEl.classList.toggle('solid', window.scrollY > 20); }
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    var tabs = document.querySelectorAll('#themeTabs .tab'), themeImg = document.getElementById('themeImg');
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        tabs.forEach(function (x) { x.classList.toggle('on', x === t); });
+        themeImg.style.opacity = '0';
+        var src = 'assets/' + t.getAttribute('data-img') + '.webp';
+        var img = new Image();
+        img.onload = function () { themeImg.src = src; themeImg.style.opacity = '1'; };
+        img.src = src;
+      });
+    });
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } else document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  </script>
+</body>
+</html>

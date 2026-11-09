@@ -29,7 +29,11 @@ jobs:
       - name: Build APK
         working-directory: android
         run: chmod +x gradlew && ./gradlew assembleDebug --no-daemon
-      - run: mv android/app/build/outputs/apk/debug/app-debug.apk sakina-${{ github.ref_name }}.apk
+      # Two names: a versioned one, and a stable one so that
+      # /releases/latest/download/sakina-android-tv.apk always points to the newest APK.
+      - run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk sakina-${{ github.ref_name }}.apk
+          cp android/app/build/outputs/apk/debug/app-debug.apk sakina-android-tv.apk
       - uses: actions/upload-artifact@v4
         with:
           name: sakina-apk
